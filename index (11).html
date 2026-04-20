@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>IA y Trabajo en Buenos Aires — CESBA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600;700;800;900&family=Encode+Sans+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c1: #00FAB9;
+  --c2: #54BBC7;
+  --c3: #32B4EE;
+  --c4: #4E83FB;
+  --cd: #153B70;
+  --cm: #18A6C2;
+  --cdk: #18596C;
+  --cream: #f5f1e8;
+  --cream2: #ece7d8;
+  --ink: #3d4a50;
+  --white-card: #fff;
+  --border-card: #ddd5c4;
+  --font-main: 'Encode Sans', sans-serif;
+  --font-head: 'Encode Sans Condensed', sans-serif;
+  --max-w: 1100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-main); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* LAYOUT */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+section { padding: 80px 0; }
+
+/* NAV */
+.site-nav { position: sticky; top: 0; z-index: 100; background: var(--cd); border-bottom: 1px solid rgba(255,255,255,0.08); }
+.site-nav .container { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-title { font-family: var(--font-head); font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 0.01em; }
+.nav-subtitle { font-family: var(--font-main); font-size: 10px; font-weight: 300; color: rgba(255,255,255,0.55); margin-top: 2px; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { font-family: var(--font-main); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 0; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--c1); border-bottom-color: var(--c1); }
+
+/* HERO */
+.hero { padding: 100px 0 80px; }
+.hero-eyebrow { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cm); margin-bottom: 20px; }
+.hero-title { font-family: var(--font-head); font-size: 52px; font-weight: 900; color: var(--cd); line-height: 1.05; letter-spacing: -0.02em; max-width: 700px; margin-bottom: 40px; }
+.hero-main { display: flex; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
+.hero-number { font-family: var(--font-head); font-size: 120px; font-weight: 900; color: var(--cd); line-height: 0.85; letter-spacing: -5px; }
+.hero-number-label { font-family: var(--font-main); font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.6; max-width: 320px; padding-bottom: 14px; }
+.hero-number-label strong { color: var(--cd); font-weight: 800; }
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 44px; }
+.btn-primary { font-family: var(--font-main); background: var(--cd); color: var(--c1); font-size: 13px; font-weight: 700; padding: 14px 28px; border-radius: 32px; border: none; cursor: pointer; letter-spacing: 0.02em; transition: transform 0.15s, background 0.2s; }
+.btn-primary:hover { background: var(--cdk); transform: translateY(-2px); }
+.btn-outline { font-family: var(--font-main); background: transparent; color: var(--cd); font-size: 13px; font-weight: 600; padding: 14px 28px; border-radius: 32px; border: 2px solid var(--cd); cursor: pointer; transition: background 0.2s; }
+.btn-outline:hover { background: rgba(21,59,112,0.06); }
+
+/* SECTION LAYOUT: BIG LABEL LEFT + CONTENT RIGHT */
+.section-grid { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+.section-label-col { position: sticky; top: 80px; }
+.section-kicker { font-family: var(--font-head); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cm); margin-bottom: 12px; }
+.section-big-label { font-family: var(--font-head); font-size: 52px; font-weight: 900; color: var(--cd); line-height: 0.95; letter-spacing: -0.02em; }
+.section-big-label .accent { color: var(--cm); }
+.section-bar { width: 48px; height: 4px; background: var(--c1); margin-top: 16px; border-radius: 2px; }
+
+/* INTRO BOX */
+.intro-box { background: var(--cream2); border-left: 4px solid var(--c1); padding: 28px 32px; border-radius: 0 12px 12px 0; font-size: 16px; color: var(--ink); line-height: 1.8; margin-top: 24px; }
+
+/* EDITORIAL BODY */
+.ed-body { font-family: var(--font-main); font-size: 17px; color: var(--ink); line-height: 1.85; margin-bottom: 20px; max-width: 640px; }
+.ed-body strong { color: var(--cd); font-weight: 700; }
+
+/* LINK CARD */
+.link-card { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-main); font-size: 14px; font-weight: 700; color: var(--cd); cursor: pointer; margin-top: 12px; padding: 14px 24px; background: rgba(0,250,185,0.15); border-radius: 32px; border: 1px solid rgba(0,250,185,0.35); text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.link-card:hover { background: rgba(0,250,185,0.25); transform: translateY(-1px); }
+.link-card svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* DASHBOARD GRIDS */
+.dash-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.dash-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card { background: var(--white-card); border: 1px solid var(--border-card); border-radius: 14px; padding: 24px; }
+.card-label { font-family: var(--font-head); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cm); margin-bottom: 16px; }
+
+/* VERTICAL COMPARE BARS */
+.vert-compare { display: flex; align-items: flex-end; justify-content: center; gap: 32px; padding: 12px 0 6px; height: 150px; }
+.vc-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.vc-bar-wrap { width: 54px; display: flex; flex-direction: column; justify-content: flex-end; height: 100px; }
+.vc-bar { width: 54px; border-radius: 6px 6px 0 0; transition: height 1.6s cubic-bezier(0.16,1,0.3,1); }
+.vc-bar.caba { background: linear-gradient(180deg, var(--c1) 0%, var(--c3) 100%); }
+.vc-bar.arg { background: var(--cream2); border: 1px solid #c9c0a8; }
+.vc-num { font-family: var(--font-head); font-size: 24px; font-weight: 900; color: var(--cd); line-height: 1; }
+.vc-num.muted { color: #8a8070; }
+.vc-lbl { font-family: var(--font-main); font-size: 11px; font-weight: 600; color: var(--ink); letter-spacing: 0.06em; text-transform: uppercase; }
+.vc-diff { text-align: center; font-family: var(--font-head); font-size: 13px; font-weight: 800; color: var(--cm); margin-top: 10px; letter-spacing: 0.06em; }
+
+/* HIGHLIGHT BOX */
+.hl-box { background: var(--cd); border-radius: 14px; padding: 24px 28px; margin-top: 32px; display: flex; align-items: flex-start; gap: 16px; position: relative; overflow: hidden; }
+.hl-box::before { content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 5px; background: var(--c1); }
+.hl-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(0,250,185,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hl-text { font-family: var(--font-main); font-size: 15px; color: rgba(255,255,255,0.9); line-height: 1.65; }
+.hl-text strong { color: var(--c1); font-weight: 800; }
+
+/* IEOIAG ANCHOR */
+.ieo-anchor { display: flex; align-items: center; gap: 28px; margin-bottom: 36px; padding: 24px 28px; background: var(--white-card); border-radius: 14px; border: 1px solid var(--border-card); }
+.ieo-big-num { font-family: var(--font-head); font-size: 72px; font-weight: 900; color: var(--cd); line-height: 1; letter-spacing: -3px; flex-shrink: 0; }
+.ieo-desc { font-family: var(--font-main); font-size: 15px; color: var(--ink); line-height: 1.65; }
+.ieo-desc strong { color: var(--cd); font-weight: 700; }
+
+/* HORIZONTAL BAR ROWS (RANKED) */
+.sub-head { font-family: var(--font-head); font-size: 18px; font-weight: 800; color: var(--cd); margin-bottom: 18px; margin-top: 40px; display: flex; align-items: center; gap: 12px; letter-spacing: -0.01em; }
+.sub-head::before { content: ""; width: 5px; height: 22px; background: var(--c1); border-radius: 3px; flex-shrink: 0; }
+.hbar-list { display: flex; flex-direction: column; gap: 18px; }
+.hbar-row { display: flex; align-items: center; gap: 0; }
+.hbar-rank { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--cm); width: 36px; flex-shrink: 0; text-align: center; line-height: 1; }
+.hbar-body { flex: 1; min-width: 0; }
+.hbar-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; gap: 12px; }
+.hbar-name { font-family: var(--font-main); font-size: 14px; font-weight: 600; color: var(--cd); line-height: 1.3; }
+.hbar-meta { font-family: var(--font-main); font-size: 12px; color: #8a8070; font-weight: 400; white-space: nowrap; }
+.hbar-scale { position: relative; height: 14px; background: var(--cream2); border-radius: 7px; overflow: hidden; }
+.hbar-fill { height: 100%; background: linear-gradient(90deg, var(--cm) 0%, var(--cd) 100%); border-radius: 7px; width: 0; transition: width 1.6s cubic-bezier(0.16,1,0.3,1); display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+.hbar-val { font-family: var(--font-head); font-size: 11px; font-weight: 800; color: #fff; letter-spacing: 0.03em; }
+
+/* CRUCES GRID */
+.cruces-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cruce-card { background: var(--white-card); border: 1px solid var(--border-card); border-radius: 14px; padding: 20px; }
+.cruce-ttl { font-family: var(--font-head); font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cm); margin-bottom: 16px; }
+.cr-row { margin-bottom: 10px; }
+.cr-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 5px; }
+.cr-name { font-family: var(--font-main); font-size: 13px; font-weight: 500; color: var(--ink); }
+.cr-val { font-family: var(--font-head); font-size: 14px; font-weight: 800; color: var(--cd); }
+.cr-track { height: 8px; background: var(--cream2); border-radius: 4px; overflow: hidden; }
+.cr-fill { height: 100%; border-radius: 4px; width: 0; transition: width 1.6s cubic-bezier(0.16,1,0.3,1); }
+.cr-note { font-family: var(--font-main); font-size: 11px; color: var(--cm); font-weight: 700; margin-top: 8px; font-style: italic; }
+
+/* CTA BUTTON */
+.sec-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-main); font-size: 14px; font-weight: 700; color: var(--cd); background: rgba(0,250,185,0.18); border: 1.5px solid rgba(0,250,185,0.4); padding: 14px 24px; border-radius: 32px; cursor: pointer; margin-top: 28px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.sec-btn:hover { background: rgba(0,250,185,0.3); transform: translateY(-1px); }
+
+/* NAV CARDS */
+.nc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.nc { border: 1px solid var(--border-card); border-radius: 14px; padding: 24px; cursor: pointer; transition: border-color 0.2s, transform 0.2s; display: flex; gap: 16px; background: var(--white-card); text-decoration: none; color: inherit; }
+.nc:hover { border-color: var(--cm); transform: translateY(-3px); }
+.nc-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nc-title { font-family: var(--font-head); font-size: 17px; font-weight: 800; color: var(--cd); margin-bottom: 4px; }
+.nc-desc { font-family: var(--font-main); font-size: 13px; color: var(--ink); line-height: 1.6; }
+
+/* FOOTER */
+.site-footer { background: var(--cd); padding: 36px 0; }
+.site-footer .container { display: flex; justify-content: space-between; align-items: center; }
+.footer-text { font-family: var(--font-main); font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.8; }
+.footer-text strong { color: rgba(255,255,255,0.9); font-weight: 700; }
+
+/* DIVIDER */
+.divider { border: none; border-top: 1px solid var(--border-card); margin: 0; }
+
+/* ANIMATE ON SCROLL */
+[data-animate] { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+[data-animate].visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .section-grid { grid-template-columns: 1fr; gap: 24px; }
+  .section-label-col { position: static; }
+  .section-big-label { font-size: 36px; }
+  .hero-title { font-size: 32px; }
+  .hero-number { font-size: 72px; }
+  .dash-grid-3, .cruces-grid { grid-template-columns: 1fr; }
+  .nc-grid { grid-template-columns: 1fr; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 10px; }
+  .ieo-anchor { flex-direction: column; gap: 16px; }
+  .ieo-big-num { font-size: 52px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="container">
+    <a href="#" class="nav-brand">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#32B4EE"/></linearGradient></defs>
+        <polygon points="17,2 31,9.5 31,24.5 17,32 3,24.5 3,9.5" stroke="url(#hg)" stroke-width="1.4" fill="none"/>
+        <rect x="10" y="16" width="3" height="9" rx="1" fill="#00FAB9"/><rect x="15" y="13" width="3" height="12" rx="1" fill="#54BBC7"/><rect x="20" y="10" width="3" height="15" rx="1" fill="#32B4EE"/>
+        <path d="M6 30 Q17 26 28 30" stroke="#00FAB9" stroke-width="0.8" fill="none"/>
+      </svg>
+      <div>
+        <div class="nav-title">IA y Trabajo en Buenos Aires</div>
+        <div class="nav-subtitle">Consejo Económico y Social · cesba.gob.ar</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#glosario">Glosario</a>
+      <a href="#trabajos">Los trabajos de CABA</a>
+      <a href="#ieoiag" class="active">El IEOIAG</a>
+      <a href="#recursos">Recursos</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Índice de exposición ocupacional · 2025</div>
+    <h1 class="hero-title">¿Cuán expuestos están los trabajos porteños a la IA generativa?</h1>
+    <div class="hero-main">
+      <div class="hero-number">0,350</div>
+      <div class="hero-number-label">Índice de exposición ocupacional a la IA generativa en <strong>la Ciudad Autónoma de Buenos Aires</strong></div>
+    </div>
+    <div class="hero-buttons">
+      <button class="btn-primary">Glosario sobre IA y trabajo</button>
+      <button class="btn-primary">Explorar los datos →</button>
+      <button class="btn-outline">¿Cómo se midió?</button>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="container">
+    <div class="section-grid">
+      <div class="section-label-col" data-animate>
+        <div class="section-kicker">Sobre este sitio</div>
+        <div class="section-big-label">El primer<br><span class="accent">índice</span><br>porteño</div>
+        <div class="section-bar"></div>
+      </div>
+      <div data-animate>
+        <p class="ed-body">Este sitio presenta el primer índice de exposición ocupacional a la IA generativa construido para una ciudad de América Latina y el Caribe.</p>
+        <p class="ed-body">Acá vas a poder encontrar conceptos básicos sobre la relación entre la IA y el trabajo, datos sistematizados sobre la estructura ocupacional de CABA y cuáles son los trabajos que están siendo (y serán) más transformados por la IA generativa.</p>
+        <div class="intro-box">El índice fue construido con microdatos porteños, desagregado por ocupación, género, edad, nivel educativo y sector.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- POR QUÉ IMPORTA -->
+<section id="glosario">
+  <div class="container">
+    <div class="section-grid">
+      <div class="section-label-col" data-animate>
+        <div class="section-kicker">Editorial</div>
+        <div class="section-big-label">Por qué<br><span class="accent">importa</span></div>
+        <div class="section-bar"></div>
+      </div>
+      <div data-animate>
+        <p class="ed-body">La IA generativa está transformando muchos trabajos de manera rápida y profunda. En CABA —donde el <strong>85% del valor agregado proviene de servicios</strong> y casi el <strong>28% del empleo son profesionales</strong>— el nivel de exposición es inusualmente alto para una ciudad de América Latina, comparable al de las economías más avanzadas del mundo.</p>
+        <p class="ed-body">Pero el impacto no es el mismo para todos. Mientras que los <strong>oficinistas</strong> están expuestos en un <strong>63%</strong>, los <strong>trabajadores de cuidados personales</strong> lo están en un <strong>19%</strong>. La exposición depende de las capacidades de los modelos y del conjunto de tareas que conforman cada ocupación.</p>
+        <p class="ed-body">Además, el impacto real sobre el empleo y los salarios depende de muchos factores. En la mayoría de los casos, la pregunta no es tanto "¿este trabajo va a desaparecer?" sino <strong>"¿cómo va a cambiar y a qué velocidad?"</strong>.</p>
+        <a href="#" class="link-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          Explorá el glosario sobre IA y trabajo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ESTRUCTURA -->
+<section id="trabajos">
+  <div class="container">
+    <div class="section-grid">
+      <div class="section-label-col" data-animate>
+        <div class="section-kicker">Contexto</div>
+        <div class="section-big-label">La <span class="accent">estructura</span><br>que explica<br>el índice</div>
+        <div class="section-bar"></div>
+      </div>
+      <div data-animate>
+        <p class="ed-body"><strong>CABA tiene una estructura ocupacional de país desarrollado.</strong> Más del 85% del empleo está en servicios, dos de cada tres trabajadores tienen educación superior y la formalidad es mucho más alta que en el resto del país. Esa estructura es la que explica por qué el índice porteño es tan alto.</p>
+      </div>
+    </div>
+
+    <div class="dash-grid-3" style="margin-top: 24px;" data-animate>
+      <div class="card">
+        <div class="card-label">Empleo en servicios</div>
+        <div class="vert-compare">
+          <div class="vc-col"><div class="vc-bar-wrap"><div class="vc-bar caba" data-h="85"></div></div><div class="vc-num">88%</div><div class="vc-lbl">CABA</div></div>
+          <div class="vc-col"><div class="vc-bar-wrap"><div class="vc-bar arg" data-h="75"></div></div><div class="vc-num muted">78%</div><div class="vc-lbl">Argentina</div></div>
+        </div>
+        <div class="vc-diff">+10 pp</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Educación superior</div>
+        <div class="vert-compare">
+          <div class="vc-col"><div class="vc-bar-wrap"><div class="vc-bar caba" data-h="66"></div></div><div class="vc-num">66%</div><div class="vc-lbl">CABA</div></div>
+          <div class="vc-col"><div class="vc-bar-wrap"><div class="vc-bar arg" data-h="40"></div></div><div class="vc-num muted">40%</div><div class="vc-lbl">Argentina</div></div>
+        </div>
+        <div class="vc-diff">+26 pp</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Asalariados registrados</div>
+        <div class="vert-compare">
+          <div class="vc-col"><div class="vc-bar-wrap"><div class="vc-bar caba" data-h="59"></div></div><div class="vc-num">59%</div><div class="vc-lbl">CABA</div></div>
+          <div class="vc-col"><div class="vc-bar-wrap"><div class="vc-bar arg" data-h="46"></div></div><div class="vc-num muted">46%</div><div class="vc-lbl">Argentina</div></div>
+        </div>
+        <div class="vc-diff">+13 pp</div>
+      </div>
+    </div>
+
+    <div class="hl-box" data-animate>
+      <div class="hl-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 10l4 4 4-4" stroke="#00FAB9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17h14" stroke="#00FAB9" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div class="hl-text">El trabajador más protegido es el más expuesto a la IA: los <strong>asalariados registrados</strong> tienen un índice <strong>37% mayor</strong> que los no registrados (<strong>0,378 vs. 0,276</strong>).</div>
+    </div>
+
+    <a href="#" class="sec-btn">→ Ver análisis completo de la estructura ocupacional</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- IEOIAG -->
+<section id="ieoiag">
+  <div class="container">
+    <div class="section-grid">
+      <div class="section-label-col" data-animate>
+        <div class="section-kicker">Resultados</div>
+        <div class="section-big-label">El<br><span class="accent">IEOIAG</span></div>
+        <div class="section-bar"></div>
+      </div>
+      <div data-animate>
+        <div class="ieo-anchor">
+          <div class="ieo-big-num">0,350</div>
+          <div class="ieo-desc">CABA entre los índices más altos del mundo. Por encima de <strong>EE.UU. (0,322)</strong>, <strong>Reino Unido (0,331)</strong> y <strong>Francia (0,318)</strong>. Solo por debajo de <strong>Singapur (0,366)</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-head" data-animate>Top 5 sectores más expuestos</div>
+    <div class="hbar-list" data-animate>
+      <div class="hbar-row"><div class="hbar-rank">1</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Finanzas, TIC y servicios profesionales</div><div class="hbar-meta">27,5% del empleo</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="100"><span class="hbar-val">0,429</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">2</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Administración pública</div><div class="hbar-meta">7,8% del empleo</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="99"><span class="hbar-val">0,428</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">3</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Comercio, alojamiento y gastronomía</div><div class="hbar-meta">20,2% del empleo</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="82"><span class="hbar-val">0,350</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">4</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Enseñanza y salud</div><div class="hbar-meta">15,8% del empleo</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="75"><span class="hbar-val">0,321</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">5</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Industria manufacturera</div><div class="hbar-meta">8,1% del empleo</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="74"><span class="hbar-val">0,319</span></div></div></div></div>
+    </div>
+
+    <div class="sub-head" data-animate>Top 5 ocupaciones más expuestas</div>
+    <div class="hbar-list" data-animate>
+      <div class="hbar-row"><div class="hbar-rank">1</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Oficinistas (CIUO 41)</div><div class="hbar-meta">112.175 personas</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="100"><span class="hbar-val">0,633</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">2</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Profesionales TIC (CIUO 25)</div><div class="hbar-meta">87.202 personas</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="86"><span class="hbar-val">0,543</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">3</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Empleados contables (CIUO 43)</div><div class="hbar-meta">15.280 personas</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="84"><span class="hbar-val">0,533</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">4</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Empleados trato público (CIUO 42)</div><div class="hbar-meta">53.380 personas</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="82"><span class="hbar-val">0,520</span></div></div></div></div>
+      <div class="hbar-row"><div class="hbar-rank">5</div><div class="hbar-body"><div class="hbar-top"><div class="hbar-name">Otro personal administrativo (CIUO 44)</div><div class="hbar-meta">19.055 personas</div></div><div class="hbar-scale"><div class="hbar-fill" data-w="80"><span class="hbar-val">0,509</span></div></div></div></div>
+    </div>
+
+    <div class="sub-head" data-animate>Tres cruces</div>
+    <div class="cruces-grid" data-animate>
+      <div class="cruce-card">
+        <div class="cruce-ttl">Por género</div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Mujer</span><span class="cr-val">0,363</span></div><div class="cr-track"><div class="cr-fill" data-w="90" style="background:var(--cd);"></div></div></div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Varón</span><span class="cr-val">0,338</span></div><div class="cr-track"><div class="cr-fill" data-w="83" style="background:var(--cm);"></div></div></div>
+        <div class="cr-note">Mujeres 7,5% más expuestas</div>
+      </div>
+      <div class="cruce-card">
+        <div class="cruce-ttl">Por calificación</div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Profesional</span><span class="cr-val">0,407</span></div><div class="cr-track"><div class="cr-fill" data-w="100" style="background:var(--cd);"></div></div></div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Técnica</span><span class="cr-val">0,367</span></div><div class="cr-track"><div class="cr-fill" data-w="90" style="background:var(--cm);"></div></div></div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Operativa</span><span class="cr-val">0,341</span></div><div class="cr-track"><div class="cr-fill" data-w="84" style="background:var(--c2);"></div></div></div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">No calificada</span><span class="cr-val">0,191</span></div><div class="cr-track"><div class="cr-fill" data-w="47" style="background:#c9d8d0;"></div></div></div>
+      </div>
+      <div class="cruce-card">
+        <div class="cruce-ttl">Por nivel educativo</div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Superior incompleto</span><span class="cr-val">0,401</span></div><div class="cr-track"><div class="cr-fill" data-w="100" style="background:var(--cd);"></div></div></div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Superior completo</span><span class="cr-val">0,386</span></div><div class="cr-track"><div class="cr-fill" data-w="96" style="background:var(--cm);"></div></div></div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Secundario completo</span><span class="cr-val">0,301</span></div><div class="cr-track"><div class="cr-fill" data-w="75" style="background:var(--c2);"></div></div></div>
+        <div class="cr-row"><div class="cr-top"><span class="cr-name">Hasta sec. incompleto</span><span class="cr-val">0,220</span></div><div class="cr-track"><div class="cr-fill" data-w="55" style="background:#c9d8d0;"></div></div></div>
+      </div>
+    </div>
+
+    <a href="#" class="sec-btn">→ Explorar todos los datos del IEOIAG</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NAV CARDS -->
+<section id="recursos">
+  <div class="container">
+    <div class="section-grid">
+      <div class="section-label-col" data-animate>
+        <div class="section-kicker">Navegación</div>
+        <div class="section-big-label">Explorá<br>el estudio<br><span class="accent">completo</span></div>
+        <div class="section-bar"></div>
+      </div>
+      <div data-animate>
+        <div class="nc-grid">
+          <a href="#" class="nc">
+            <div class="nc-icon" style="background:rgba(0,250,185,0.12);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#18596C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/><path d="M4 4.5v15A2.5 2.5 0 0 0 6.5 22H20"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            </div>
+            <div><div class="nc-title">Un glosario sobre IA y trabajo</div><div class="nc-desc">Qué es la IA generativa, cómo afecta el trabajo y qué dice la evidencia empírica.</div></div>
+          </a>
+          <a href="#" class="nc">
+            <div class="nc-icon" style="background:rgba(50,180,238,0.12);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#18596C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,18 8,10 13,14 20,4"/><polyline points="16,4 20,4 20,8"/><line x1="4" y1="20" x2="20" y2="20"/></svg>
+            </div>
+            <div><div class="nc-title">Los trabajos de CABA</div><div class="nc-desc">Estructura ocupacional porteña comparada con Argentina, 2021–2025.</div></div>
+          </a>
+          <a href="#" class="nc">
+            <div class="nc-icon" style="background:rgba(24,166,194,0.12);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#18596C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="14" width="4" height="7" rx="0.5"/><rect x="8.5" y="10" width="4" height="11" rx="0.5"/><rect x="14" y="6" width="4" height="15" rx="0.5"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+            </div>
+            <div><div class="nc-title">El IEOIAG</div><div class="nc-desc">Explorador interactivo por ocupación, género, edad, educación y registro laboral.</div></div>
+          </a>
+          <a href="#" class="nc">
+            <div class="nc-icon" style="background:rgba(78,131,251,0.12);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#18596C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 12l5 4 5-4"/><path d="M4 18h16"/></svg>
+            </div>
+            <div><div class="nc-title">Recursos</div><div class="nc-desc">Descargá los datos abiertos, informes, nota metodológica y glosario.</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-text">
+      <strong>Consejo Económico y Social de la Ciudad de Buenos Aires</strong><br>
+      Carlos Pellegrini 587 · cesba.gob.ar<br>
+      Datos: ETOI-IEC CABA 2025-T3 · Índice: ILO WP140 (Gmyrek et al. 2025) · Licencia CC BY-NC 4.0
+    </div>
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <polygon points="20,3 36,11 36,29 20,37 4,29 4,11" stroke="#00FAB9" stroke-width="1.2" fill="none"/>
+      <polygon points="20,9 30,15 30,25 20,31 10,25 10,15" stroke="#54BBC7" stroke-width="0.6" fill="none" opacity="0.5"/>
+      <path d="M7 34 Q20 30 33 34" stroke="#00FAB9" stroke-width="0.8" fill="none"/>
+    </svg>
+  </div>
+</footer>
+
+<script>
+/* Scroll-triggered animations */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      /* Animate bars inside */
+      entry.target.querySelectorAll('[data-w]').forEach(el => {
+        setTimeout(() => { el.style.width = el.dataset.w + '%'; }, 200);
+      });
+      entry.target.querySelectorAll('[data-h]').forEach(el => {
+        setTimeout(() => { el.style.height = el.dataset.h + 'px'; }, 200);
+      });
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+/* Smooth nav scroll */
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
