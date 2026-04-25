@@ -13,67 +13,74 @@
 body{font-family:var(--f);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;}
 .container{max-width:var(--mw);margin:0 auto;padding:0 40px;}
 hr.div{border:none;border-top:1px solid var(--border);}
+/* NAV */
 .site-nav{position:sticky;top:0;z-index:100;background:var(--cd);}.site-nav .container{display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}.nav-title{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;}.nav-sub{font-family:var(--f);font-size:10px;font-weight:300;color:rgba(255,255,255,0.5);margin-top:2px;}
 .nav-links{display:flex;gap:28px;}.nav-links a{font-family:var(--f);font-size:11px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;padding:4px 0;border-bottom:2px solid transparent;transition:all .2s;}.nav-links a:hover,.nav-links a.active{color:var(--c1);border-bottom-color:var(--c1);}
+/* HERO */
 .page-hero{padding:64px 0 50px;}.hero-eyebrow{font-family:var(--fh);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cm);margin-bottom:14px;}.page-hero h1{font-family:var(--fh);font-size:44px;font-weight:900;color:var(--cd);line-height:1.05;letter-spacing:-0.02em;margin-bottom:14px;}.hero-sub{font-family:var(--f);font-size:17px;color:var(--ink);line-height:1.75;max-width:640px;}
-section.gs{padding:72px 0;}.sg{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start;}.sl{position:sticky;top:76px;}.sk{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cm);margin-bottom:12px;}.sbl{font-family:var(--fh);font-size:40px;font-weight:900;color:var(--cd);line-height:.95;letter-spacing:-0.02em;}.sbl .a{color:var(--cm);}.sb{width:48px;height:4px;background:var(--c1);margin-top:16px;border-radius:2px;}
+/* LAYOUT */
+section.gs{padding:72px 0;}
+.sg{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start;}
+/* SIDEBAR — always show TOC */
+.sl{position:sticky;top:76px;}
+.sk{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cm);margin-bottom:12px;}
+.sbl{font-family:var(--fh);font-size:40px;font-weight:900;color:var(--cd);line-height:.95;letter-spacing:-0.02em;display:none;}
+.sb{width:48px;height:4px;background:var(--c1);margin-top:0;margin-bottom:16px;border-radius:2px;display:none;}
+/* TOC always visible */
+.toc{margin-top:0;}
+.toc a{display:block;font-size:12px;color:var(--ink);text-decoration:none;padding:5px 10px;border-left:2px solid transparent;transition:all .25s;opacity:.5;line-height:1.35;}
+.toc a:hover{color:var(--cm);opacity:.8;}
+.toc a.active{color:var(--cd);border-left-color:var(--c1);opacity:1;font-weight:600;font-size:13px;padding:7px 10px;background:rgba(0,250,185,.06);border-radius:0 6px 6px 0;}
+.toc .tn{font-family:var(--fh);font-size:11px;font-weight:800;color:var(--cm);margin-right:4px;}
+/* BODY */
 .body{font-family:var(--f);font-size:16px;color:var(--ink);line-height:1.85;margin-bottom:18px;max-width:620px;}.body strong{color:var(--cd);font-weight:700;}
 .sh{font-family:var(--fh);font-size:17px;font-weight:800;color:var(--cd);margin-bottom:14px;margin-top:32px;}
+.section-title{font-family:var(--fh);font-size:28px;font-weight:900;color:var(--cd);margin-bottom:20px;line-height:1.1;}
+.section-title .a{color:var(--cm);}
 .highlight{font-family:var(--fh);font-size:17px;font-weight:800;color:var(--cd);margin:20px 0;line-height:1.5;}
-.img-full{width:100%;border-radius:10px;margin:18px 0 6px;display:block;object-fit:cover;}.img-cap{font-size:12px;color:var(--ink);margin-bottom:18px;font-weight:600;text-align:center;}
-.img-cap-src{font-size:11px;color:#7a7060;margin-bottom:18px;font-style:normal;}
+/* IMAGES — smaller, no border-radius crop */
+.img-full{width:100%;max-width:380px;margin:18px 0 6px;display:block;object-fit:contain;}
+.img-cap{font-size:12px;color:var(--ink);margin-bottom:18px;font-weight:600;}
+.img-cap-src{font-size:11px;color:#7a7060;margin-bottom:18px;}
+/* Graph box */
 .gb{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:20px 0;}.gb img{width:100%;display:block;}.gb-cap{padding:10px 16px;font-size:11px;color:#7a7060;background:var(--cream2);border-top:1px solid var(--border);}
+/* Stats */
 .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}.stat{border:1px solid var(--border);border-radius:12px;padding:22px;background:var(--cream);border-left:4px solid var(--cm);}.stat-l{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cm);margin-bottom:6px;}.stat-n{font-family:var(--fh);font-size:56px;font-weight:900;color:var(--cd);line-height:.85;margin-bottom:6px;}.stat-d{font-family:var(--f);font-size:13px;color:var(--ink);line-height:1.5;}
+/* Evidence */
 .ev{border:1px solid var(--border);border-radius:12px;padding:24px;margin:20px 0;border-top:3px solid var(--c1);background:var(--cream);}.ev p{font-size:15px;color:var(--ink);line-height:1.8;margin-bottom:12px;}.ev .ev-h{font-family:var(--fh);font-size:16px;font-weight:900;color:var(--cd);margin-top:8px;display:block;}
 .src{font-size:11px;color:#7a7060;margin-top:6px;}.src a{color:var(--cm);}
-.toc{margin-top:24px;}.toc a{display:block;font-size:12px;color:var(--ink);text-decoration:none;padding:6px 0;border-left:2px solid transparent;padding-left:12px;transition:all .2s;opacity:.6;line-height:1.4;}.toc a:hover,.toc a.active{color:var(--cm);border-left-color:var(--c1);opacity:1;}.toc .tn{font-family:var(--fh);font-size:11px;font-weight:800;color:var(--cm);margin-right:4px;}
 /* Quadrant */
 .quad-wrap{margin:20px 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.quad-axes{display:flex;justify-content:space-between;padding:6px 16px;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
-.quad-axes .ax-left{color:var(--cd);}.quad-axes .ax-right{color:var(--cm);}
+.quad-axes{display:flex;justify-content:space-between;padding:6px 16px;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}.quad-axes .ax-left{color:var(--cd);}.quad-axes .ax-right{color:var(--cm);}
 .quad{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-.quad-cell{padding:18px 20px;font-size:13px;line-height:1.65;border-top:1px solid var(--border);border-right:1px solid var(--border);}
-.quad-cell:nth-child(2n){border-right:none;}
+.quad-cell{padding:18px 20px;font-size:13px;line-height:1.65;border-top:1px solid var(--border);border-right:1px solid var(--border);}.quad-cell:nth-child(2n){border-right:none;}
 .quad-cell.bl{background:rgba(21,59,112,.05);}.quad-cell.tl{background:rgba(24,166,194,.05);}
-.quad-cell-title{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cd);margin-bottom:6px;}
-.quad-cell-title.cm{color:var(--cm);}
+.quad-cell-title{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cd);margin-bottom:6px;}.quad-cell-title.cm{color:var(--cm);}
 .quad-side{writing-mode:vertical-lr;transform:rotate(180deg);font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);opacity:.5;padding:8px 4px;text-align:center;}
 .quad-outer{display:grid;grid-template-columns:auto 1fr;gap:0;}
-/* Two col side by side */
-.side{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
-.side-card{border:1px solid var(--border);border-radius:12px;padding:20px;font-size:13px;line-height:1.65;}
-.side-card.left{background:rgba(24,166,194,.06);border-top:3px solid var(--cm);}
-.side-card.right{background:rgba(50,180,238,.06);border-top:3px solid var(--c3);}
-.side-card h4{font-family:var(--fh);font-size:15px;font-weight:800;color:var(--cd);margin-bottom:8px;}
-.side-card ul{list-style:none;padding:0;margin:0;}.side-card li{padding:4px 0;}.side-card li::before{content:"→ ";color:var(--cm);font-weight:700;}
-/* Hinton inline */
-.hinton{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:start;margin:24px 0;}
-.hinton img{width:220px;border-radius:10px;display:block;}
 /* Accordion */
 .acc{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:10px 0;}
-.acc-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;font-family:var(--fh);font-size:13px;font-weight:800;color:#fff;transition:background .2s;}
+.acc-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;font-family:var(--fh);font-size:13px;font-weight:800;color:#fff;transition:background .2s;user-select:none;}
 .acc-header.aut{background:var(--cm);}.acc-header.comp{background:var(--cd);}
-.acc-header .arr{transition:transform .3s;font-size:16px;}
-.acc-header.open .arr{transform:rotate(180deg);}
-.acc-body{display:none;border-top:1px solid var(--border);}
-.acc-body.open{display:block;}
+.acc-header .arr{transition:transform .3s;font-size:16px;}.acc-header.open .arr{transform:rotate(180deg);}
+.acc-body{display:none;border-top:1px solid var(--border);}.acc-body.open{display:block;}
 .caso{padding:18px 20px;border-bottom:1px solid var(--border);font-size:13px;line-height:1.65;}.caso:last-child{border-bottom:none;}
 .caso strong{display:block;font-family:var(--fh);font-size:14px;font-weight:800;color:var(--cd);margin-bottom:6px;}
 .caso .cl{font-family:var(--fh);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cm);margin-top:8px;}
 .caso .cr{font-weight:600;color:var(--ink);margin-top:8px;font-size:13px;line-height:1.5;}
 .casos-src{font-size:11px;color:#7a7060;padding:10px 18px;background:var(--cream2);border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;margin-top:-1px;}
-/* Expertise dashboard */
+/* Expertise */
 .exp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
 .exp-c{border:1px solid var(--border);border-radius:12px;padding:24px;font-size:14px;}.exp-c.left{background:rgba(24,166,194,.06);border-top:3px solid var(--cm);}.exp-c.right{background:rgba(50,180,238,.06);border-top:3px solid var(--c3);}
 .exp-c h4{font-family:var(--fh);font-size:22px;font-weight:900;color:var(--cd);margin-bottom:8px;}.exp-c .exp-tag{font-family:var(--fh);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;color:var(--cm);}
 .exp-c .exp-m{font-size:14px;color:var(--ink);margin-bottom:14px;line-height:1.65;}.exp-c .exp-e{font-size:13px;color:var(--ink);margin-bottom:12px;line-height:1.65;}.exp-c .exp-d{font-family:var(--fh);font-size:16px;font-weight:900;color:var(--cd);padding:10px 14px;background:rgba(255,255,255,.6);border-radius:6px;display:inline-block;}
-/* METR chart */
+/* METR */
 .metr-chart{position:relative;height:320px;background:transparent;border:1px solid var(--border);border-radius:12px;padding:20px 20px 40px 50px;margin:20px 0;overflow:hidden;}
 .metr-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--cm);border:2px solid var(--cd);z-index:2;cursor:default;transition:transform .2s;}.metr-dot:hover{transform:scale(1.8);}
 .metr-dot .tip{display:none;position:absolute;bottom:14px;left:50%;transform:translateX(-50%);background:var(--cd);color:#fff;font-size:10px;padding:4px 8px;border-radius:4px;white-space:nowrap;z-index:10;}.metr-dot:hover .tip{display:block;}
 .metr-title{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cd);margin-bottom:4px;}.metr-sub{font-size:11px;color:#7a7060;margin-bottom:16px;}
-/* Fundar dashboards */
+/* Fundar */
 .fundar-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
 .f-card{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--cream);display:flex;flex-direction:column;}
 .f-title{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cd);margin-bottom:3px;}.f-sub{font-size:11px;color:#7a7060;margin-bottom:10px;}
@@ -81,15 +88,18 @@ section.gs{padding:72px 0;}.sg{display:grid;grid-template-columns:240px 1fr;gap:
 .hbar{display:flex;align-items:center;gap:6px;margin-bottom:5px;}.hbar-label{font-size:11px;color:var(--ink);width:130px;text-align:right;flex-shrink:0;line-height:1.3;opacity:.7;}.hbar-label.bold{opacity:1;font-weight:600;}
 .hbar-track{flex:1;height:16px;border-radius:3px;background:rgba(0,0,0,.04);overflow:visible;}.hbar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:5px;min-width:4px;}.hbar-val{font-size:10px;font-weight:600;color:#fff;white-space:nowrap;}.hbar-val-out{font-size:10px;font-weight:600;color:var(--ink);margin-left:5px;}
 .f-metric{display:flex;align-items:baseline;gap:6px;margin-bottom:10px;}.f-metric-n{font-family:var(--fh);font-size:28px;font-weight:900;color:var(--cd);}.f-metric-d{font-size:12px;color:var(--ink);opacity:.7;}
+.f-sep{height:1px;background:var(--border);margin:6px 0 8px;}
 .stack-row{display:flex;align-items:center;gap:0;margin-bottom:6px;}.stack-label{font-size:11px;color:var(--ink);width:120px;text-align:right;flex-shrink:0;padding-right:8px;line-height:1.3;opacity:.7;}
 .stack-bar{display:flex;height:18px;flex:1;border-radius:3px;overflow:hidden;}.stack-seg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;}
 .f-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;font-size:10px;color:var(--ink);opacity:.7;}.f-leg{display:flex;align-items:center;gap:3px;}.f-leg-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
-.f-sep{height:1px;background:var(--border);margin:6px 0 8px;}
 /* Closing */
 .closing{background:var(--cd);padding:40px;border-radius:14px;margin-top:20px;}.closing h2{font-family:var(--fh);font-size:32px;font-weight:900;color:#fff;margin-bottom:14px;}.closing p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:14px;}.closing-links{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}.closing-link{display:inline-block;padding:12px 22px;background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:13px;font-weight:700;border-radius:32px;transition:all .2s;}.closing-link:hover{background:rgba(0,250,185,.3);border-color:var(--c1);}.closing-link.p{background:rgba(0,250,185,.2);border-color:rgba(0,250,185,.5);}
 .footer{background:var(--cd);padding:36px 0;}.footer .container{display:flex;justify-content:space-between;align-items:center;}.ft{font-size:12px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8;}.ft strong{color:rgba(255,255,255,.9);font-weight:700;}
 [data-a]{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}[data-a].vis{opacity:1;transform:none;}
-@media(max-width:900px){.sg{grid-template-columns:1fr;gap:28px;}.sl{position:static;}.sbl{font-size:30px;}.page-hero h1{font-size:30px;}.side,.exp,.stat-row,.fundar-grid,.hinton{grid-template-columns:1fr;}.nav-links{display:none;}.toc{display:none;}.hinton img{width:100%;}}
+/* Contador layout */
+.contador-layout{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:start;margin:16px 0;}
+.contador-layout img{width:280px;display:block;}
+@media(max-width:900px){.sg{grid-template-columns:1fr;gap:28px;}.sl{position:static;}.sbl{font-size:30px;}.page-hero h1{font-size:30px;}.exp,.stat-row,.fundar-grid,.quad{grid-template-columns:1fr;}.nav-links{display:none;}.toc{display:none;}.contador-layout{grid-template-columns:1fr;}.contador-layout img{width:100%;max-width:300px;}}
 </style>
 </head>
 <body>
@@ -99,13 +109,28 @@ section.gs{padding:72px 0;}.sg{display:grid;grid-template-columns:240px 1fr;gap:
 <hr class="div">
 
 <!-- 1 -->
-<section class="gs" id="s1"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">1 · Conceptos básicos</div><div class="sbl">¿Qué es la<br>IA <span class="a">generativa?</span></div><div class="sb"></div><div class="toc"><a href="#s1"><span class="tn">1.</span>¿Qué es la IA generativa?</a><a href="#s2"><span class="tn">2.</span>El trabajo como tareas</a><a href="#s3"><span class="tn">3.</span>Tareas que cambian</a><a href="#s4"><span class="tn">4.</span>¿Qué es la exposición?</a><a href="#s5"><span class="tn">5.</span>Automatización vs. complementariedad</a><a href="#s6"><span class="tn">6.</span>De la exposición a la adopción</a><a href="#s7"><span class="tn">7.</span>De lo individual a lo agregado</a><a href="#s8"><span class="tn">8.</span>El efecto sobre los mercados</a><a href="#s9"><span class="tn">9.</span>¿Qué dicen los estudios?</a><a href="#s10"><span class="tn">10.</span>¿Qué forma tendrá la transición?</a></div></div>
+<section class="gs" id="s1"><div class="container"><div class="sg">
+<div class="sl">
+<div class="toc">
+<a href="#s1"><span class="tn">1.</span>¿Qué es la IA generativa?</a>
+<a href="#s2"><span class="tn">2.</span>El trabajo como tareas</a>
+<a href="#s3"><span class="tn">3.</span>Tareas que cambian</a>
+<a href="#s4"><span class="tn">4.</span>¿Qué es la exposición?</a>
+<a href="#s5"><span class="tn">5.</span>Automatización vs. complementariedad</a>
+<a href="#s6"><span class="tn">6.</span>De la exposición a la adopción</a>
+<a href="#s7"><span class="tn">7.</span>De lo individual a lo agregado</a>
+<a href="#s8"><span class="tn">8.</span>El efecto sobre los mercados</a>
+<a href="#s9"><span class="tn">9.</span>¿Qué dicen los estudios?</a>
+<a href="#s10"><span class="tn">10.</span>¿Qué forma tendrá la transición?</a>
+</div>
+</div>
 <div data-a>
+<div class="section-title">¿Qué es la IA <span class="a">generativa?</span></div>
 <p class="body">La inteligencia artificial tiene décadas de historia. Bajo ese paraguas conviven muchas técnicas: machine learning, reconocimiento de imagen, sistemas expertos. Pero el debate actual gira en torno a un tipo específico: la <strong>IA generativa (IA Gen)</strong>.</p>
 <p class="body">El punto de inflexión fue 2017, con la publicación de la arquitectura Transformer. Esa innovación permitió los grandes modelos de lenguaje (LLM): sistemas capaces de generar texto, código e imágenes con una fluidez sin precedentes. En 2022, ChatGPT los llevó a la masividad. Pero eso no significa que la IA generativa sea el único tipo de IA.</p>
-<img class="img-full" src="img-no-ia-gen.png" alt="Streaming, GPS y caja autoservicio" style="max-height:260px;">
+<img class="img-full" src="img-no-ia-gen.png" alt="Streaming, GPS y caja autoservicio" style="max-width:480px;">
 <p class="img-cap">IA no generativa</p>
-<img class="img-full" src="img-ia-gen.png" alt="Personas usando ChatGPT, Copilot y DALL-E" style="max-height:260px;">
+<img class="img-full" src="img-ia-gen.png" alt="Personas usando ChatGPT, Copilot y DALL-E" style="max-width:480px;">
 <p class="img-cap">IA generativa</p>
 <p class="body">¿Por qué importa la distinción? Este estudio se centra específicamente en el impacto de la IA generativa y su impacto sobre los trabajos de CABA.</p>
 <p class="body">Pero la IA generativa no es la única IA que afecta a los trabajos (un algoritmo de asignación de pedidos o viajes que habilita la existencia de un trabajo de plataformas puede no ser IA generativa, pero tiene un gran impacto igual).</p>
@@ -115,8 +140,9 @@ section.gs{padding:72px 0;}.sg{display:grid;grid-template-columns:240px 1fr;gap:
 <hr class="div">
 
 <!-- 2 -->
-<section class="gs" id="s2"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">2 · La unidad de análisis</div><div class="sbl">El trabajo<br>como conjunto<br>de <span class="a">tareas</span></div><div class="sb"></div></div>
+<section class="gs" id="s2"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">El trabajo como conjunto de <span class="a">tareas</span></div>
 <p class="body">Para entender el impacto de la IA en el trabajo hay que abandonar la idea del trabajo como una unidad indivisible. Un médico, un contador, una recepcionista: cada uno realiza docenas de tareas distintas que pueden ser analíticas, manuales, interpersonales, rutinarias o creativas.</p>
 <p class="body"><strong>La tecnología no afecta a la ocupación como bloque, sino de manera diferencial a cada tipo de tarea.</strong> La IA generativa afecta particularmente las tareas cognitivas y analíticas: redacción, análisis de datos, programación, generación de contenido.</p>
 <p class="body">La exposición de cada tarea a la IA sobre las tareas es volátil y depende principalmente de las mejoras de los modelos (que en los últimos años aumentó sustancialmente).</p>
@@ -126,36 +152,43 @@ section.gs{padding:72px 0;}.sg{display:grid;grid-template-columns:240px 1fr;gap:
 <hr class="div">
 
 <!-- 3 -->
-<section class="gs" id="s3"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">3 · Dinámica ocupacional</div><div class="sbl">Tareas<br>que <span class="a">cambian</span></div><div class="sb"></div></div>
+<section class="gs" id="s3"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">Tareas que <span class="a">cambian</span></div>
 <p class="body">Las ocupaciones tampoco son estáticas. Las tareas que las componen cambian permanentemente, con IA o sin ella.</p>
 <div class="sh">El contador público en Argentina</div>
-<img class="img-full" src="img-contador.png" alt="El contador público: antes y después" style="max-height:520px;">
-<p class="body">Hace treinta años, una parte enorme del trabajo del contador era anotar manualmente cada ingreso, egreso y transacción en libros contables, calcular impuestos con tablas impresas, archivar comprobantes en papel y presentar declaraciones de forma presencial.</p>
+<div class="contador-layout">
+<img src="img-contador.png" alt="El contador público: antes y después">
+<div>
+<p class="body" style="margin-top:0;">Hace treinta años, una parte enorme del trabajo del contador era anotar manualmente cada ingreso, egreso y transacción en libros contables, calcular impuestos con tablas impresas, archivar comprobantes en papel y presentar declaraciones de forma presencial.</p>
 <p class="body">Ese núcleo de tareas fue desapareciendo por etapas: primero con Excel, después con los sistemas de gestión contable, después con la facturación electrónica y las declaraciones online de AFIP.</p>
 <p class="body">Lo que creció en su lugar fue la interpretación normativa, el asesoramiento impositivo, la planificación fiscal, la relación con el cliente. Tareas que requieren criterio, contexto y responsabilidad legal. Hoy hay más contadores matriculados que nunca, pero casi no existe demanda para "cargar datos". El piso de calificación subió y la ocupación se redefinió.</p>
+</div>
+</div>
 <p class="body">La IA generativa es la última de estas olas de transformación, no la primera.</p>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 4 -->
-<section class="gs" id="s4"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">4 · Definición central</div><div class="sbl">¿Qué es la<br><span class="a">exposición</span><br>a la IA?</div><div class="sb"></div></div>
+<section class="gs" id="s4"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">¿Qué es la <span class="a">exposición</span> a la IA?</div>
 <p class="body">Decimos que una ocupación está <strong>expuesta</strong> a la IA generativa cuando una parte significativa de sus tareas puede ser asistida, complementada o realizada por un modelo de IA.</p>
 <p class="body">La exposición es una condición necesaria para que la IA transforme un trabajo, pero no es suficiente. Los efectos concretos sobre el empleo y los salarios dependen de muchos otros factores: qué tareas específicas están expuestas, si pueden separarse del resto del trabajo, y cómo responden empresas, trabajadores e instituciones.</p>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 5 -->
-<section class="gs" id="s5"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">5 · Los dos efectos</div><div class="sbl">Automatización<br>vs.<br><span class="a">complementariedad</span></div><div class="sb"></div></div>
+<section class="gs" id="s5"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">Automatización vs. <span class="a">complementariedad</span></div>
 <p class="body">La literatura distingue dos tipos de impacto tecnológico:</p>
 <div class="quad-wrap">
 <div class="quad-axes"><span class="ax-left">Automatización ↓</span><span class="ax-right">Complementariedad ↓</span></div>
 <div class="quad-outer"><div class="quad-side">← Tarea · Ocupación →</div><div class="quad"><div class="quad-cell bl"><div class="quad-cell-title">Automatización de tarea</div>La IA realiza una tarea de forma autónoma, sin necesidad de intervención de un trabajador humano</div><div class="quad-cell tl"><div class="quad-cell-title cm">Complementariedad de tarea</div>La IA amplifica la capacidad, velocidad o alcance de una tarea para la cual un trabajador humano sigue siendo esencial</div><div class="quad-cell bl"><div class="quad-cell-title">Automatización de ocupación</div>La IA realiza una ocupación de manera autónoma, reemplazando al trabajador</div><div class="quad-cell tl"><div class="quad-cell-title cm">Complementariedad de ocupación</div>La IA reemplaza ciertas tareas de una ocupación, modificando el conjunto de tareas que el trabajador realiza</div></div></div>
 </div>
 
-<div class="sh">Automatización y complementariedad no son efectos alternativos. A veces, ambos pueden suceder en simultáneo</div>
+<div class="sh">Automatización y complementariedad no son efectos alternativos</div>
 <p class="body">A nivel ocupacional, los dos efectos no se excluyen entre sí. La correlación entre exposición a la automatización y exposición a la complementariedad es de <strong>0,87</strong> (Sigelman et al., 2026, sobre 759 ocupaciones). Actualmente, al trabajador al que la IA le automatiza algunas tareas es el mismo al que le amplía otras.</p>
 
 <div class="quad-wrap">
@@ -165,105 +198,73 @@ section.gs{padding:72px 0;}.sg{display:grid;grid-template-columns:240px 1fr;gap:
 
 <p class="body" style="margin-top:20px;">La pregunta relevante, en la mayoría de los casos, no es "¿este trabajo va a desaparecer?" sino "¿cómo va a cambiar y a qué velocidad?" Los cambios en la demanda de habilidades son estadísticamente significativos apenas tres años después del lanzamiento de ChatGPT.</p>
 <p class="src">Fuente: Sigelman, M. et al. (2026). The New Skill Landscape: AI's Impact on the Demand for Workforce Skills. Burning Glass Institute.</p>
-
-<div class="sh">Además, que la IA pueda hacer una tarea no significa que pueda hacerla sola</div>
-<p class="body">Una ocupación "empaqueta" tareas. La pregunta clave no es solo si la IA puede hacer una tarea, sino si esa tarea puede separarse del trabajo sin destruir valor.</p>
-<div class="side">
-<div class="side-card left"><h4>Paquete fuerte</h4><p style="font-size:11px;color:var(--cm);font-weight:700;margin-bottom:8px;">ALTO COSTO DE COORDINACIÓN</p><ul><li>Separar las tareas destruye valor — por contexto compartido, responsabilidad legal, o dependencia mutua</li><li>La IA asiste, pero el empleo sobrevive entero</li><li><strong>Ejemplo:</strong> radiólogo — clasificar imágenes, comunicarse con colegas y firmar diagnósticos son inseparables</li></ul></div>
-<div class="side-card right"><h4>Paquete débil</h4><p style="font-size:11px;color:var(--c3);font-weight:700;margin-bottom:8px;">BAJO COSTO DE COORDINACIÓN</p><ul><li>Las tareas pueden separarse sin perder mucho valor</li><li>La IA toma la tarea codificable, el rol humano se angosta</li><li><strong>Ejemplo:</strong> entrada de datos, codificación rutinaria</li></ul></div>
-</div>
-
-<div class="hinton">
-<img src="img-hinton.png" alt="Geoffrey Hinton">
-<div>
-<p class="body" style="margin-bottom:10px;">En 2016, Geoffrey Hinton — premio Nobel y uno de los padres del deep learning — afirmó que había que dejar de formar radiólogos porque la IA los superaría leyendo imágenes médicas en menos de cinco años. La predicción surgía del hecho de que los modelos de visión computacional ya clasificaban radiografías con una precisión comparable a la de un especialista humano.</p>
-<p class="body" style="margin-bottom:10px;">Diez años después, hay más radiólogos que nunca y ganan más que entonces. Acertó sobre la tarea pero erró sobre el efecto sobre la ocupación completa, porque la radiología no es solo clasificar imágenes. Es un paquete de tareas difícilmente separables: hacer el triaje de qué imágenes requieren atención urgente, comunicarse con otros médicos y explicar los hallazgos, supervisar y formar residentes y firmar diagnósticos con responsabilidad legal.</p>
-<p class="body" style="margin-bottom:0;"><strong>La exposición de las ocupaciones a las innovaciones tecnológicas tienen casi tantos efectos como las tareas que las componen.</strong></p>
-</div>
-</div>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 6 -->
-<section class="gs" id="s6"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">6 · De la teoría a la práctica</div><div class="sbl">De la<br>exposición<br>a la <span class="a">adopción</span></div><div class="sb"></div></div>
+<section class="gs" id="s6"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">De la exposición a la <span class="a">adopción</span></div>
 <p class="body">Entre la exposición técnica y el impacto real existe una brecha: la adopción efectiva. Las barreras incluyen costos de implementación, resistencia organizacional, falta de capacitación, regulaciones vigentes y la brecha digital.</p>
 <p class="body">En Argentina, los datos de adopción muestran que esa brecha es todavía considerable:</p>
 <div class="stat-row"><div class="stat"><div class="stat-l">A nivel individual</div><div class="stat-n">27%</div><div class="stat-d">de los trabajadores usa IA para su trabajo</div></div><div class="stat"><div class="stat-l">A nivel empresas</div><div class="stat-n">41%</div><div class="stat-d">de las pymes en manufactura y servicios informáticos adoptó alguna forma de IA</div></div></div>
-
-<!-- Fundar dashboards -->
 <div class="fundar-grid">
-<div class="f-card"><div class="f-title">Uso de IA para fines laborales</div><div class="f-sub">¿En qué funciones se usa IA en el trabajo?</div><div class="f-body"><div class="f-metric"><span class="f-metric-n">27,5%</span><span class="f-metric-d">de los ocupados usa IA para fines laborales</span></div><div class="hbar"><span class="hbar-label">Búsqueda de información</span><div class="hbar-track"><div class="hbar-fill" style="width:71%;background:#153B70;"><span class="hbar-val">71%</span></div></div></div><div class="hbar"><span class="hbar-label">Análisis de datos e informes</span><div class="hbar-track"><div class="hbar-fill" style="width:26%;background:#18A6C2;"><span class="hbar-val">26%</span></div></div></div><div class="hbar"><span class="hbar-label">Marketing</span><div class="hbar-track"><div class="hbar-fill" style="width:21%;background:#32B4EE;"><span class="hbar-val">21%</span></div></div></div><div class="hbar"><span class="hbar-label">Tareas administrativas</span><div class="hbar-track"><div class="hbar-fill" style="width:20%;background:#54BBC7;"><span class="hbar-val">20%</span></div></div></div><div class="hbar"><span class="hbar-label">Atención al cliente</span><div class="hbar-track"><div class="hbar-fill" style="width:9%;background:#8ab0c8;"></div><span class="hbar-val-out">9%</span></div></div></div><div class="f-src">Encuesta Nacional sobre Adopción de IA en Argentina. Relevamiento individuos, ago-sept 2025.</div></div>
-<div class="f-card"><div class="f-title">Uso de IA según situación laboral</div><div class="f-sub">¿Está utilizando o explorando el uso de IA?</div><div class="f-body"><div class="f-legend"><span class="f-leg"><span class="f-leg-sq" style="background:#153B70;"></span>Sí, la estoy usando</span><span class="f-leg"><span class="f-leg-sq" style="background:#18A6C2;"></span>Considerando</span><span class="f-leg"><span class="f-leg-sq" style="background:#8ab0c8;"></span>No la uso</span><span class="f-leg"><span class="f-leg-sq" style="background:#d5d0c5;"></span>Ns/Nc</span></div><div class="stack-row"><span class="stack-label">Empleado registrado</span><div class="stack-bar"><div class="stack-seg" style="width:31.2%;background:#153B70;">31%</div><div class="stack-seg" style="width:35%;background:#18A6C2;">35%</div><div class="stack-seg" style="width:30.3%;background:#8ab0c8;">30%</div><div class="stack-seg" style="width:3.5%;background:#d5d0c5;"></div></div></div><div class="stack-row"><span class="stack-label">Empleado no registrado</span><div class="stack-bar"><div class="stack-seg" style="width:22.3%;background:#153B70;">22%</div><div class="stack-seg" style="width:29.8%;background:#18A6C2;">30%</div><div class="stack-seg" style="width:36.5%;background:#8ab0c8;">37%</div><div class="stack-seg" style="width:11.4%;background:#d5d0c5;"></div></div></div><div class="stack-row"><span class="stack-label">Cuentapropista</span><div class="stack-bar"><div class="stack-seg" style="width:25.8%;background:#153B70;">26%</div><div class="stack-seg" style="width:42.1%;background:#18A6C2;">42%</div><div class="stack-seg" style="width:26.8%;background:#8ab0c8;">27%</div><div class="stack-seg" style="width:5.3%;background:#d5d0c5;"></div></div></div><div class="stack-row"><span class="stack-label">Empleador</span><div class="stack-bar"><div class="stack-seg" style="width:23.9%;background:#153B70;">24%</div><div class="stack-seg" style="width:24.8%;background:#18A6C2;">25%</div><div class="stack-seg" style="width:28.7%;background:#8ab0c8;">29%</div><div class="stack-seg" style="width:22.5%;background:#d5d0c5;"></div></div></div></div><div class="f-src">Encuesta Nacional sobre Adopción de IA en Argentina. Relevamiento individuos, ago-sept 2025. N=945.</div></div>
+<div class="f-card"><div class="f-title">Uso de IA para fines laborales</div><div class="f-sub">¿En qué funciones se usa IA en el trabajo?</div><div class="f-body"><div class="f-metric"><span class="f-metric-n">27,5%</span><span class="f-metric-d">de los ocupados usa IA</span></div><div class="hbar"><span class="hbar-label">Búsqueda de información</span><div class="hbar-track"><div class="hbar-fill" style="width:71%;background:#153B70;"><span class="hbar-val">71%</span></div></div></div><div class="hbar"><span class="hbar-label">Análisis de datos e informes</span><div class="hbar-track"><div class="hbar-fill" style="width:26%;background:#18A6C2;"><span class="hbar-val">26%</span></div></div></div><div class="hbar"><span class="hbar-label">Marketing</span><div class="hbar-track"><div class="hbar-fill" style="width:21%;background:#32B4EE;"><span class="hbar-val">21%</span></div></div></div><div class="hbar"><span class="hbar-label">Tareas administrativas</span><div class="hbar-track"><div class="hbar-fill" style="width:20%;background:#54BBC7;"><span class="hbar-val">20%</span></div></div></div><div class="hbar"><span class="hbar-label">Atención al cliente</span><div class="hbar-track"><div class="hbar-fill" style="width:9%;background:#8ab0c8;"></div><span class="hbar-val-out">9%</span></div></div></div><div class="f-src">Encuesta Nacional sobre Adopción de IA en Argentina. Ago-sept 2025.</div></div>
+<div class="f-card"><div class="f-title">Uso de IA según situación laboral</div><div class="f-sub">¿Está utilizando o explorando el uso de IA?</div><div class="f-body"><div class="f-legend"><span class="f-leg"><span class="f-leg-sq" style="background:#153B70;"></span>Usando</span><span class="f-leg"><span class="f-leg-sq" style="background:#18A6C2;"></span>Considerando</span><span class="f-leg"><span class="f-leg-sq" style="background:#8ab0c8;"></span>No usa</span><span class="f-leg"><span class="f-leg-sq" style="background:#d5d0c5;"></span>Ns/Nc</span></div><div class="stack-row"><span class="stack-label">Emp. registrado</span><div class="stack-bar"><div class="stack-seg" style="width:31.2%;background:#153B70;">31%</div><div class="stack-seg" style="width:35%;background:#18A6C2;">35%</div><div class="stack-seg" style="width:30.3%;background:#8ab0c8;">30%</div><div class="stack-seg" style="width:3.5%;background:#d5d0c5;"></div></div></div><div class="stack-row"><span class="stack-label">Emp. no registrado</span><div class="stack-bar"><div class="stack-seg" style="width:22.3%;background:#153B70;">22%</div><div class="stack-seg" style="width:29.8%;background:#18A6C2;">30%</div><div class="stack-seg" style="width:36.5%;background:#8ab0c8;">37%</div><div class="stack-seg" style="width:11.4%;background:#d5d0c5;"></div></div></div><div class="stack-row"><span class="stack-label">Cuentapropista</span><div class="stack-bar"><div class="stack-seg" style="width:25.8%;background:#153B70;">26%</div><div class="stack-seg" style="width:42.1%;background:#18A6C2;">42%</div><div class="stack-seg" style="width:26.8%;background:#8ab0c8;">27%</div><div class="stack-seg" style="width:5.3%;background:#d5d0c5;"></div></div></div><div class="stack-row"><span class="stack-label">Empleador</span><div class="stack-bar"><div class="stack-seg" style="width:23.9%;background:#153B70;">24%</div><div class="stack-seg" style="width:24.8%;background:#18A6C2;">25%</div><div class="stack-seg" style="width:28.7%;background:#8ab0c8;">29%</div><div class="stack-seg" style="width:22.5%;background:#d5d0c5;"></div></div></div></div><div class="f-src">Encuesta Nacional sobre Adopción de IA en Argentina. Ago-sept 2025. N=945.</div></div>
 <div class="f-card"><div class="f-title">Uso de IA por sector — empresas</div><div class="f-sub">% de empresas que usan al menos una tecnología de IA</div><div class="f-body"><div class="hbar"><span class="hbar-label bold">Total general</span><div class="hbar-track"><div class="hbar-fill" style="width:41.6%;background:#153B70;"><span class="hbar-val">41,6%</span></div></div></div><div class="f-sep"></div><div class="hbar"><span class="hbar-label">Software/IT</span><div class="hbar-track"><div class="hbar-fill" style="width:85.4%;background:#00FAB9;"><span class="hbar-val" style="color:#04342C;">85,4%</span></div></div></div><div class="hbar"><span class="hbar-label">Textil</span><div class="hbar-track"><div class="hbar-fill" style="width:47.4%;background:#18A6C2;"><span class="hbar-val">47,4%</span></div></div></div><div class="hbar"><span class="hbar-label">Metalmecánica</span><div class="hbar-track"><div class="hbar-fill" style="width:40.6%;background:#32B4EE;"><span class="hbar-val">40,6%</span></div></div></div><div class="hbar"><span class="hbar-label">Madera/Papel</span><div class="hbar-track"><div class="hbar-fill" style="width:35.1%;background:#54BBC7;"><span class="hbar-val">35,1%</span></div></div></div><div class="hbar"><span class="hbar-label">Química/Plástico</span><div class="hbar-track"><div class="hbar-fill" style="width:34.7%;background:#4E83FB;"><span class="hbar-val">34,7%</span></div></div></div><div class="hbar"><span class="hbar-label">Otras</span><div class="hbar-track"><div class="hbar-fill" style="width:31.9%;background:#8ab0c8;"><span class="hbar-val">31,9%</span></div></div></div><div class="hbar"><span class="hbar-label">Alimentos</span><div class="hbar-track"><div class="hbar-fill" style="width:29.9%;background:#8ab0c8;"><span class="hbar-val">29,9%</span></div></div></div><div class="hbar"><span class="hbar-label">Minerales</span><div class="hbar-track"><div class="hbar-fill" style="width:16.3%;background:#d5d0c5;"></div><span class="hbar-val-out">16,3%</span></div></div></div><div class="f-src">Encuesta de Adopción de IA en PyMEs de la Argentina (2025).</div></div>
-<div class="f-card"><div class="f-title">Curva de adopción acumulada por sector</div><div class="f-sub">% acumulado de empresas que iniciaron uso de IA</div><div class="f-body"><div class="f-legend"><span class="f-leg"><span class="f-leg-sq" style="background:#153B70;"></span>Total</span><span class="f-leg"><span class="f-leg-sq" style="background:#00FAB9;"></span>Software/IT</span><span class="f-leg"><span class="f-leg-sq" style="background:#32B4EE;"></span>Metalmecánica</span><span class="f-leg"><span class="f-leg-sq" style="background:#18A6C2;"></span>Alimentos</span><span class="f-leg"><span class="f-leg-sq" style="background:#4E83FB;"></span>Química/Plástico</span></div><div style="position:relative;width:100%;height:180px;"><canvas id="adoptionChart" role="img" aria-label="Curva de adopción acumulada">Adopción acelerada desde 2022.</canvas></div></div><div class="f-src">Encuesta de Adopción de IA en PyMEs de la Argentina (2025). N=170.</div></div>
+<div class="f-card"><div class="f-title">Adopción acumulada por sector</div><div class="f-sub">% acumulado de empresas que iniciaron uso de IA</div><div class="f-body"><div class="f-legend"><span class="f-leg"><span class="f-leg-sq" style="background:#153B70;"></span>Total</span><span class="f-leg"><span class="f-leg-sq" style="background:#00FAB9;"></span>Software/IT</span><span class="f-leg"><span class="f-leg-sq" style="background:#32B4EE;"></span>Metalmecánica</span><span class="f-leg"><span class="f-leg-sq" style="background:#18A6C2;"></span>Alimentos</span><span class="f-leg"><span class="f-leg-sq" style="background:#4E83FB;"></span>Química/Plástico</span></div><div style="position:relative;width:100%;height:170px;"><canvas id="adoptionChart"></canvas></div></div><div class="f-src">Encuesta de Adopción de IA en PyMEs de la Argentina (2025). N=170.</div></div>
 </div>
-
 <p class="body">Esto significa que, del efecto potencial que mide el índice de exposición, hoy solo una parte se está materializando. El impacto real no es solo una cuestión técnica. Está atravesado por fricciones como quién puede acceder a la tecnología, quién sabe usarla, y quién tiene incentivos para adoptarla. <strong>Mientras que la exposición marca el techo posible, la adopción determina cuánto de ese techo se alcanza.</strong></p>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 7 -->
-<section class="gs" id="s7"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">7 · Decisiones organizacionales</div><div class="sbl">De lo<br>individual<br>a lo <span class="a">agregado</span></div><div class="sb"></div></div>
+<section class="gs" id="s7"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">De lo individual a lo <span class="a">agregado</span></div>
 <p class="body">Las decisiones organizacionales alrededor de cómo se adopta la IA tienen un impacto tan relevante sobre los mercados laborales como las capacidades de la tecnología en sí.</p>
 <p class="body">Entender qué tareas puede realizar la IA, cómo afecta a cada ocupación y de qué maneras puede transformar un trabajo es necesario, pero no suficiente. Gran parte de los efectos inmediatos y a mediano plazo sobre el empleo dependen de las decisiones que toman las organizaciones.</p>
 <p class="highlight">La tecnología habilita posibilidades, pero son las organizaciones quienes eligen cuáles de esas posibilidades se convierten en realidad.</p>
-
-<div class="acc" id="acc-aut"><div class="acc-header aut" onclick="toggleAcc('acc-aut')">Casos de automatización <span class="arr">▼</span></div><div class="acc-body">
-<div class="caso"><strong>Empresa de logística</strong><div class="cl">Innovación de IA</div><p>Un sistema de procesamiento automático de documentos que lee, clasifica y registra facturas sin intervención humana.</p><div class="cl">Decisión organizacional</div><p>La empresa eligió reemplazar los puestos dedicados a esa tarea en lugar de reasignarlos.</p><div class="cr">Se pasó de tener 7 empleados a 2, generando un ahorro de más de USD 1M. El proceso de implementación tomó 8 semanas.</div></div>
-<div class="caso"><strong>Empresa de delivery</strong><div class="cl">Innovación de IA</div><p>Un agente conversacional capaz de entender reclamos de clientes, acceder al historial de pedidos y resolver disputas de manera autónoma.</p><div class="cl">Decisión organizacional</div><p>El sistema reemplazó el primer nivel de atención al cliente casi por completo.</p><div class="cr">Entre el 90% y el 95% de los casos se resuelven sin intervención humana.</div></div>
-<div class="caso"><strong>Fintech LATAM</strong><div class="cl">Innovación de IA</div><p>Modelos de generación y traducción de código capaces de leer código legacy y reescribirlo en lenguajes modernos.</p><div class="cl">Decisión organizacional</div><p>La empresa aceleró una migración tecnológica que de otro modo hubiera requerido un equipo grande durante meses.</p><div class="cr">El proyecto se completó en semanas con una fracción del equipo que hubiera sido necesario sin IA.</div></div>
-</div></div>
-
-<div class="acc" id="acc-comp"><div class="acc-header comp" onclick="toggleAcc('acc-comp')">Casos de complementariedad <span class="arr">▼</span></div><div class="acc-body">
-<div class="caso"><strong>Hospitales</strong><div class="cl">Innovación de IA</div><p>Sistemas de transcripción y síntesis automática de consultas médicas que generan notas clínicas estructuradas en tiempo real.</p><div class="cl">Decisión organizacional</div><p>Las instituciones eligieron mantener a los médicos en sus roles y devolverles el tiempo antes dedicado a documentación.</p><div class="cr">Los médicos recuperan horas diarias para la atención de pacientes. El diagnóstico sigue siendo humano.</div></div>
-<div class="caso"><strong>Empresa de ciberseguridad</strong><div class="cl">Innovación de IA</div><p>Un sistema de triage automático que analiza miles de alertas de seguridad por día y prioriza las que requieren atención humana.</p><div class="cl">Decisión organizacional</div><p>En lugar de reducir el equipo, la empresa reasignó los analistas liberados a tareas de mayor complejidad.</p><div class="cr">Se reasignaron 4,5 puestos equivalentes a investigación de amenazas. Nadie fue despedido.</div></div>
-<div class="caso"><strong>Consultoras</strong><div class="cl">Innovación de IA</div><p>Herramientas de asistencia en tareas de conocimiento: síntesis de información, redacción de documentos, análisis preliminar de datos.</p><div class="cl">Decisión organizacional</div><p>Las firmas integraron las herramientas en el flujo de trabajo de los analistas junior sin reducir dotación.</p><div class="cr">La productividad de los trabajadores junior aumentó un 30%. El tiempo ganado se destinó a más proyectos y mayor profundidad analítica (Dell'Acqua et al., 2023).</div></div>
-</div></div>
+<div class="acc" id="acc-aut"><div class="acc-header aut" onclick="toggleAcc('acc-aut')">Casos de automatización <span class="arr">▼</span></div><div class="acc-body"><div class="caso"><strong>Empresa de logística</strong><div class="cl">Innovación de IA</div><p>Un sistema de procesamiento automático de documentos que lee, clasifica y registra facturas sin intervención humana.</p><div class="cl">Decisión organizacional</div><p>La empresa eligió reemplazar los puestos dedicados a esa tarea en lugar de reasignarlos.</p><div class="cr">Se pasó de tener 7 empleados a 2, generando un ahorro de más de USD 1M. El proceso de implementación tomó 8 semanas.</div></div><div class="caso"><strong>Empresa de delivery</strong><div class="cl">Innovación de IA</div><p>Un agente conversacional capaz de entender reclamos de clientes, acceder al historial de pedidos y resolver disputas de manera autónoma.</p><div class="cl">Decisión organizacional</div><p>El sistema reemplazó el primer nivel de atención al cliente casi por completo.</p><div class="cr">Entre el 90% y el 95% de los casos se resuelven sin intervención humana.</div></div><div class="caso"><strong>Fintech LATAM</strong><div class="cl">Innovación de IA</div><p>Modelos de generación y traducción de código capaces de leer código legacy y reescribirlo en lenguajes modernos.</p><div class="cl">Decisión organizacional</div><p>La empresa aceleró una migración tecnológica que de otro modo hubiera requerido un equipo grande durante meses.</p><div class="cr">El proyecto se completó en semanas con una fracción del equipo que hubiera sido necesario sin IA.</div></div></div></div>
+<div class="acc" id="acc-comp"><div class="acc-header comp" onclick="toggleAcc('acc-comp')">Casos de complementariedad <span class="arr">▼</span></div><div class="acc-body"><div class="caso"><strong>Hospitales</strong><div class="cl">Innovación de IA</div><p>Sistemas de transcripción y síntesis automática de consultas médicas que generan notas clínicas estructuradas en tiempo real.</p><div class="cl">Decisión organizacional</div><p>Las instituciones eligieron mantener a los médicos en sus roles y devolverles el tiempo antes dedicado a documentación.</p><div class="cr">Los médicos recuperan horas diarias para la atención de pacientes. El diagnóstico sigue siendo humano.</div></div><div class="caso"><strong>Empresa de ciberseguridad</strong><div class="cl">Innovación de IA</div><p>Un sistema de triage automático que analiza miles de alertas de seguridad por día y prioriza las que requieren atención humana.</p><div class="cl">Decisión organizacional</div><p>En lugar de reducir el equipo, la empresa reasignó los analistas liberados a tareas de mayor complejidad.</p><div class="cr">Se reasignaron 4,5 puestos equivalentes a investigación de amenazas. Nadie fue despedido.</div></div><div class="caso"><strong>Consultoras</strong><div class="cl">Innovación de IA</div><p>Herramientas de asistencia en tareas de conocimiento: síntesis de información, redacción de documentos, análisis preliminar de datos.</p><div class="cl">Decisión organizacional</div><p>Las firmas integraron las herramientas en el flujo de trabajo de los analistas junior sin reducir dotación.</p><div class="cr">La productividad de los trabajadores junior aumentó un 30%. El tiempo ganado se destinó a más proyectos y mayor profundidad analítica (Dell'Acqua et al., 2023).</div></div></div></div>
 <div class="casos-src">Fuente: Brynjolfsson, E. & Gabriel, C. (2026). Enterprise AI Playbook. Stanford Digital Economy Lab. <a href="https://digitaleconomy.stanford.edu/publication/enterprise-ai-playbook/" target="_blank" style="color:var(--cm);">digitaleconomy.stanford.edu</a></div>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 8 -->
-<section class="gs" id="s8"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">8 · Mercados laborales</div><div class="sbl">El efecto<br>sobre los<br><span class="a">mercados</span></div><div class="sb"></div></div>
+<section class="gs" id="s8"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">El efecto sobre los <span class="a">mercados</span></div>
 <p class="body">Cuando se habla de IA y trabajo, la conversación suele ir rápido hacia un escenario extremo: el fin del trabajo, el reemplazo masivo de personas por máquinas, el desempleo estructural a escala global. Esa imagen es, por ahora, poco respaldada por la evidencia.</p>
 <p class="body">Lo que la historia del cambio tecnológico muestra, y lo que la evidencia reciente sobre IA empieza a confirmar, es un panorama más complejo: <strong>no el fin del trabajo, sino su transformación profunda, paulatina y profundamente desigual.</strong></p>
 <p class="body">La pregunta relevante no es si va a haber trabajo, sino <strong>qué tipo de trabajo</strong>, para quiénes, y a qué salario.</p>
 <div class="sh">La polarización: lo que las últimas décadas ya mostraron</div>
 <p class="body">Las tecnologías de la información y la comunicación de las últimas décadas no destruyeron el empleo en términos netos, pero sí reorganizaron profundamente quién gana y quién pierde.</p>
-<p class="body">Lo que se observó en la mayoría de las economías avanzadas fue un proceso de polarización laboral: crecimiento del empleo en los extremos de la distribución salarial, ocupaciones muy calificadas y bien pagas por un lado, ocupaciones manuales de baja calificación por otro, y erosión del medio.</p>
 <div class="sh">Lo que determina el resultado: qué tareas se automatizan</div>
 <p class="body">Dentro de ese panorama general, el efecto concreto sobre cada ocupación depende no solo cuántas tareas se automatizan, sino cuáles.</p>
 <p class="highlight">El nivel de expertise importa</p>
-<div class="exp">
-<div class="exp-c left"><div class="exp-tag">Se automatizan las tareas INEXPERTAS</div><h4>Contadores</h4><p class="exp-m">El requisito de calificación sube. Los salarios suben, el empleo baja.</p><p class="exp-e">La computadora automatizó el registro mecánico de transacciones. Quedó: reconciliación, detección de anomalías, juicio profesional.</p><div class="exp-d">Empleo −33% · Salarios +40%</div></div>
-<div class="exp-c right"><div class="exp-tag">Se automatizan las tareas EXPERTAS</div><h4>Taxi → Uber</h4><p class="exp-m">El requisito de calificación baja. El empleo sube, los salarios se estancan.</p><p class="exp-e">El GPS automatizó el conocimiento experto de calles y rutas. Ya no hace falta "conocer la ciudad".</p><div class="exp-d">Empleo +249% · Salarios estancados</div></div>
-</div>
+<div class="exp"><div class="exp-c left"><div class="exp-tag">Se automatizan las tareas INEXPERTAS</div><h4>Contadores</h4><p class="exp-m">El requisito de calificación sube. Los salarios suben, el empleo baja.</p><p class="exp-e">La computadora automatizó el registro mecánico de transacciones. Quedó: reconciliación, detección de anomalías, juicio profesional.</p><div class="exp-d">Empleo −33% · Salarios +40%</div></div><div class="exp-c right"><div class="exp-tag">Se automatizan las tareas EXPERTAS</div><h4>Taxi → Uber</h4><p class="exp-m">El requisito de calificación baja. El empleo sube, los salarios se estancan.</p><p class="exp-e">El GPS automatizó el conocimiento experto de calles y rutas. Ya no hace falta "conocer la ciudad".</p><div class="exp-d">Empleo +249% · Salarios estancados</div></div></div>
 <p class="src">Fuente: Autor, D. & Thompson, A. (2025). Expertise. MIT/NBER.</p>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 9 -->
-<section class="gs" id="s9"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">9 · Evidencia empírica</div><div class="sbl">¿Qué dicen<br>los estudios<br>sobre el <span class="a">impacto</span>?</div><div class="sb"></div></div>
+<section class="gs" id="s9"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
+<div class="section-title">¿Qué dicen los estudios sobre el <span class="a">impacto</span> en el empleo?</div>
 <p class="body">El impacto real sobre el empleo depende de muchos factores más allá de la exposición técnica: la elasticidad de la demanda del producto, la estructura de mercado del sector, las decisiones organizacionales de las empresas, el marco regulatorio y las instituciones laborales.</p>
 <p class="body">La evidencia reciente muestra que en la mayoría de los casos de alta exposición conviven ambos efectos — automatización de algunas tareas y ampliación de otras. En muy pocas ocupaciones la IA puede realizar la mayor parte de las tareas con éxito: programadores, analistas financieros, oficinistas, operadores de datos.</p>
 <p class="body">La única señal sustantiva de impacto en el empleo hasta ahora apunta a los puestos de entrada.</p>
-<div class="ev">
-<p>La evidencia más robusta muestra que las empresas que adoptan IA <strong>crecen en empleo total</strong>, pero al mismo tiempo <strong>reducen sistemáticamente la proporción de empleados de baja antigüedad</strong>. En EE.UU., Reino Unido, Alemania, India, Japón y Brasil, la fracción de trabajadores junior cae después de la adopción, en todos los casos y de manera sostenida.</p>
-<span class="ev-h">Las empresas que adoptan IA no destruyen empleo en términos netos — pero dejan de contratar jóvenes.</span>
-</div>
+<div class="ev"><p>La evidencia más robusta muestra que las empresas que adoptan IA <strong>crecen en empleo total</strong>, pero al mismo tiempo <strong>reducen sistemáticamente la proporción de empleados de baja antigüedad</strong>. En EE.UU., Reino Unido, Alemania, India, Japón y Brasil, la fracción de trabajadores junior cae después de la adopción, en todos los casos y de manera sostenida.</p><span class="ev-h">Las empresas que adoptan IA no destruyen empleo en términos netos — pero dejan de contratar jóvenes.</span></div>
 <div class="gb"><img src="img-grafico-juniors.png" alt="Empleo total y fracción junior antes y después de la adopción de IA"><div class="gb-cap">Fuente: Klein Teeselink, B. (2025). The Impact of AI on the Labor Market: Evidence from Millions of Job Postings. Yale University. Klein Teeselink, B. & Carey, K. (2026). Extensión a 39 países con datos de LinkedIn.</div></div>
 <p class="body">Para la mayor parte de los trabajos, la pregunta relevante no es "¿este trabajo va a desaparecer?" sino "¿cómo va a cambiar y a qué velocidad?"</p>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 10 -->
-<section class="gs" id="s10"><div class="container"><div class="sg"><div class="sl" data-a><div class="sk">10 · La transición</div><div class="sbl">¿Qué forma<br>va a tener<br>la <span class="a">transición?</span></div><div class="sb"></div></div>
+<section class="gs" id="s10"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<img class="img-full" src="img-trabajo-computadora.jpg" alt="Persona trabajando en computadora" style="max-height:300px;object-position:center 30%;">
+<div class="section-title">¿Qué forma va a tener la <span class="a">transición?</span></div>
 <p class="body">La tecnología en sí misma no dice nada sobre cómo se van a abordar las consecuencias de su adopción. Las capacidades de la tecnología evolucionan, las tareas de los trabajadores se reconfiguran, pero la distribución de costos y beneficios de la innovación no está determinada por la tecnología.</p>
 <p class="body">En ningún lado está escrito que la IA generativa deba redundar solo en mayor desigualdad, desplazamiento y falta de oportunidades. Este glosario busca mostrar exactamente eso: que los efectos son múltiples. De automatización, sí, pero también de ampliación de capacidades y de complementariedad. Qué efecto predomina depende, en parte, de la tecnología. <strong>Pero depende, sobre todo, de las decisiones que tomemos como sociedad.</strong></p>
 <p class="body">Si la transición tiene lugar en el marco del diálogo social con empleadores y trabajadores participando sobre el sentido del cambio y con gobiernos generando las condiciones institucionales para esa conversación, entonces es posible orientar la transformación tecnológica hacia mayor productividad, mejores oportunidades y más capacidades para todos.</p>
@@ -278,7 +279,8 @@ section.gs{padding:72px 0;}.sg{display:grid;grid-template-columns:240px 1fr;gap:
 // Animations
 const io=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add("vis")})},{threshold:0.1});
 document.querySelectorAll("[data-a]").forEach(el=>io.observe(el));
-// TOC
+
+// TOC highlight on scroll
 const secs=document.querySelectorAll("section.gs"),tocLinks=document.querySelectorAll(".toc a");
 const tocObs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){tocLinks.forEach(l=>l.classList.remove("active"));const a=document.querySelector('.toc a[href="#'+e.target.id+'"]');if(a)a.classList.add("active");}});},{rootMargin:"-20% 0px -70% 0px"});
 secs.forEach(s=>tocObs.observe(s));
