@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IEOIAG-CABA — Índice de Exposición a IA Generativa</title>
+<style>
+@font-face{font-family:'Gotham';src:local('Gotham'),local('Gotham Book'),local('GothamBook');font-weight:400}
+@font-face{font-family:'Gotham';src:local('Gotham Bold'),local('GothamBold');font-weight:700}
+@font-face{font-family:'Gotham';src:local('Gotham Medium'),local('GothamMedium');font-weight:500}
+@font-face{font-family:'Gotham';src:local('Gotham Light'),local('GothamLight');font-weight:300}
+:root{--bg:#F4F8FA;--bg-card:#FFF;--text:#18596C;--text-dark:#153B70;--text-muted:#70777C;--text-light:#93989E;--accent:#18A6C2;--accent-dark:#153B70;--border:#D8E4EA;--border-light:#E8EFF3;--no-exp:#93989E;--baja-exp:#70B8CE;--g1:#32B4EE;--g2:#1B9FC7;--g3:#18596C;--g4:#153B70;--no-exp-bg:#F0F2F3;--baja-exp-bg:#E3F1F6;--g1-bg:#D6EDF9;--g2-bg:#CCE6F0;--g3-bg:#C0D8E0;--g4-bg:#C4D4E2;--font:'Gotham','Calibri',-apple-system,'Segoe UI',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+.site-header{background:linear-gradient(135deg,#00FAB9 0%,#54BBC7 30%,#32B4EE 60%,#4E83FB 100%);padding:48px 0 40px;color:#fff;position:relative;overflow:hidden}
+.site-header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border:2px solid rgba(255,255,255,0.12);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);transform:rotate(15deg)}
+.header-inner{position:relative;z-index:1}
+.site-header h1{font-size:clamp(24px,3.5vw,36px);font-weight:700;line-height:1.2;margin-bottom:4px}
+.site-header .subtitle{opacity:0.85;font-size:14px;font-weight:300;margin-bottom:28px}
+.score-hero{display:flex;align-items:baseline;gap:16px;margin-bottom:4px}
+.score-hero .big-number{font-size:clamp(48px,8vw,72px);font-weight:700;line-height:1}
+.score-hero .label{font-size:14px;font-weight:300;max-width:280px;opacity:0.9}
+.intl-row{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;font-weight:300;margin-top:12px;opacity:0.85}
+.intl-row span{white-space:nowrap}
+.intl-row .highlight{font-weight:700;opacity:1}
+.kinetic-line{width:100%;height:5px;background:linear-gradient(90deg,#00FAB9,#32B4EE,#4E83FB,#18A6C2)}
+.legend-bar{display:flex;flex-wrap:wrap;gap:8px 20px;padding:12px 0;margin-bottom:8px;font-size:12px;font-weight:500}
+.legend-item{display:flex;align-items:center;gap:6px;color:var(--text-muted)}
+.legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.section-title{font-size:clamp(20px,2.5vw,26px);font-weight:700;color:var(--text-dark);margin-bottom:8px}
+.section-desc{color:var(--text-muted);font-size:14px;margin-bottom:24px;max-width:800px;line-height:1.7}
+.section-desc a{color:var(--accent);text-decoration:underline}
+.source-note{background:var(--bg-card);border:1px solid var(--border-light);border-radius:8px;padding:16px 20px;font-size:13px;line-height:1.7;color:var(--text-muted);margin-top:12px;margin-bottom:48px}
+.source-note strong{color:var(--text);font-weight:600}
+.source-note a{color:var(--accent)}
+.dot-chart-container{position:relative;width:100%;height:600px;overflow-x:auto;overflow-y:hidden}
+.dot-chart-svg{display:block;min-width:900px;height:600px}
+.dot-chart-svg .axis-line{stroke:var(--border);stroke-width:1}
+.dot-chart-svg .axis-label{fill:var(--text-light);font-size:11px;font-family:var(--font)}
+.dot-chart-svg .ref-line{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:6,4;opacity:0.6}
+.dot-chart-svg .ref-label{fill:var(--accent-dark);font-size:11px;font-weight:700;font-family:var(--font)}
+.dot-chart-svg .band-label{fill:var(--text-light);font-size:10px;font-family:var(--font);text-transform:uppercase;letter-spacing:0.5px}
+.occ-circle{cursor:pointer;transition:opacity 0.2s}
+.occ-circle:hover{opacity:0.85}
+.occ-ring{pointer-events:none;fill:none;stroke:var(--accent-dark);stroke-width:2;stroke-dasharray:4,3;opacity:0;transition:opacity 0.2s}
+.tooltip{position:fixed;pointer-events:none;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,0.1);z-index:100;max-width:320px;display:none;line-height:1.5}
+.tooltip .tt-name{font-weight:700;margin-bottom:4px;font-size:14px;color:var(--text-dark)}
+.tooltip .tt-row{display:flex;justify-content:space-between;gap:12px}
+.tooltip .tt-label{color:var(--text-muted)}
+.tooltip .tt-val{font-weight:600}
+.panel-overlay{position:fixed;inset:0;background:rgba(21,59,112,0.25);z-index:200;display:none;backdrop-filter:blur(2px)}
+.panel-overlay.visible{display:block}
+.detail-panel{position:fixed;right:0;top:0;bottom:0;width:min(520px,92vw);background:var(--bg-card);z-index:201;overflow-y:auto;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:-8px 0 32px rgba(0,0,0,0.12)}
+.detail-panel.open{transform:translateX(0)}
+.panel-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border:1px solid var(--border);background:var(--bg-card);border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);z-index:10}
+.panel-close:hover{background:var(--bg)}
+.panel-content{padding:40px 28px}
+.panel-code{font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-weight:500}
+.panel-name{font-size:20px;font-weight:700;color:var(--text-dark);margin-bottom:16px;line-height:1.3}
+.panel-score-row{display:flex;align-items:baseline;gap:12px;margin-bottom:24px}
+.panel-score-big{font-size:40px;font-weight:700;line-height:1}
+.panel-cat-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.panel-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.panel-stat{background:var(--bg);border-radius:8px;padding:12px 14px}
+.panel-stat .ps-label{font-size:10px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px;font-weight:500}
+.panel-stat .ps-val{font-size:17px;font-weight:700;margin-top:2px;color:var(--text-dark)}
+.panel-section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:10px;margin-top:8px}
+.comp-bar-container{margin-bottom:28px}
+.comp-bar{display:flex;height:24px;border-radius:5px;overflow:hidden;margin-bottom:8px}
+.comp-bar div{min-width:0}
+.comp-bar-legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11px;color:var(--text-muted)}
+.comp-bar-legend span{display:flex;align-items:center;gap:4px}
+.comp-bar-legend .cbl-dot{width:8px;height:8px;border-radius:2px}
+.robust-strip{position:relative;height:40px;margin:14px 0 8px}
+.robust-strip .rs-line{position:absolute;top:50%;height:3px;border-radius:2px;transform:translateY(-50%)}
+.robust-strip .rs-sd{position:absolute;top:50%;height:16px;border-radius:4px;transform:translateY(-50%);opacity:0.25}
+.robust-strip .rs-dot{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;transform:translate(-50%,-50%);border:2px solid var(--bg-card)}
+.robust-strip .rs-label{position:absolute;bottom:-2px;font-size:10px;color:var(--text-light);transform:translateX(-50%)}
+.robust-homog{font-size:13px;color:var(--text-muted);margin-bottom:20px}
+.panel-desc{font-size:13px;line-height:1.7;color:var(--text);border-top:1px solid var(--border-light);padding-top:16px}
+/* ─ CRUCES SECTIONS ─ */
+.cruce-section{margin-bottom:48px;padding-top:40px;border-top:1px solid var(--border)}
+.cruce-section:first-of-type{border-top:3px solid var(--accent)}
+.cruce-title{font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--text-dark);margin-bottom:6px}
+.cruce-desc{color:var(--text-muted);font-size:13px;line-height:1.6;margin-bottom:20px;max-width:800px}
+.cruce-desc strong{color:var(--accent-dark)}
+.bar-chart{margin-bottom:16px}
+.bar-row{display:grid;grid-template-columns:minmax(140px,260px) 1fr 56px;align-items:center;gap:12px;padding:8px 12px;border-bottom:1px solid var(--border-light);transition:background 0.15s,box-shadow 0.15s;cursor:default;border-radius:8px;margin:0 -12px}
+.bar-row:hover{background:rgba(24,166,194,0.04)}
+.bar-row.expandable:hover{background:rgba(24,166,194,0.06);box-shadow:0 0 0 2px var(--accent);}
+.bar-row:last-child{border-bottom:none}
+.bar-label{font-size:13px;line-height:1.3;color:var(--text-dark);font-weight:500}
+.bar-track{height:22px;background:var(--bg);border-radius:4px;position:relative}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.4s}
+.bar-value{font-size:14px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.bar-ref-line{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--accent-dark);opacity:0.4;z-index:2}
+.bar-meta{font-size:11px;color:var(--text-light);margin-top:1px}
+.bar-row.expandable{cursor:pointer}
+.bar-row.expandable .bar-label::after{content:' ▸';font-size:10px;color:var(--text-light)}
+.bar-row.expandable.expanded .bar-label::after{content:' ▾'}
+.sector-detail{display:none;grid-column:1/-1;padding:8px 0 8px 16px;border-left:3px solid var(--accent);margin:4px 0 8px;background:var(--bg)}
+.sector-detail.visible{display:block}
+.sector-detail table{width:100%;font-size:12px;border-collapse:collapse}
+.sector-detail th{text-align:left;font-weight:600;color:var(--text-muted);padding:4px 8px;border-bottom:1px solid var(--border)}
+.sector-detail td{padding:4px 8px;color:var(--text)}
+.sector-detail tr:hover{background:rgba(24,166,194,0.06)}
+.sector-detail .sd-score{font-weight:700}
+/* Heatmap */
+.heatmap-grid{display:grid;gap:3px;margin-bottom:20px}
+.hm-cell{border-radius:6px;padding:10px 8px;text-align:center;font-size:13px;cursor:default;transition:transform 0.15s,box-shadow 0.15s}
+.hm-cell:hover{transform:scale(1.04);z-index:2;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.hm-cell .hm-val{font-size:17px;font-weight:700;display:block}
+.hm-cell .hm-label{font-size:10px;opacity:0.6;display:block;margin-top:2px}
+.hm-header{font-size:11px;font-weight:600;color:var(--text-muted);text-align:center;padding:8px 4px}
+.hm-row-header{font-size:11px;font-weight:600;color:var(--text-muted);display:flex;align-items:center;padding-right:8px;line-height:1.3}
+.lines-chart-svg{width:100%;max-width:600px;height:280px;display:block;margin-bottom:20px}
+.cruce-source{font-size:11px;color:var(--text-light);margin-top:12px}
+.site-footer{background:linear-gradient(135deg,#153B70,#1B9FC7);padding:24px 0;font-size:12px;color:rgba(255,255,255,0.75);text-align:center}
+.site-footer a{color:rgba(255,255,255,0.9)}
+@media(max-width:640px){.bar-row{grid-template-columns:1fr;gap:4px}.bar-value{text-align:left}.panel-stats{grid-template-columns:1fr}.panel-content{padding:32px 20px}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="container header-inner">
+  <h1>Índice de Exposición Ocupacional a la IA Generativa</h1>
+  <div class="subtitle">Ciudad Autónoma de Buenos Aires</div>
+  <div class="score-hero"><div class="big-number">0,350</div><div class="label">Índice de exposición promedio de la Ciudad</div></div>
+  <div class="intl-row">
+    <span>Singapur 0,366</span><span class="highlight">CABA 0,350</span><span>Suiza 0,336</span><span>Reino Unido 0,331</span><span>EE.UU. 0,322</span><span>Francia 0,318</span><span>Argentina 0,292</span><span>América Latina 0,257</span>
+  </div>
+</div></header>
+<div class="kinetic-line"></div>
+<div class="container">
+
+<section style="padding-top:32px">
+  <h2 class="section-title">Exposición de las ocupaciones de la Ciudad Autónoma de Buenos Aires a la IA generativa</h2>
+  <p class="section-desc">En el siguiente gráfico podés visualizar el nivel de exposición a la IA generativa de cada ocupación. Cada círculo es una ocupación (CIUO-08 a 2 dígitos). El tamaño refleja el porcentaje que representa cada ocupación sobre el empleo total de CABA. El color indica el gradiente de exposición. Haciendo click en cualquier ocupación podés explorar su composición interna.</p>
+  <div class="legend-bar">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--no-exp)"></div>No expuesto (&lt;0,20)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--baja-exp)"></div>Baja exposición (0,20–0,27)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--g1)"></div>Gradiente 1 (0,28–0,34)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--g2)"></div>Gradiente 2 (0,35–0,39)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--g3)"></div>Gradiente 3 (0,40–0,49)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--g4)"></div>Gradiente 4 (≥0,50)</div>
+  </div>
+  <div class="dot-chart-container"><svg class="dot-chart-svg" id="dotChart"></svg></div>
+  <div style="font-size:12px;color:var(--text-light);margin-top:4px">Fuente: elaboración propia</div>
+</section>
+
+<div class="source-note">
+  <strong>¿Cómo leer los puntajes de exposición de este gráfico?</strong> El puntaje de cada ocupación CIUO-08 a 2 dígitos está compuesto por el puntaje de exposición de varias ocupaciones a 4 dígitos, cuyo puntaje fue elaborado por la OIT en su <a href="https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure" target="_blank">Índice de Exposición a la IA Generativa de la OIT (2025)</a>. Haciendo click sobre el puntaje de cada ocupación podés ver cómo está compuesto internamente. Los datos sobre porcentaje del empleo fueron elaborados a partir de los microdatos del tercer trimestre de 2025 de la Encuesta Trimestral de Ocupación e Ingresos (ETOI) del GCBA. Para más información, visitá los <a href="https://macarenasantolaria99.github.io/cesba-ia-trabajo/index.html#recursos" target="_blank">recursos sobre el proyecto</a>.
+</div>
+
+<section style="padding-top:24px;margin-bottom:16px">
+  <h2 class="section-title">Detalle del análisis</h2>
+  <p class="section-desc">El índice de exposición varía según el perfil sociodemográfico y laboral de los trabajadores. Explorá cómo cambia la exposición según sector productivo, género, edad, categoría ocupacional y otras variables abajo.</p>
+</section>
+
+<div id="crucesContainer"></div>
+
+</div>
+
+<footer class="site-footer"><div class="container">
+  Consejo Económico y Social de la Ciudad de Buenos Aires · <a href="https://www.cesba.gob.ar" target="_blank">cesba.gob.ar</a><br>
+  Fuente: ETOI-IEC CABA 2025-T3 · Índice: ILO-NASK (Gmyrek et al. 2025) · Licencia CC BY-NC 4.0
+</div></footer>
+
+<div class="tooltip" id="tooltip"></div>
+<div class="panel-overlay" id="panelOverlay"></div>
+<div class="detail-panel" id="detailPanel"><button class="panel-close" id="panelClose">×</button><div class="panel-content" id="panelContent"></div></div>
+
+<script>
+const OCC=[{c:41,n:"Oficinistas y empleados en trato directo con el público",s:.6325,cat:"Gradiente 4",ne:0,be:0,g1:0,g2:0,g3:.25,g4:.75,no:4,sd:.0538,mm:"0.58 / 0.70",hm:"7.6 (Homogéneo)",oc:112175,pt:.0707},{c:25,n:"Profesionales de tecnología de la información y las comunicaciones",s:.5433,cat:"Gradiente 4",ne:0,be:0,g1:0,g2:.2222,g3:.6667,g4:.1111,no:9,sd:.0384,mm:"0.49 / 0.60",hm:"7.7 (Homogéneo)",oc:87202,pt:.0549},{c:43,n:"Empleados contables y encargados del registro de materiales",s:.5333,cat:"Gradiente 4",ne:0,be:.1667,g1:0,g2:.1667,g3:.1667,g4:.5,no:6,sd:.1141,mm:"0.37 / 0.64",hm:"4.2 (Moderado)",oc:15280,pt:.0096},{c:42,n:"Empleados en trato directo con el público",s:.52,cat:"Gradiente 4",ne:0,be:0,g1:0,g2:.3333,g3:.6667,g4:0,no:12,sd:.0602,mm:"0.42 / 0.58",hm:"6.2 (Homogéneo)",oc:53380,pt:.0336},{c:44,n:"Otro personal de apoyo administrativo",s:.5086,cat:"Gradiente 4",ne:0,be:0,g1:.1429,g2:.2857,g3:.2857,g4:.2857,no:7,sd:.0996,mm:"0.37 / 0.63",hm:"4.8 (Moderado)",oc:19055,pt:.012},{c:24,n:"Profesionales de los negocios y la administración",s:.4936,cat:"Gradiente 3",ne:0,be:.0909,g1:0,g2:.3636,g3:.4545,g4:.0909,no:11,sd:.0671,mm:"0.41 / 0.62",hm:"6.0 (Homogéneo)",oc:71339,pt:.0449},{c:33,n:"Técnicos en operaciones financieras y administrativas",s:.4646,cat:"Gradiente 3",ne:.0417,be:.2083,g1:0,g2:.4167,g3:.25,g4:.0833,no:24,sd:.0948,mm:"0.23 / 0.63",hm:"2.9 (Muy heterogéneo)",oc:66450,pt:.0419},{c:35,n:"Técnicos de tecnología de la información y las comunicaciones",s:.4433,cat:"Gradiente 3",ne:0,be:.3333,g1:0,g2:.5,g3:.1667,g4:0,no:6,sd:.0589,mm:"0.35 / 0.53",hm:"7.0 (Homogéneo)",oc:34282,pt:.0216},{c:12,n:"Directores administrativos y comerciales",s:.3871,cat:"Gradiente 2",ne:.1429,be:.5714,g1:0,g2:.2857,g3:0,g4:0,no:7,sd:.0243,mm:"0.36 / 0.42",hm:"8.7 (Muy homogéneo)",oc:22679,pt:.0143},{c:21,n:"Profesionales de las ciencias y la ingeniería",s:.3854,cat:"Gradiente 2",ne:.25,be:.4167,g1:.0417,g2:.2083,g3:.0833,g4:0,no:24,sd:.074,mm:"0.29 / 0.56",hm:"4.0 (Moderado)",oc:60858,pt:.0383},{c:26,n:"Profesionales del derecho, ciencias sociales y cultura",s:.3829,cat:"Gradiente 2",ne:.3333,be:.1905,g1:.0476,g2:.1905,g3:.2381,g4:0,no:21,sd:.1401,mm:"0.13 / 0.59",hm:"1.0 (Muy heterogéneo)",oc:62344,pt:.0393},{c:14,n:"Gerentes de hoteles, restaurantes, comercios y otros servicios",s:.3725,cat:"Gradiente 2",ne:0,be:.5,g1:.25,g2:.25,g3:0,g4:0,no:4,sd:.0499,mm:"0.32 / 0.44",hm:"7.8 (Homogéneo)",oc:38190,pt:.0241},{c:52,n:"Vendedores",s:.3625,cat:"Gradiente 2",ne:.25,be:.1667,g1:.25,g2:.25,g3:0,g4:.0833,no:12,sd:.1139,mm:"0.22 / 0.61",hm:"3.5 (Heterogéneo)",oc:174899,pt:.1102},{c:13,n:"Directores de producción y servicios especializados",s:.3543,cat:"Gradiente 2",ne:.0714,be:.7857,g1:0,g2:.1429,g3:0,g4:0,no:14,sd:.063,mm:"0.22 / 0.47",hm:"5.8 (Moderado)",oc:40890,pt:.0258},{c:11,n:"Directores ejecutivos, funcionarios superiores y legisladores",s:.334,cat:"Gradiente 1",ne:.4,be:.6,g1:0,g2:0,g3:0,g4:0,no:5,sd:.065,mm:"0.23 / 0.38",hm:"6.9 (Homogéneo)",oc:14108,pt:.0089},{c:23,n:"Profesionales de la enseñanza",s:.3333,cat:"Gradiente 1",ne:.3333,be:.5,g1:.0833,g2:.0833,g3:0,g4:0,no:12,sd:.0665,mm:"0.21 / 0.47",hm:"5.9 (Moderado)",oc:104686,pt:.066},{c:34,n:"Profesionales de nivel medio del derecho, servicios sociales y cultura",s:.307,cat:"Gradiente 1",ne:.4,be:.3,g1:.3,g2:0,g3:0,g4:0,no:10,sd:.0904,mm:"0.12 / 0.39",hm:"4.9 (Moderado)",oc:56468,pt:.0356},{c:31,n:"Técnicos de las ciencias y la ingeniería",s:.2924,cat:"Gradiente 1",ne:.72,be:.24,g1:.04,g2:0,g3:0,g4:0,no:25,sd:.0422,mm:"0.21 / 0.38",hm:"5.5 (Moderado)",oc:28408,pt:.0179},{c:22,n:"Profesionales de la salud",s:.262,cat:"Baja exposición",ne:.6667,be:.3333,g1:0,g2:0,g3:0,g4:0,no:15,sd:.0688,mm:"0.14 / 0.41",hm:"5.4 (Moderado)",oc:63388,pt:.0399},{c:32,n:"Técnicos y profesionales de nivel medio de la salud",s:.2459,cat:"Baja exposición",ne:.6471,be:.2353,g1:.0588,g2:0,g3:.0588,g4:0,no:17,sd:.091,mm:"0.14 / 0.52",hm:"4.0 (Moderado)",oc:27333,pt:.0172},{c:51,n:"Trabajadores de los servicios personales",s:.2229,cat:"Baja exposición",ne:.7059,be:.2941,g1:0,g2:0,g3:0,g4:0,no:17,sd:.0502,mm:"0.14 / 0.32",hm:"6.1 (Homogéneo)",oc:91349,pt:.0576},{c:74,n:"Trabajadores en electricidad y electrotecnología",s:.2,cat:"Baja exposición",ne:1,be:0,g1:0,g2:0,g3:0,g4:0,no:5,sd:.0436,mm:"0.15 / 0.25",hm:"7.9 (Homogéneo)",oc:5042,pt:.0032},{c:96,n:"Recolectores de desechos y otras ocupaciones elementales",s:.2,cat:"Baja exposición",ne:.625,be:.125,g1:.25,g2:0,g3:0,g4:0,no:8,sd:.1277,mm:"0.09 / 0.38",hm:"3.3 (Heterogéneo)",oc:3040,pt:.0019},{c:73,n:"Artesanos y operarios de las artes gráficas",s:.2,cat:"Baja exposición",ne:.9091,be:0,g1:.0909,g2:0,g3:0,g4:0,no:11,sd:.0699,mm:"0.13 / 0.38",hm:"5.8 (Moderado)",oc:410,pt:.0003},{c:53,n:"Trabajadores de los cuidados personales",s:.194,cat:"No expuesto",ne:.8,be:.2,g1:0,g2:0,g3:0,g4:0,no:5,sd:.0503,mm:"0.14 / 0.25",hm:"7.6 (Homogéneo)",oc:15925,pt:.01},{c:81,n:"Operadores de instalaciones fijas y máquinas",s:.1904,cat:"No expuesto",ne:.96,be:.04,g1:0,g2:0,g3:0,g4:0,no:25,sd:.0405,mm:"0.14 / 0.28",hm:"5.6 (Moderado)",oc:35461,pt:.0223},{c:95,n:"Vendedores ambulantes de servicios y afines",s:.19,cat:"No expuesto",ne:1,be:0,g1:0,g2:0,g3:0,g4:0,no:2,sd:.0141,mm:"0.18 / 0.20",hm:"9.8 (Muy homogéneo)",oc:11736,pt:.0074},{c:83,n:"Conductores de vehículos y operadores de equipos pesados",s:.19,cat:"No expuesto",ne:.7273,be:.1818,g1:.0909,g2:0,g3:0,g4:0,no:11,sd:.051,mm:"0.12 / 0.28",hm:"6.8 (Homogéneo)",oc:60716,pt:.0383},{c:75,n:"Operarios del procesamiento de alimentos, madera, textiles",s:.174,cat:"No expuesto",ne:.9,be:.1,g1:0,g2:0,g3:0,g4:0,no:20,sd:.0567,mm:"0.11 / 0.31",hm:"5.4 (Moderado)",oc:35375,pt:.0223},{c:54,n:"Personal de los servicios de protección",s:.172,cat:"No expuesto",ne:1,be:0,g1:0,g2:0,g3:0,g4:0,no:5,sd:.0303,mm:"0.14 / 0.20",hm:"8.6 (Muy homogéneo)",oc:18704,pt:.0118},{c:72,n:"Oficiales y operarios de metalurgia y construcción mecánica",s:.1615,cat:"No expuesto",ne:1,be:0,g1:0,g2:0,g3:0,g4:0,no:13,sd:.0318,mm:"0.11 / 0.21",hm:"7.5 (Homogéneo)",oc:4779,pt:.003},{c:71,n:"Oficiales y operarios de la construcción (excl. electricistas)",s:.125,cat:"No expuesto",ne:1,be:0,g1:0,g2:0,g3:0,g4:0,no:16,sd:.0329,mm:"0.09 / 0.21",hm:"7.1 (Homogéneo)",oc:38085,pt:.024},{c:91,n:"Limpiadores y asistentes",s:.1167,cat:"No expuesto",ne:1,be:0,g1:0,g2:0,g3:0,g4:0,no:6,sd:.0207,mm:"0.09 / 0.14",hm:"9.0 (Muy homogéneo)",oc:86826,pt:.0547},{c:93,n:"Peones de minería, construcción, manufactura y transporte",s:.1433,cat:"No expuesto",ne:1,be:0,g1:0,g2:0,g3:0,g4:0,no:9,sd:.048,mm:"0.09 / 0.21",hm:"7.2 (Homogéneo)",oc:26240,pt:.0165}].filter(d=>d.oc>0);
+const CI=0.350,CC={"No expuesto":"#93989E","Baja exposición":"#70B8CE","Gradiente 1":"#32B4EE","Gradiente 2":"#1B9FC7","Gradiente 3":"#18596C","Gradiente 4":"#153B70"},CB={"No expuesto":"#F0F2F3","Baja exposición":"#E3F1F6","Gradiente 1":"#D6EDF9","Gradiente 2":"#CCE6F0","Gradiente 3":"#C0D8E0","Gradiente 4":"#C4D4E2"},GC=["#93989E","#70B8CE","#32B4EE","#1B9FC7","#18596C","#153B70"];
+const cc=c=>CC[c]||'#999',cb=c=>CB[c]||'#eee',fm=n=>n.toLocaleString('es-AR'),fp=n=>(n*100).toFixed(1)+'%',fi=n=>n.toFixed(3).replace('.',',');
+const getCat=v=>v>=.5?"Gradiente 4":v>=.4?"Gradiente 3":v>=.35?"Gradiente 2":v>=.28?"Gradiente 1":v>=.2?"Baja exposición":"No expuesto";
+
+// Sector composition data
+const SCOMP={"Finanzas, inmob., prof., TIC y serv. empresariales":[{d:"Prof. de TIC",s:.5433,o:69896,p:.1598},{d:"Prof. negocios/admin.",s:.4936,o:52867,p:.1209},{d:"Prof. ciencias/ing.",s:.3854,o:40509,p:.0926},{d:"Prof. jurídicos/sociales/cultura",s:.3829,o:32087,p:.0734},{d:"Técn. financieros/admin.",s:.4646,o:31206,p:.0713},{d:"Oficinistas",s:.6325,o:27953,p:.0639},{d:"Técnicos TIC",s:.4433,o:26435,p:.0604},{d:"Vendedores",s:.3625,o:20677,p:.0473},{d:"Empl. trato público",s:.52,o:20257,p:.0463}],"Administración pública":[{d:"Oficinistas",s:.6325,o:30674,p:.2466},{d:"Prof. jurídicos/sociales/cultura",s:.3829,o:17355,p:.1395},{d:"Técn. financieros/admin.",s:.4646,o:12025,p:.0967},{d:"Técn. jurídicos/sociales/cultura",s:.307,o:9719,p:.0781},{d:"Prof. de TIC",s:.5433,o:8994,p:.0723},{d:"Personal protección",s:.172,o:5086,p:.0409},{d:"Prof. negocios/admin.",s:.4936,o:5010,p:.0403},{d:"Prof. enseñanza",s:.3333,o:4875,p:.0392},{d:"Conductores",s:.19,o:4598,p:.037}],"Comercio, alojamiento y gastronomía":[{d:"Vendedores",s:.3625,o:139105,p:.4332},{d:"Trab. servicios personales",s:.2229,o:36909,p:.1149},{d:"Gerentes hoteles/comerc.",s:.3725,o:24104,p:.0751},{d:"Empl. trato público",s:.52,o:17819,p:.0555},{d:"Vendedores ambulantes",s:.19,o:10714,p:.0334},{d:"Dir. producción/servicios",s:.3543,o:9914,p:.0309},{d:"Empl. contables",s:.5333,o:9812,p:.0306},{d:"Técn. financieros/admin.",s:.4646,o:9799,p:.0305},{d:"Operarios alim./madera/textil",s:.174,o:7968,p:.0248}],"Enseñanza y salud":[{d:"Prof. enseñanza",s:.3333,o:95329,p:.3781},{d:"Prof. salud",s:.262,o:47971,p:.1903},{d:"Técnicos salud",s:.2459,o:24931,p:.0989},{d:"Oficinistas",s:.6325,o:17181,p:.0681},{d:"Técn. jurídicos/sociales/cultura",s:.307,o:13225,p:.0525},{d:"Trab. cuidados personales",s:.194,o:12397,p:.0492},{d:"Limpiadores/asist.",s:.1167,o:7346,p:.0291},{d:"Dir. ejecutivos/legisl.",s:.334,o:5302,p:.021},{d:"Dir. producción/servicios",s:.3543,o:5024,p:.0199}],"Industria manufacturera":[{d:"Operadores instal. fijas",s:.1904,o:30807,p:.2393},{d:"Operarios alim./madera/textil",s:.174,o:17948,p:.1394},{d:"Vendedores",s:.3625,o:13219,p:.1027},{d:"Prof. ciencias/ing.",s:.3854,o:11711,p:.091},{d:"Oficinistas",s:.6325,o:9214,p:.0716},{d:"Técn. financieros/admin.",s:.4646,o:7123,p:.0553},{d:"Peones constr./manuf./transp.",s:.1433,o:5928,p:.046},{d:"Dir. producción/servicios",s:.3543,o:5104,p:.0396},{d:"Gerentes hoteles/comerc.",s:.3725,o:4903,p:.0381}],"Artes, entretenimiento y otros servicios":[{d:"Limpiadores/asist.",s:.1167,o:31234,p:.2485},{d:"Trab. servicios personales",s:.2229,o:25186,p:.2004},{d:"Técn. jurídicos/sociales/cultura",s:.307,o:16812,p:.1338},{d:"Oficinistas",s:.6325,o:10847,p:.0863},{d:"Prof. jurídicos/sociales/cultura",s:.3829,o:9369,p:.0745},{d:"Técn. financieros/admin.",s:.4646,o:4020,p:.032},{d:"Dir. ejecutivos/legisl.",s:.334,o:3878,p:.0309},{d:"Electricistas/electrón.",s:.2,o:2854,p:.0227},{d:"Prof. enseñanza",s:.3333,o:2489,p:.0198}],"Transporte y almacenamiento":[{d:"Conductores",s:.19,o:47987,p:.6086},{d:"Oficinistas",s:.6325,o:4953,p:.0628},{d:"Técn. ciencias/ing.",s:.2924,o:4205,p:.0533},{d:"Otro personal admin.",s:.5086,o:2695,p:.0342},{d:"Empl. trato público",s:.52,o:1953,p:.0248},{d:"Empl. contables",s:.5333,o:1843,p:.0234},{d:"Prof. ciencias/ing.",s:.3854,o:1826,p:.0232},{d:"Dir. admin./comerciales",s:.3871,o:1719,p:.0218},{d:"Trab. servicios personales",s:.2229,o:1683,p:.0213}],"Construcción":[{d:"Oficiales construcción",s:.125,o:34399,p:.5497},{d:"Operarios alim./madera/textil",s:.174,o:5994,p:.0958},{d:"Peones constr./manuf./transp.",s:.1433,o:3840,p:.0614},{d:"Prof. ciencias/ing.",s:.3854,o:3744,p:.0598},{d:"Oficinistas",s:.6325,o:3453,p:.0552},{d:"Técn. ciencias/ing.",s:.2924,o:3031,p:.0484},{d:"Gerentes hoteles/comerc.",s:.3725,o:2107,p:.0337},{d:"Empl. trato público",s:.52,o:1927,p:.0308},{d:"Electricistas/electrón.",s:.2,o:1180,p:.0189}],"Servicio doméstico":[{d:"Limpiadores/asist.",s:.1167,o:35902,p:.6971},{d:"Trab. servicios personales",s:.2229,o:15600,p:.3029}]};
+
+const SECTOR_DATA=[{cat:"Finanzas, inmob., prof., TIC y serv. empresariales",idx:.429,catExp:"Gradiente 3",ocu:437367,pct:.2748},{cat:"Administración pública",idx:.4275,catExp:"Gradiente 3",ocu:124383,pct:.0782},{cat:"Comercio, alojamiento y gastronomía",idx:.3501,catExp:"Gradiente 2",ocu:321126,pct:.2018},{cat:"Enseñanza y salud",idx:.3213,catExp:"Gradiente 1",ocu:252114,pct:.1584},{cat:"Industria manufacturera",idx:.3185,catExp:"Gradiente 1",ocu:128732,pct:.0809},{cat:"Artes, entretenimiento y otros servicios",idx:.2885,catExp:"Gradiente 1",ocu:125690,pct:.079},{cat:"Transporte y almacenamiento",idx:.2783,catExp:"Baja exposición",ocu:78845,pct:.0495},{cat:"Construcción",idx:.2112,catExp:"Baja exposición",ocu:62583,pct:.0393},{cat:"Servicio doméstico",idx:.1489,catExp:"No expuesto",ocu:51502,pct:.0324}];
+
+// Draw dot chart (same as before)
+function drawDotChart(){const svg=document.getElementById('dotChart'),W=1060,H=580,mg={t:20,r:30,b:50,l:50},cw=W-mg.l-mg.r,ch=H-mg.t-mg.b;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);const mx=Math.max(...OCC.map(d=>d.oc)),rS=d=>Math.max(6,Math.sqrt(d.oc/mx)*38),yS=d=>mg.t+ch-(d.s/.7)*ch,sorted=[...OCC].sort((a,b)=>a.s-b.s),xSt=cw/sorted.length,xP=i=>mg.l+xSt*i+xSt/2;let h='';
+[{mn:0,mx:.20,l:"No expuesto",cl:"#93989E"},{mn:.20,mx:.27,l:"Baja exposición",cl:"#70B8CE"},{mn:.28,mx:.34,l:"Gradiente 1",cl:"#32B4EE"},{mn:.35,mx:.39,l:"Gradiente 2",cl:"#1B9FC7"},{mn:.40,mx:.49,l:"Gradiente 3",cl:"#18596C"},{mn:.50,mx:.70,l:"Gradiente 4",cl:"#153B70"}].forEach(b=>{const y1=mg.t+ch-(b.mx/.7)*ch,y2=mg.t+ch-(b.mn/.7)*ch;h+=`<rect x="${mg.l}" y="${y1}" width="${cw}" height="${y2-y1}" fill="${b.cl}" opacity="0.06"/><text x="${W-mg.r+8}" y="${(y1+y2)/2+4}" class="band-label" text-anchor="start" fill="${b.cl}">${b.l}</text>`;});
+for(let v=0;v<=.7;v+=.1){const y=mg.t+ch-(v/.7)*ch;h+=`<line x1="${mg.l}" y1="${y}" x2="${mg.l+cw}" y2="${y}" class="axis-line"/><text x="${mg.l-8}" y="${y+4}" class="axis-label" text-anchor="end">${v.toFixed(1)}</text>`;}
+const rY=yS({s:CI});h+=`<line x1="${mg.l}" y1="${rY}" x2="${mg.l+cw}" y2="${rY}" class="ref-line"/><text x="${mg.l+4}" y="${rY-6}" class="ref-label">CABA 0,350</text>`;
+sorted.forEach((d,i)=>{const cx=xP(i),cy=yS(d),r=rS(d),col=cc(d.cat);h+=`<circle class="occ-ring" cx="${cx}" cy="${cy}" r="${r+4}" data-ring="${OCC.indexOf(d)}"/>`;h+=`<circle class="occ-circle" cx="${cx}" cy="${cy}" r="${r}" fill="${col}" opacity="0.8" stroke="${col}" stroke-width="1.5" data-idx="${OCC.indexOf(d)}"/>`;if(r>14)h+=`<text x="${cx}" y="${cy+r+14}" text-anchor="middle" fill="${col}" font-size="9" font-family="var(--font)" font-weight="500">${d.c}</text>`;});
+h+=`<line x1="${mg.l}" y1="${mg.t+ch}" x2="${mg.l+cw}" y2="${mg.t+ch}" class="axis-line"/><text x="${mg.l+cw/2}" y="${H-8}" class="axis-label" text-anchor="middle">Ocupaciones ordenadas por score · Tamaño = porcentaje sobre empleo total</text>`;svg.innerHTML=h;
+const tt=document.getElementById('tooltip');svg.querySelectorAll('.occ-circle').forEach(el=>{const d=OCC[+el.dataset.idx];el.addEventListener('mouseenter',e=>{const ring=svg.querySelector(`[data-ring="${el.dataset.idx}"]`);if(ring)ring.style.opacity='1';tt.style.display='block';tt.innerHTML=`<div class="tt-name">${d.c} · ${d.n}</div><div class="tt-row"><span class="tt-label">Puntaje</span><span class="tt-val" style="color:${cc(d.cat)}">${fi(d.s)}</span></div><div class="tt-row"><span class="tt-label">Categoría</span><span class="tt-val">${d.cat}</span></div><div class="tt-row"><span class="tt-label">Ocupados</span><span class="tt-val">${fm(d.oc)}</span></div><div class="tt-row"><span class="tt-label">% empleo</span><span class="tt-val">${fp(d.pt)}</span></div>`;});el.addEventListener('mousemove',e=>{tt.style.left=Math.min(e.clientX+12,innerWidth-340)+'px';tt.style.top=(e.clientY-10)+'px';});el.addEventListener('mouseleave',()=>{const ring=svg.querySelector(`[data-ring="${el.dataset.idx}"]`);if(ring)ring.style.opacity='0';tt.style.display='none'});el.addEventListener('click',()=>{tt.style.display='none';openPanel(d);});});}
+
+function openPanel(d){const ov=document.getElementById('panelOverlay'),pn=document.getElementById('detailPanel'),ct=document.getElementById('panelContent');const gd=[{l:"No exp.",v:d.ne,c:GC[0]},{l:"Baja",v:d.be,c:GC[1]},{l:"G1",v:d.g1,c:GC[2]},{l:"G2",v:d.g2,c:GC[3]},{l:"G3",v:d.g3,c:GC[4]},{l:"G4",v:d.g4,c:GC[5]}].filter(g=>g.v>0);const mn=parseFloat(d.mm.split('/')[0]),mx=parseFloat(d.mm.split('/')[1]),sn=Math.max(0,mn-.03),sx=Math.min(.75,mx+.03),tp=v=>((v-sn)/(sx-sn)*100),sl=Math.max(sn,d.s-d.sd),sh=Math.min(sx,d.s+d.sd),col=cc(d.cat);
+ct.innerHTML=`<div class="panel-code">CIUO-08 · ${d.c}</div><div class="panel-name">${d.n}</div><div class="panel-score-row"><div class="panel-score-big" style="color:${col}">${fi(d.s)}</div><span class="panel-cat-badge" style="background:${cb(d.cat)};color:${col}">${d.cat}</span></div><div class="panel-stats"><div class="panel-stat"><div class="ps-label">Ocupados</div><div class="ps-val">${fm(d.oc)}</div></div><div class="panel-stat"><div class="ps-label">% empleo CABA</div><div class="ps-val">${fp(d.pt)}</div></div><div class="panel-stat"><div class="ps-label">Ocup. a 4 dígitos</div><div class="ps-val">${d.no}</div></div><div class="panel-stat"><div class="ps-label">Homogeneidad</div><div class="ps-val">${d.hm}</div></div></div><div class="panel-section-title">Composición interna por gradiente</div><div class="comp-bar-container"><div class="comp-bar">${gd.map(g=>`<div style="width:${g.v*100}%;background:${g.c}" title="${g.l}: ${(g.v*100).toFixed(0)}%"></div>`).join('')}</div><div class="comp-bar-legend">${gd.map(g=>`<span><span class="cbl-dot" style="background:${g.c}"></span>${g.l} ${(g.v*100).toFixed(0)}%</span>`).join('')}</div></div><div class="panel-section-title">Robustez del score</div><div class="robust-strip"><div class="rs-line" style="left:${tp(mn)}%;right:${100-tp(mx)}%;background:${col};opacity:0.25"></div><div class="rs-sd" style="left:${tp(sl)}%;right:${100-tp(sh)}%;background:${col}"></div><div class="rs-dot" style="left:${tp(d.s)}%;background:${col}"></div><div class="rs-label" style="left:${tp(mn)}%">${mn.toFixed(2)}</div><div class="rs-label" style="left:${tp(mx)}%">${mx.toFixed(2)}</div></div><div class="robust-homog">Rango: <strong>${d.mm}</strong> · SD: <strong>${d.sd.toFixed(3)}</strong> · ${d.hm}</div><div class="panel-desc">Esta ocupación agrupa <strong>${d.no}</strong> ocupaciones a 4 dígitos CIUO-08. ${d.sd>.09?'Presenta <strong>alta heterogeneidad interna</strong>: el score promedio oculta diferencias significativas.':d.sd<.04?'Es un grupo <strong>muy homogéneo</strong>: las ocupaciones internas tienen scores similares.':'Tiene una <strong>heterogeneidad moderada</strong>.'} ${d.s>=.5?' El nivel de exposición es <strong>muy alto</strong>.':d.s>=.4?' El nivel de exposición es <strong>alto</strong>.':d.s>=.35?' El nivel de exposición es <strong>medio-alto</strong>.':d.s>=.28?' El nivel de exposición es <strong>medio</strong>.':d.s>=.2?' La exposición es <strong>baja</strong>.':' La exposición es <strong>mínima</strong>.'}</div>`;
+ov.classList.add('visible');requestAnimationFrame(()=>pn.classList.add('open'));}
+function closePanel(){document.getElementById('detailPanel').classList.remove('open');setTimeout(()=>document.getElementById('panelOverlay').classList.remove('visible'),300);}
+document.getElementById('panelClose').addEventListener('click',closePanel);document.getElementById('panelOverlay').addEventListener('click',closePanel);
+
+// ─── BUILD ALL CRUCES INLINE ───
+function buildCruces(){
+  const ct=document.getElementById('crucesContainer');
+  let html='';
+  // 1. SECTOR PRODUCTIVO
+  const bMax=.55,rPct=(CI/bMax)*100;
+  html+=`<div class="cruce-section"><h3 class="cruce-title">Sector productivo</h3><p class="cruce-desc">A continuación se muestra el puntaje promedio de exposición ocupacional a la IA generativa de cada sector. Los dos sectores más expuestos son <strong>Finanzas, TIC y servicios profesionales</strong> (0,429) y <strong>Administración pública</strong> (0,428). En el extremo opuesto, <strong>Servicio doméstico</strong> y <strong>Construcción</strong> son los menos afectados. Haciendo click en cada sector podés visualizar cuáles son las ocupaciones con mayor exposición en cada uno.</p><div class="bar-chart" id="sectorChart">`;
+  SECTOR_DATA.forEach((d,i)=>{
+    const hasComp=SCOMP[d.cat];
+    html+=`<div class="bar-row ${hasComp?'expandable':''}" data-sector="${d.cat}" onclick="toggleSector(this)"><div><div class="bar-label">${d.cat}</div><div class="bar-meta">${fm(d.ocu)} personas · ${fp(d.pct)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(d.idx/bMax)*100}%;background:${cc(d.catExp)}"></div><div class="bar-ref-line" style="left:${rPct}%"></div></div><div class="bar-value" style="color:${cc(d.catExp)}">${fi(d.idx)}</div></div>`;
+    if(hasComp){
+      html+=`<div class="sector-detail" id="sd-${i}"><table><tr><th>Ocupación</th><th>Puntaje</th><th>Ocupados</th><th>% sector</th></tr>`;
+      SCOMP[d.cat].forEach(o=>{html+=`<tr><td>${o.d}</td><td class="sd-score" style="color:${cc(getCat(o.s))}">${fi(o.s)}</td><td>${fm(o.o)}</td><td>${fp(o.p)}</td></tr>`;});
+      html+=`</table></div>`;
+    }
+  });
+  html+=`</div><div class="cruce-source">Línea de referencia: índice general CABA (0,350) · Fuente: ETOI-IEC CABA 2025-T3</div></div>`;
+
+  // 2. GÉNERO × CAT × REG × CALIF
+  const gcrc={Total:[{c:"Asal. reg. profesional",i:.419,e:"Gradiente 3",o:283502},{c:"Asal. reg. técnico",i:.3666,e:"Gradiente 2",o:221086},{c:"Asal. reg. operativo",i:.3881,e:"Gradiente 2",o:365739},{c:"Asal. reg. no calificado",i:.1988,e:"No expuesto",o:69203},{c:"Asal. no reg. profesional",i:.4164,e:"Gradiente 3",o:14663},{c:"Asal. no reg. técnico",i:.3844,e:"Gradiente 2",o:19268},{c:"Asal. no reg. operativo",i:.3071,e:"Gradiente 1",o:99941},{c:"Asal. no reg. no calificado",i:.1848,e:"No expuesto",o:79264},{c:"Cuentapropista profesional",i:.3945,e:"Gradiente 2",o:107194},{c:"Cuentapropista técnico",i:.359,e:"Gradiente 2",o:66211},{c:"Cuentapropista operativo",i:.2596,e:"Baja exposición",o:167025},{c:"Cuentapropista no calificado",i:.186,e:"No expuesto",o:10993}],Mujer:[{c:"",i:.4058,e:"Gradiente 3",o:140142},{c:"",i:.3557,e:"Gradiente 2",o:134053},{c:"",i:.4718,e:"Gradiente 3",o:153272},{c:"",i:.1934,e:"No expuesto",o:43915},{c:"",i:.342,e:"Gradiente 1",o:5866},{c:"",i:.4061,e:"Gradiente 3",o:14183},{c:"",i:.399,e:"Gradiente 2",o:38270},{c:"",i:.1706,e:"No expuesto",o:54521},{c:"",i:.3696,e:"Gradiente 2",o:56286},{c:"",i:.3749,e:"Gradiente 2",o:31400},{c:"",i:.2974,e:"Gradiente 1",o:63322},{c:"",i:.19,e:"No expuesto",o:7623}],Varón:[{c:"",i:.432,e:"Gradiente 3",o:143360},{c:"",i:.3835,e:"Gradiente 2",o:87033},{c:"",i:.3277,e:"Gradiente 1",o:212467},{c:"",i:.208,e:"Baja exposición",o:25288},{c:"",i:.466,e:"Gradiente 3",o:8797},{c:"",i:.3237,e:"Gradiente 1",o:5085},{c:"",i:.2501,e:"Baja exposición",o:61671},{c:"",i:.2163,e:"Baja exposición",o:24743},{c:"",i:.422,e:"Gradiente 3",o:50908},{c:"",i:.3446,e:"Gradiente 1",o:34811},{c:"",i:.2365,e:"Baja exposición",o:103703},{c:"",i:.1771,e:"No expuesto",o:3370}]};
+  const cats=gcrc.Total.map(r=>r.c);
+  html+=`<div class="cruce-section"><h3 class="cruce-title">Categoría ocupacional, registro y calificación según género</h3><p class="cruce-desc">Las mujeres asalariadas registradas operativas tienen un índice de <strong>0,472</strong> — el más alto de todos los cruces — porque se concentran en ocupaciones administrativas y de oficina. Los varones operativos registrados, en cambio, están en manufactura y construcción (0,328).</p>`;
+  html+=`<div class="heatmap-grid" style="grid-template-columns:minmax(140px,200px) repeat(3,1fr)"><div class="hm-header"></div><div class="hm-header">Total</div><div class="hm-header">Mujer</div><div class="hm-header">Varón</div>`;
+  cats.forEach((cat,i)=>{html+=`<div class="hm-row-header">${cat}</div>`;['Total','Mujer','Varón'].forEach(g=>{const r=gcrc[g][i];html+=`<div class="hm-cell" style="background:${cb(r.e)}" title="${fm(r.o)} ocupados"><span class="hm-val" style="color:${cc(r.e)}">${fi(r.i)}</span><span class="hm-label">${fm(r.o)}</span></div>`;});});
+  html+=`</div><div class="cruce-source">Color = categoría de exposición · Fuente: ETOI-IEC CABA 2025-T3</div></div>`;
+
+  // 3. GÉNERO POR RANGO ETARIO
+  const ages=["16-24","25-34","35-49","50-64","65+"],gei={Varón:[.3177,.3673,.3415,.3178,.323],Mujer:[.3886,.3608,.3676,.3662,.306]},geo={Varón:[65882,173442,309093,198718,68506],Mujer:[63692,169755,296645,189731,55889]};
+  html+=`<div class="cruce-section"><h3 class="cruce-title">Género por rango etario</h3><p class="cruce-desc">Las mujeres jóvenes (16-24) tienen la <strong>mayor exposición de todos los cruces género×edad</strong> (0,389). La brecha de género es más pronunciada entre los 50-64 años. Solo en mayores de 65 la relación se invierte levemente.</p>`;
+  // Lines chart with hover tooltips on dots
+  const sW=600,sH=300,m={t:30,r:70,b:45,l:55},pw=sW-m.l-m.r,ph=sH-m.t-m.b,aV=[...gei.Varón,...gei.Mujer],yMn=Math.floor(Math.min(...aV)*100)/100-.01,yMx=Math.ceil(Math.max(...aV)*100)/100+.01,xSt=pw/(ages.length-1),tX=i=>m.l+i*xSt,tY=v=>m.t+ph-((v-yMn)/(yMx-yMn))*ph;
+  let sv=`<svg class="lines-chart-svg" viewBox="0 0 ${sW} ${sH}" id="genEdadSvg">`;
+  for(let v=yMn;v<=yMx;v+=.02)sv+=`<line x1="${m.l}" y1="${tY(v)}" x2="${sW-m.r}" y2="${tY(v)}" stroke="var(--border-light)" stroke-width="1"/><text x="${m.l-6}" y="${tY(v)+4}" text-anchor="end" fill="var(--text-light)" font-size="10" font-family="var(--font)">${v.toFixed(2)}</text>`;
+  ages.forEach((a,i)=>sv+=`<text x="${tX(i)}" y="${sH-8}" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="var(--font)">${a}</text>`);
+  sv+=`<line x1="${m.l}" y1="${tY(CI)}" x2="${sW-m.r}" y2="${tY(CI)}" stroke="var(--accent-dark)" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>`;
+  [{k:'Mujer',cl:'#18596C'},{k:'Varón',cl:'#32B4EE'}].forEach(({k,cl})=>{const pts=gei[k].map((v,i)=>`${tX(i)},${tY(v)}`).join(' ');sv+=`<polyline points="${pts}" fill="none" stroke="${cl}" stroke-width="2.5"/>`;gei[k].forEach((v,i)=>{sv+=`<circle cx="${tX(i)}" cy="${tY(v)}" r="7" fill="${cl}" stroke="white" stroke-width="2" class="ge-dot" data-gen="${k}" data-age="${ages[i]}" data-val="${fi(gei[k][i])}" data-ocu="${fm(geo[k][i])}" style="cursor:default"/>`;});sv+=`<text x="${tX(4)+8}" y="${tY(gei[k][4])+4}" fill="${cl}" font-size="11" font-weight="600" font-family="var(--font)">${k}</text>`;});
+  sv+='</svg>';
+  html+=sv+`<div class="cruce-source">Línea punteada: índice CABA (0,350) · Fuente: ETOI-IEC CABA 2025-T3</div></div>`;
+
+  // 4. NIVEL EDUCATIVO
+  const edu=[{c:"Superior incompleto",i:.4015,e:"Gradiente 3",o:345842,p:.2173},{c:"Superior completo",i:.3863,e:"Gradiente 2",o:710323,p:.4464},{c:"Secundario completo",i:.3008,e:"Gradiente 1",o:320885,p:.2016},{c:"Hasta secundario incompleto",i:.2203,e:"Baja exposición",o:213812,p:.1344}];
+  html+=`<div class="cruce-section"><h3 class="cruce-title">Nivel educativo</h3><p class="cruce-desc">A mayor nivel educativo, mayor exposición. Los trabajadores con <strong>educación superior incompleta</strong> son los más expuestos (0,401), incluso más que quienes completaron ese nivel.</p><div class="bar-chart">`;
+  edu.forEach(d=>html+=`<div class="bar-row"><div><div class="bar-label">${d.c}</div><div class="bar-meta">${fm(d.o)} personas · ${fp(d.p)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(d.i/bMax)*100}%;background:${cc(d.e)}"></div><div class="bar-ref-line" style="left:${rPct}%"></div></div><div class="bar-value" style="color:${cc(d.e)}">${fi(d.i)}</div></div>`);
+  html+=`</div><div class="cruce-source">Línea de referencia: índice CABA (0,350) · Fuente: ETOI-IEC CABA 2025-T3</div></div>`;
+
+  // 5. ZONA GEOGRÁFICA with CABA map
+  const zona=[{c:"Norte (comunas 2, 13, 14)",i:.3764,e:"Gradiente 2",o:334051,p:.2099,barrios:"Recoleta · Belgrano · Núñez · Colegiales · Palermo"},{c:"Centro (comunas 1, 3, 5, 6, 7, 11, 12, 15)",i:.357,e:"Gradiente 2",o:891954,p:.5605,barrios:"Retiro · San Nicolás · Balvanera · Almagro · Caballito · Flores · V. Devoto · V. Urquiza · Chacarita"},{c:"Sur (comunas 4, 8, 9, 10)",i:.3092,e:"Gradiente 1",o:365348,p:.2296,barrios:"La Boca · Barracas · P. Patricios · V. Soldati · V. Lugano · Liniers · Mataderos · Floresta"}];
+  html+=`<div class="cruce-section"><h3 class="cruce-title">Zona geográfica</h3><p class="cruce-desc">La zona <strong>Norte</strong> (comunas 2, 13, 14) tiene el mayor índice (0,376), consistente con la concentración de profesionales y servicios avanzados. La zona <strong>Sur</strong> (comunas 4, 8, 9, 10) tiene menor exposición (0,309). Los datos corresponden al lugar de residencia de cada trabajador, y no al lugar de trabajo.</p><div class="bar-chart">`;
+  zona.forEach(d=>html+=`<div class="bar-row"><div><div class="bar-label">${d.c}</div><div class="bar-meta">${fm(d.o)} personas · ${fp(d.p)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(d.i/.45)*100}%;background:${cc(d.e)}"></div><div class="bar-ref-line" style="left:${(CI/.45)*100}%"></div></div><div class="bar-value" style="color:${cc(d.e)}">${fi(d.i)}</div></div>`);
+  html+=`</div><div class="cruce-source">Línea de referencia: índice CABA (0,350) · Fuente: ETOI-IEC CABA 2025-T3</div></div>`;
+
+  // 6. SECTOR PÚBLICO-PRIVADO
+  const pp=[{c:"Estatal / pública",i:.3872,e:"Gradiente 2",o:231135,p:.1452},{c:"Privada",i:.3512,e:"Gradiente 2",o:1292200,p:.812},{c:"De otro tipo",i:.3674,e:"Gradiente 2",o:16516,p:.0104}];
+  html+=`<div class="cruce-section"><h3 class="cruce-title">Sector público-privado</h3><p class="cruce-desc">El sector <strong>estatal</strong> tiene mayor exposición (0,387) que el privado (0,351), explicado por la alta presencia de profesionales, docentes y administrativos en el empleo público.</p><div class="bar-chart">`;
+  pp.forEach(d=>html+=`<div class="bar-row"><div><div class="bar-label">${d.c}</div><div class="bar-meta">${fm(d.o)} personas · ${fp(d.p)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(d.i/bMax)*100}%;background:${cc(d.e)}"></div><div class="bar-ref-line" style="left:${rPct}%"></div></div><div class="bar-value" style="color:${cc(d.e)}">${fi(d.i)}</div></div>`);
+  html+=`</div><div class="cruce-source">Línea de referencia: índice CABA (0,350) · Fuente: ETOI-IEC CABA 2025-T3</div></div>`;
+
+  ct.innerHTML=html;
+}
+
+function toggleSector(row){
+  const expanded=row.classList.toggle('expanded');
+  const detail=row.nextElementSibling;
+  if(detail&&detail.classList.contains('sector-detail')){
+    detail.classList.toggle('visible',expanded);
+  }
+}
+
+drawDotChart();buildCruces();
+// Add hover tooltips to género×edad dots
+document.querySelectorAll('.ge-dot').forEach(dot=>{
+  const tt=document.getElementById('tooltip');
+  dot.addEventListener('mouseenter',e=>{tt.style.display='block';tt.innerHTML=`<div class="tt-name">${dot.dataset.gen} · ${dot.dataset.age}</div><div class="tt-row"><span class="tt-label">Puntaje</span><span class="tt-val">${dot.dataset.val}</span></div><div class="tt-row"><span class="tt-label">Ocupados</span><span class="tt-val">${dot.dataset.ocu}</span></div>`;});
+  dot.addEventListener('mousemove',e=>{tt.style.left=Math.min(e.clientX+12,innerWidth-300)+'px';tt.style.top=(e.clientY-10)+'px';});
+  dot.addEventListener('mouseleave',()=>tt.style.display='none');
+});
+</script>
+</body>
+</html>
