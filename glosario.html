@@ -4,11 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glosario de IA y Trabajo — CESBA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600;700;800;900&family=Encode+Sans+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--c1:#00FAB9;--c2:#54BBC7;--c3:#32B4EE;--c4:#4E83FB;--cd:#153B70;--cm:#18A6C2;--cdk:#18596C;--cream:#f5f1e8;--cream2:#ece7d8;--ink:#3d4a50;--border:#ddd5c4;--f:"Encode Sans",sans-serif;--fh:"Encode Sans Condensed",sans-serif;--mw:1100px;}
+@font-face{font-family:'Gotham';src:local('Gotham Book'),local('Gotham'),local('GothamBook');font-weight:400;font-style:normal}
+@font-face{font-family:'Gotham';src:local('Gotham Light'),local('GothamLight');font-weight:300;font-style:normal}
+@font-face{font-family:'Gotham';src:local('Gotham Medium'),local('GothamMedium');font-weight:500;font-style:normal}
+@font-face{font-family:'Gotham';src:local('Gotham Bold'),local('GothamBold');font-weight:700;font-style:normal}
+@font-face{font-family:'Gotham';src:local('Gotham Black'),local('GothamBlack');font-weight:900;font-style:normal}
+:root{--c1:#00FAB9;--c2:#54BBC7;--c3:#32B4EE;--c4:#4E83FB;--cd:#153B70;--cm:#18A6C2;--cdk:#18596C;--cream:#f5f1e8;--cream2:#ece7d8;--ink:#3d4a50;--border:#ddd5c4;--f:'Gotham','Calibri',system-ui,sans-serif;--fh:'Gotham','Calibri',system-ui,sans-serif;--mw:1100px;}
+.cesba-banner{background:#fff;border-bottom:3px solid transparent;border-image:linear-gradient(90deg,#00FAB9,#32B4EE,#4E83FB) 1;padding:10px 0;}
+.cesba-banner .container{display:flex;align-items:center;gap:16px;}
+.cesba-banner-logo{height:52px;width:auto;flex-shrink:0;}
+.cesba-banner-info{flex:1;}
+.cesba-banner-name{font-family:var(--f);font-size:14px;font-weight:700;color:var(--cd);letter-spacing:0.01em;}
+.cesba-banner-url{font-family:var(--f);font-size:11px;color:#888;margin-top:2px;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
 body{font-family:var(--f);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;}
 .container{max-width:var(--mw);margin:0 auto;padding:0 40px;}
@@ -103,7 +111,18 @@ section.gs{padding:72px 0;}
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="container"><a href="index.html" class="nav-brand"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#32B4EE"/></linearGradient></defs><polygon points="16,2 29,9 29,23 16,30 3,23 3,9" stroke="url(#hg)" stroke-width="1.4" fill="none"/><rect x="9" y="15" width="3" height="9" rx="1" fill="#00FAB9"/><rect x="14" y="12" width="3" height="12" rx="1" fill="#54BBC7"/><rect x="19" y="9" width="3" height="15" rx="1" fill="#32B4EE"/><path d="M5 28 Q16 24 27 28" stroke="#00FAB9" stroke-width=".8" fill="none"/></svg><div><div class="nav-title">IA y Trabajo en Buenos Aires</div><div class="nav-sub">Consejo Económico y Social · cesba.gob.ar</div></div></a><div class="nav-links"><a href="glosario.html" class="active">Glosario</a><a href="index.html#trabajos">Los trabajos de CABA</a><a href="index.html#ieoiag">El IEOIAG</a><a href="index.html#recursos">Recursos</a></div></div></nav>
+
+<div class="cesba-banner">
+  <div class="container">
+    <img src="cesba-logo.svg" alt="CESBA" class="cesba-banner-logo">
+    <div class="cesba-banner-info">
+      <div class="cesba-banner-name">Consejo Económico y Social de la Ciudad de Buenos Aires</div>
+      <div class="cesba-banner-url">cesba.gob.ar</div>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav"><div class="container"><a href="index.html" class="nav-brand"><svg width="36" height="40" viewBox="0 0 36 40" fill="none"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#4E83FB"/></linearGradient></defs><path d="M18,2 L32,10 L32,26 L24,31 L26,36 Q27,38 25,37 L20,34 L18,35 L4,27 L4,10 Z" stroke="url(#hg)" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="18" width="3.5" height="8" rx=".7" fill="#00FAB9" opacity=".85"/><rect x="15" y="14" width="3.5" height="12" rx=".7" fill="#54BBC7" opacity=".85"/><rect x="20" y="10" width="3.5" height="16" rx=".7" fill="#32B4EE" opacity=".85"/><path d="M18,10 L21.75,6 L25.5,10" fill="#32B4EE" opacity=".85"/><line x1="8" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,.4)" stroke-width="1"/><path d="M20,37 Q23,34 26,37 Q29,40 32,37" stroke="url(#hg)" stroke-width="1.2" stroke-linecap="round"/></svg><div><div class="nav-title">IA y Trabajo en Buenos Aires</div><div class="nav-sub">Consejo Económico y Social · cesba.gob.ar</div></div></a><div class="nav-links"><a href="glosario.html" class="active">Glosario</a><a href="index.html#trabajos">Los trabajos de CABA</a><a href="index.html#ieoiag">El IEOIAG</a><a href="index.html#recursos">Recursos</a></div></div></nav>
 
 <section class="page-hero"><div class="container"><div class="hero-eyebrow">Guía conceptual</div><h1>Glosario de IA y Trabajo</h1><p class="hero-sub">10 puntos para entender qué es la IA generativa, cómo afecta las ocupaciones y qué dice la evidencia empírica sobre su impacto en el trabajo.</p></div></section>
 <hr class="div">
@@ -272,7 +291,7 @@ section.gs{padding:72px 0;}
 <div class="closing"><h2>Explorá el estudio completo</h2><p>El glosario es el punto de partida. Los datos sobre la estructura ocupacional de CABA y el índice de exposición te esperan.</p><div class="closing-links"><a href="index.html#trabajos" class="closing-link p">→ Estructura ocupacional de CABA</a><a href="index.html#ieoiag" class="closing-link">→ Conocé el IEOIAG</a><a href="index.html#recursos" class="closing-link">→ Descargar recursos</a></div></div>
 </div></div></div></section>
 
-<footer class="footer"><div class="container"><div class="ft"><strong>Consejo Económico y Social de la Ciudad de Buenos Aires</strong><br>Carlos Pellegrini 587 · cesba.gob.ar · Datos: ETOI-IEC CABA 2025-T3 · Índice: ILO WP140 (Gmyrek et al. 2025) · Licencia CC BY-NC 4.0</div><svg width="40" height="40" viewBox="0 0 40 40" fill="none"><polygon points="20,3 36,11 36,29 20,37 4,29 4,11" stroke="#00FAB9" stroke-width="1.2" fill="none"/><polygon points="20,9 30,15 30,25 20,31 10,25 10,15" stroke="#54BBC7" stroke-width=".6" fill="none" opacity=".5"/><path d="M7 34 Q20 30 33 34" stroke="#00FAB9" stroke-width=".8" fill="none"/></svg></div></footer>
+<footer class="footer"><div class="container"><div class="ft"><strong>Consejo Económico y Social de la Ciudad de Buenos Aires</strong><br>Carlos Pellegrini 587 · cesba.gob.ar · Datos: ETOI-IEC CABA 2025-T3 · Índice: ILO WP140 (Gmyrek et al. 2025) · Licencia CC BY-NC 4.0</div><svg width="40" height="45" viewBox="0 0 36 40" fill="none"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#4E83FB"/></linearGradient></defs><path d="M18,2 L32,10 L32,26 L24,31 L26,36 Q27,38 25,37 L20,34 L18,35 L4,27 L4,10 Z" stroke="url(#fg)" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="18" width="3.5" height="8" rx=".7" fill="#00FAB9" opacity=".85"/><rect x="15" y="14" width="3.5" height="12" rx=".7" fill="#54BBC7" opacity=".85"/><rect x="20" y="10" width="3.5" height="16" rx=".7" fill="#32B4EE" opacity=".85"/><path d="M18,10 L21.75,6 L25.5,10" fill="#32B4EE" opacity=".85"/><path d="M20,37 Q23,34 26,37 Q29,40 32,37" stroke="url(#fg)" stroke-width="1.2" stroke-linecap="round"/></svg></div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
