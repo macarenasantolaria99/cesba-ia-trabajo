@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 140" fill="none">
+  <defs>
+    <linearGradient id="cesbaGrad" x1="2%" y1="2%" x2="98%" y2="98%">
+      <stop offset="0%" stop-color="#00FAB9"/>
+      <stop offset="55%" stop-color="#32B4EE"/>
+      <stop offset="100%" stop-color="#4E83FB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Hexagon outline (pointy top) — top + right sides -->
+  <path d="M60,6 L102,30 L102,78" stroke="url(#cesbaGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Bottom-right modified into speech-bubble shape -->
+  <path d="M102,78 L80,96 L60,102" stroke="url(#cesbaGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Left side + top-left back to top -->
+  <path d="M60,102 L18,78 L18,30 L60,6" stroke="url(#cesbaGrad)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Wavy signature lines (speech-bubble tail, 3 waves descending, outside the hex) -->
+  <path d="M70,110 Q78,104 86,110 Q94,116 102,110 Q110,104 118,110" stroke="url(#cesbaGrad)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M74,119 Q82,113 90,119 Q98,125 106,119" stroke="url(#cesbaGrad)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M78,128 Q86,122 94,128 Q102,134 110,128" stroke="url(#cesbaGrad)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Bar chart inside hex (3 bars, ascending left to right) -->
+  <!-- Left bar (shortest) -->
+  <rect x="34" y="54" width="10" height="20" rx="1.2" fill="#A8B3BC"/>
+  <!-- Middle bar -->
+  <rect x="51" y="44" width="10" height="30" rx="1.2" fill="#909CAA"/>
+  <!-- Right bar (tallest, with arrow tip) -->
+  <rect x="68" y="37" width="10" height="37" rx="1.2" fill="#7C8D97"/>
+  <path d="M65,37 L73,28 L81,37" fill="#7C8D97"/>
+
+  <!-- Horizontal axis -->
+  <line x1="30" y1="74" x2="84" y2="74" stroke="#A8B3BC" stroke-width="1.4"/>
+
+  <!-- CESBA text (CES lighter, BA bolder) -->
+  <text x="32" y="91" font-family="Gotham, Calibri, Arial, sans-serif" font-size="13" font-weight="300" fill="#A8B3BC" letter-spacing="2.5">CES</text>
+  <text x="64" y="91" font-family="Gotham, Calibri, Arial, sans-serif" font-size="13" font-weight="700" fill="#7C8D97">BA</text>
+</svg>
