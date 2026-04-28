@@ -28,18 +28,18 @@ hr.div{border:none;border-top:1px solid var(--border);}
 /* HERO */
 .page-hero{padding:64px 0 50px;}.hero-eyebrow{font-family:var(--fh);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cm);margin-bottom:14px;}.page-hero h1{font-family:var(--fh);font-size:44px;font-weight:900;color:var(--cd);line-height:1.05;letter-spacing:-0.02em;margin-bottom:14px;}.hero-sub{font-family:var(--f);font-size:17px;color:var(--ink);line-height:1.75;max-width:640px;}
 /* LAYOUT */
-section.gs{padding:72px 0;}
-.sg{display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:start;}
+section.gs{padding:56px 0;}
+.sg{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:start;}
 /* SIDEBAR — fixed TOC */
-.sl{position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding-bottom:32px;}
+.sl{position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding-bottom:32px;display:flex;flex-direction:column;justify-content:center;}
 .sk{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cm);margin-bottom:12px;}
 .sbl{font-family:var(--fh);font-size:40px;font-weight:900;color:var(--cd);line-height:.95;letter-spacing:-0.02em;display:none;}
 .sb{width:48px;height:4px;background:var(--c1);margin-top:0;margin-bottom:16px;border-radius:2px;display:none;}
 /* TOC always visible */
 .toc{margin-top:0;}
-.toc a{display:block;font-size:15px;color:var(--ink);text-decoration:none;padding:8px 14px;border-left:2px solid transparent;transition:all .25s;opacity:.5;line-height:1.4;}
+.toc a{display:block;font-size:13px;color:var(--ink);text-decoration:none;padding:7px 12px;border-left:2px solid transparent;transition:all .25s;opacity:.5;line-height:1.4;}
 .toc a:hover{color:var(--cm);opacity:.8;}
-.toc a.active{color:var(--cd);border-left-color:var(--c1);opacity:1;font-weight:700;font-size:16px;padding:10px 14px;background:rgba(0,250,185,.06);border-radius:0 6px 6px 0;}
+.toc a.active{color:var(--cd);border-left-color:var(--c1);opacity:1;font-weight:700;font-size:14px;padding:9px 12px;background:rgba(0,250,185,.06);border-radius:0 6px 6px 0;}
 .toc .tn{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cm);margin-right:5px;}
 /* BODY */
 .body{font-family:var(--f);font-size:16px;color:var(--ink);line-height:1.85;margin-bottom:18px;max-width:620px;}.body strong{color:var(--cd);font-weight:700;}
@@ -54,7 +54,7 @@ section.gs{padding:72px 0;}
 /* Graph box */
 .gb{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:20px 0;}.gb img{width:100%;display:block;}.gb-cap{padding:10px 16px;font-size:11px;color:#7a7060;background:var(--cream2);border-top:1px solid var(--border);}
 /* Stats */
-.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}.stat{border:1px solid var(--border);border-radius:12px;padding:22px;background:var(--cream);border-left:4px solid var(--cm);}.stat-l{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cm);margin-bottom:6px;}.stat-n{font-family:var(--fh);font-size:56px;font-weight:900;color:var(--cd);line-height:.85;margin-bottom:6px;}.stat-d{font-family:var(--f);font-size:13px;color:var(--ink);line-height:1.5;}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}.stat{border:1px solid var(--border);border-radius:12px;padding:22px;background:var(--cream);border-left:4px solid var(--cm);transition:transform .15s,box-shadow .2s;cursor:default;}.stat:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(24,166,194,.12);}.stat-l{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cm);margin-bottom:6px;}.stat-n{font-family:var(--fh);font-size:56px;font-weight:900;color:var(--cd);line-height:.85;margin-bottom:6px;}.stat-d{font-family:var(--f);font-size:13px;color:var(--ink);line-height:1.5;}
 /* Evidence */
 .ev{border:1px solid var(--border);border-radius:12px;padding:24px;margin:20px 0;border-top:3px solid var(--c1);background:var(--cream);}.ev p{font-size:15px;color:var(--ink);line-height:1.8;margin-bottom:12px;}.ev .ev-h{font-family:var(--fh);font-size:16px;font-weight:900;color:var(--cd);margin-top:8px;display:block;}
 .src{font-size:11px;color:#7a7060;margin-top:6px;}.src a{color:var(--cm);}
@@ -90,7 +90,8 @@ section.gs{padding:72px 0;}
 .metr-title{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cd);margin-bottom:4px;}.metr-sub{font-size:11px;color:#7a7060;margin-bottom:16px;}
 /* Fundar */
 .fundar-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
-.f-card{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--cream);display:flex;flex-direction:column;}
+.f-card{border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:var(--cream);display:flex;flex-direction:column;transition:border-color .2s,transform .15s,box-shadow .2s;cursor:default;}
+.f-card:hover{border-color:var(--cm);transform:translateY(-3px);box-shadow:0 8px 24px rgba(24,166,194,.12);}
 .f-title{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cd);margin-bottom:3px;}.f-sub{font-size:11px;color:#7a7060;margin-bottom:10px;}
 .f-body{flex:1;}.f-src{font-size:10px;color:#7a7060;margin-top:12px;padding-top:8px;border-top:1px solid var(--border);line-height:1.5;}
 .hbar{display:flex;align-items:center;gap:6px;margin-bottom:5px;}.hbar-label{font-size:11px;color:var(--ink);width:130px;text-align:right;flex-shrink:0;line-height:1.3;opacity:.7;}.hbar-label.bold{opacity:1;font-weight:600;}
@@ -134,14 +135,15 @@ section.gs{padding:72px 0;}
 </div>
 </div>
 <div data-a>
-<div class="section-title">¿Qué es la IA <span class="a">generativa?</span></div>
+<div class="section-title">1. ¿Qué es la IA <span class="a">generativa?</span></div>
 <p class="body">La inteligencia artificial tiene décadas de historia. Bajo ese paraguas conviven muchas técnicas: machine learning, reconocimiento de imagen, sistemas expertos. Pero el debate actual gira en torno a un tipo específico: la <strong>IA generativa (IA Gen)</strong>.</p>
 <p class="body">El punto de inflexión fue 2017, con la publicación de la arquitectura Transformer. Esa innovación permitió los grandes modelos de lenguaje (LLM): sistemas capaces de generar texto, código e imágenes con una fluidez sin precedentes. En 2022, ChatGPT los llevó a la masividad. Pero eso no significa que la IA generativa sea el único tipo de IA.</p>
 <img class="img-full" src="img-no-ia-gen.png" alt="Streaming, GPS y caja autoservicio" style="max-width:480px;">
 <p class="img-cap">IA no generativa</p>
 <img class="img-full" src="img-ia-gen.png" alt="Personas usando ChatGPT, Copilot y DALL-E" style="max-width:480px;">
 <p class="img-cap">IA generativa</p>
-<p class="body">¿Por qué importa la distinción? Este estudio se centra específicamente en el impacto de la IA generativa y su impacto sobre los trabajos de CABA.</p>
+<p class="highlight">¿Por qué importa la distinción?</p>
+<p class="body">Este estudio se centra específicamente en el impacto de la IA generativa y su impacto sobre los trabajos de CABA.</p>
 <p class="body">Pero la IA generativa no es la única IA que afecta a los trabajos (un algoritmo de asignación de pedidos o viajes que habilita la existencia de un trabajo de plataformas puede no ser IA generativa, pero tiene un gran impacto igual).</p>
 <p class="body">Y tampoco es la única tecnología que afecta a los trabajos (que vienen transformándose por tecnologías de la información y comunicación hace décadas, desde el teléfono, las planillas de Excel o los cajeros automáticos).</p>
 <p class="body">Una misma ocupación puede verse afectada de manera muy distinta por distintos tipos de tecnología. Este estudio mira de cerca el impacto de la IA generativa; es decir, una mirada parcial, no total, sobre el efecto de la IA sobre el trabajo.</p>
@@ -151,7 +153,7 @@ section.gs{padding:72px 0;}
 <!-- 2 -->
 <section class="gs" id="s2"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">El trabajo como conjunto de <span class="a">tareas</span></div>
+<div class="section-title">2. El trabajo como conjunto de <span class="a">tareas</span></div>
 <p class="body">Para entender el impacto de la IA en el trabajo hay que abandonar la idea del trabajo como una unidad indivisible. Un médico, un contador, una recepcionista: cada uno realiza docenas de tareas distintas que pueden ser analíticas, manuales, interpersonales, rutinarias o creativas.</p>
 <p class="body"><strong>La tecnología no afecta a la ocupación como bloque, sino de manera diferencial a cada tipo de tarea.</strong> La IA generativa afecta particularmente las tareas cognitivas y analíticas: redacción, análisis de datos, programación, generación de contenido.</p>
 <p class="body">La exposición de cada tarea a la IA sobre las tareas es volátil y depende principalmente de las mejoras de los modelos (que en los últimos años aumentó sustancialmente).</p>
@@ -163,7 +165,7 @@ section.gs{padding:72px 0;}
 <!-- 3 -->
 <section class="gs" id="s3"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">Tareas que <span class="a">cambian</span></div>
+<div class="section-title">3. Tareas que <span class="a">cambian</span></div>
 <p class="body">Las ocupaciones tampoco son estáticas. Las tareas que las componen cambian permanentemente, con IA o sin ella.</p>
 <div class="sh">El contador público en Argentina</div>
 <div class="contador-layout">
@@ -181,7 +183,7 @@ section.gs{padding:72px 0;}
 <!-- 4 -->
 <section class="gs" id="s4"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">¿Qué es la <span class="a">exposición</span> a la IA?</div>
+<div class="section-title">4. ¿Qué es la <span class="a">exposición</span> a la IA?</div>
 <p class="body">Decimos que una ocupación está <strong>expuesta</strong> a la IA generativa cuando una parte significativa de sus tareas puede ser asistida, complementada o realizada por un modelo de IA.</p>
 <p class="body">La exposición es una condición necesaria para que la IA transforme un trabajo, pero no es suficiente. Los efectos concretos sobre el empleo y los salarios dependen de muchos otros factores: qué tareas específicas están expuestas, si pueden separarse del resto del trabajo, y cómo responden empresas, trabajadores e instituciones.</p>
 </div></div></div></section>
@@ -190,7 +192,7 @@ section.gs{padding:72px 0;}
 <!-- 5 -->
 <section class="gs" id="s5"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">Automatización vs. <span class="a">complementariedad</span></div>
+<div class="section-title">5. Automatización vs. <span class="a">complementariedad</span></div>
 <p class="body">La literatura distingue dos tipos de impacto tecnológico:</p>
 <div class="quad-wrap">
 <div class="quad-axes"><span class="ax-left">Automatización ↓</span><span class="ax-right">Complementariedad ↓</span></div>
@@ -204,16 +206,16 @@ section.gs{padding:72px 0;}
 <div class="quad-axes"><span class="ax-left">Tareas que la IA automatiza ↓</span><span class="ax-right">Tareas que la IA potencia ↑</span></div>
 <div class="quad"><div class="quad-cell bl"><div class="quad-cell-title">Gerente de proyecto</div>Armar cronogramas<br>Redactar minutas<br>Generar reportes de avance<br>Calendarización</div><div class="quad-cell tl"><div class="quad-cell-title cm">Gerente de proyecto</div>Decisiones estratégicas<br>Negociación con stakeholders<br>Supervisión de más proyectos<br>Gestión de equipos</div><div class="quad-cell bl"><div class="quad-cell-title">Analista financiero</div>Construir modelos desde cero<br>Recopilar datos<br>Generar reportes estándar</div><div class="quad-cell tl"><div class="quad-cell-title cm">Analista financiero</div>Interpretar y auditar outputs de IA<br>Cuestionar supuestos<br>Comunicar conclusiones</div></div>
 </div>
+<p class="src">Fuente: Sigelman, M. et al. (2026). The New Skill Landscape: AI's Impact on the Demand for Workforce Skills. Burning Glass Institute.</p>
 
 <p class="body" style="margin-top:20px;">La pregunta relevante, en la mayoría de los casos, no es "¿este trabajo va a desaparecer?" sino "¿cómo va a cambiar y a qué velocidad?" Los cambios en la demanda de habilidades son estadísticamente significativos apenas tres años después del lanzamiento de ChatGPT.</p>
-<p class="src">Fuente: Sigelman, M. et al. (2026). The New Skill Landscape: AI's Impact on the Demand for Workforce Skills. Burning Glass Institute.</p>
 </div></div></div></section>
 <hr class="div">
 
 <!-- 6 -->
 <section class="gs" id="s6"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">De la exposición a la <span class="a">adopción</span></div>
+<div class="section-title">6. De la exposición a la <span class="a">adopción</span></div>
 <p class="body">Entre la exposición técnica y el impacto real existe una brecha: la adopción efectiva. Las barreras incluyen costos de implementación, resistencia organizacional, falta de capacitación, regulaciones vigentes y la brecha digital.</p>
 <p class="body">En Argentina, los datos de adopción muestran que esa brecha es todavía considerable:</p>
 <div class="stat-row"><div class="stat"><div class="stat-l">A nivel individual</div><div class="stat-n">27%</div><div class="stat-d">de los trabajadores usa IA para su trabajo</div></div><div class="stat"><div class="stat-l">A nivel empresas</div><div class="stat-n">41%</div><div class="stat-d">de las pymes en manufactura y servicios informáticos adoptó alguna forma de IA</div></div></div>
@@ -230,7 +232,7 @@ section.gs{padding:72px 0;}
 <!-- 7 -->
 <section class="gs" id="s7"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">De lo individual a lo <span class="a">agregado</span></div>
+<div class="section-title">7. De lo individual a lo <span class="a">agregado</span></div>
 <p class="body">Las decisiones organizacionales alrededor de cómo se adopta la IA tienen un impacto tan relevante sobre los mercados laborales como las capacidades de la tecnología en sí.</p>
 <p class="body">Entender qué tareas puede realizar la IA, cómo afecta a cada ocupación y de qué maneras puede transformar un trabajo es necesario, pero no suficiente. Gran parte de los efectos inmediatos y a mediano plazo sobre el empleo dependen de las decisiones que toman las organizaciones.</p>
 <p class="highlight">La tecnología habilita posibilidades, pero son las organizaciones quienes eligen cuáles de esas posibilidades se convierten en realidad.</p>
@@ -243,11 +245,10 @@ section.gs{padding:72px 0;}
 <!-- 8 -->
 <section class="gs" id="s8"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">El efecto sobre los <span class="a">mercados</span></div>
+<div class="section-title">8. El efecto sobre los <span class="a">mercados</span></div>
 <p class="body">Cuando se habla de IA y trabajo, la conversación suele ir rápido hacia un escenario extremo: el fin del trabajo, el reemplazo masivo de personas por máquinas, el desempleo estructural a escala global. Esa imagen es, por ahora, poco respaldada por la evidencia.</p>
 <p class="body">Lo que la historia del cambio tecnológico muestra, y lo que la evidencia reciente sobre IA empieza a confirmar, es un panorama más complejo: <strong>no el fin del trabajo, sino su transformación profunda, paulatina y profundamente desigual.</strong></p>
 <p class="body">La pregunta relevante no es si va a haber trabajo, sino <strong>qué tipo de trabajo</strong>, para quiénes, y a qué salario.</p>
-<div class="sh">La polarización: lo que las últimas décadas ya mostraron</div>
 <p class="body">Las tecnologías de la información y la comunicación de las últimas décadas no destruyeron el empleo en términos netos, pero sí reorganizaron profundamente quién gana y quién pierde.</p>
 <p class="body">Dentro de ese panorama general, el efecto concreto sobre cada ocupación depende no solo cuántas tareas se automatizan, sino cuáles.</p>
 <p class="highlight">El nivel de expertise importa</p>
@@ -259,7 +260,7 @@ section.gs{padding:72px 0;}
 <!-- 9 -->
 <section class="gs" id="s9"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">¿Qué dicen los estudios sobre el <span class="a">impacto</span> en el empleo?</div>
+<div class="section-title">9. ¿Qué dicen los estudios sobre el <span class="a">impacto</span> en el empleo?</div>
 <p class="body">El impacto real sobre el empleo depende de muchos factores más allá de la exposición técnica: la elasticidad de la demanda del producto, la estructura de mercado del sector, las decisiones organizacionales de las empresas, el marco regulatorio y las instituciones laborales.</p>
 <p class="body">La evidencia reciente muestra que en la mayoría de los casos de alta exposición conviven ambos efectos — automatización de algunas tareas y ampliación de otras. En muy pocas ocupaciones la IA puede realizar la mayor parte de las tareas con éxito: programadores, analistas financieros, oficinistas, operadores de datos.</p>
 <p class="body">La única señal sustantiva de impacto en el empleo hasta ahora apunta a los puestos de entrada.</p>
@@ -272,7 +273,7 @@ section.gs{padding:72px 0;}
 <!-- 10 -->
 <section class="gs" id="s10"><div class="container"><div class="sg"><div class="sl"></div>
 <div data-a>
-<div class="section-title">¿Qué forma va a tener la <span class="a">transición?</span></div>
+<div class="section-title">10. ¿Qué forma va a tener la <span class="a">transición?</span></div>
 <p class="body">La tecnología en sí misma no dice nada sobre cómo se van a abordar las consecuencias de su adopción. Las capacidades de la tecnología evolucionan, las tareas de los trabajadores se reconfiguran, pero la distribución de costos y beneficios de la innovación no está determinada por la tecnología.</p>
 <p class="body">En ningún lado está escrito que la IA generativa deba redundar solo en mayor desigualdad, desplazamiento y falta de oportunidades. Este glosario busca mostrar exactamente eso: que los efectos son múltiples. De automatización, sí, pero también de ampliación de capacidades y de complementariedad. Qué efecto predomina depende, en parte, de la tecnología. <strong>Pero depende, sobre todo, de las decisiones que tomemos como sociedad.</strong></p>
 <p class="body">Si la transición tiene lugar en el marco del diálogo social con empleadores y trabajadores participando sobre el sentido del cambio y con gobiernos generando las condiciones institucionales para esa conversación, entonces es posible orientar la transformación tecnológica hacia mayor productividad, mejores oportunidades y más capacidades para todos.</p>
