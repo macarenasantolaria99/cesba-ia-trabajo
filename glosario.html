@@ -109,6 +109,14 @@ section.gs{padding:56px 0;}
 .contador-layout{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:start;margin:16px 0;}
 .contador-layout img{width:280px;display:block;}
 @media(max-width:900px){.sg{grid-template-columns:1fr;gap:28px;}.sl{position:static;}.sbl{font-size:30px;}.page-hero h1{font-size:30px;}.exp,.stat-row,.fundar-grid,.quad{grid-template-columns:1fr;}.nav-links{display:none;}.toc{display:none;}.contador-layout{grid-template-columns:1fr;}.contador-layout img{width:100%;max-width:300px;}}
+/* Layout image-left + text-right para sección 4 (exposición) */
+.expo-layout{display:grid;grid-template-columns:320px 1fr;gap:36px;align-items:start;margin:28px 0;}
+.expo-layout > img{width:100%;display:block;}
+.expo-layout > div .body:last-child{margin-bottom:0;}
+@media(max-width:900px){.expo-layout{grid-template-columns:1fr;gap:20px;}}
+/* Hover lift + sombra para gráficos, dashboards e imágenes */
+.gb,.metr-chart,.quad-wrap,.ev,.exp-c,.img-full,.expo-layout > img{transition:transform .15s ease,box-shadow .25s ease;}
+.gb:hover,.metr-chart:hover,.quad-wrap:hover,.ev:hover,.exp-c:hover,.img-full:hover,.expo-layout > img:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(24,166,194,.12);}
 </style>
 </head>
 <body>
@@ -165,9 +173,10 @@ section.gs{padding:56px 0;}
 <div class="section-title">2. El trabajo como conjunto de <span class="a">tareas</span></div>
 <p class="body">Para entender el impacto de la IA en el trabajo hay que abandonar la idea del trabajo como una unidad indivisible. Un médico, un contador, una recepcionista: cada uno realiza docenas de tareas distintas que pueden ser analíticas, manuales, interpersonales, rutinarias o creativas.</p>
 <p class="body"><strong>La tecnología no afecta a la ocupación como bloque, sino de manera diferencial a cada tipo de tarea.</strong> La IA generativa afecta particularmente las tareas cognitivas y analíticas: redacción, análisis de datos, programación, generación de contenido.</p>
-<p class="body">La exposición de cada tarea a la IA sobre las tareas es volátil y depende principalmente de las mejoras de los modelos (que en los últimos años aumentó sustancialmente).</p>
+<p class="body">La exposición no es una foto fija. A medida que los modelos mejoran, más tareas pasan a estar dentro de su alcance. Como muestra el gráfico, esa mejora viene acelerándose.</p>
 <div class="metr-chart" id="metrChart"><div class="metr-title">Capacidades de los modelos de IA para completar tareas largas</div><div class="metr-sub">Puntaje promedio en benchmark METR-Horizon v1.1 · 2019–2026</div></div>
 <p class="src">Fuente: Kwa, T., West, B., Becker, J. et al. (2025). Measuring AI Ability to Complete Long Tasks. METR. <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank">metr.org</a></p>
+<p class="body">El benchmark METR-Horizon mide qué tan largas pueden ser las tareas que un modelo completa con confiabilidad. La progresión es exponencial: la duración de las tareas resueltas viene duplicándose aproximadamente cada siete meses. En 2019, GPT-2 manejaba tareas equivalentes a segundos de trabajo humano; los modelos frontera de 2026 resuelven con éxito tareas que a una persona le tomarían más de una hora. El salto se profundizó marcadamente desde 2023, con el lanzamiento de GPT-4.</p>
 </div></div></div></section>
 <hr class="div">
 
@@ -216,8 +225,13 @@ section.gs{padding:56px 0;}
 </div>
 <div data-a>
 <div class="section-title">4. ¿Qué es la <span class="a">exposición</span> a la IA?</div>
-<p class="body">Decimos que una ocupación está <strong>expuesta</strong> a la IA generativa cuando una parte significativa de sus tareas puede ser asistida, complementada o realizada por un modelo de IA.</p>
-<p class="body">La exposición es una condición necesaria para que la IA transforme un trabajo, pero no es suficiente. Los efectos concretos sobre el empleo y los salarios dependen de muchos otros factores: qué tareas específicas están expuestas, si pueden separarse del resto del trabajo, y cómo responden empresas, trabajadores e instituciones.</p>
+<div class="expo-layout">
+<img src="exposicion_tipos.svg" alt="Tres tipos de ocupaciones según su perfil de exposición a la IA: una con todas sus tareas expuestas en su totalidad, una con muchas tareas expuestas en menor medida, y una con la mitad de las tareas fuertemente expuestas.">
+<div>
+<p class="body">Decimos que una ocupación está <strong>expuesta</strong> a la IA generativa cuando una parte significativa de sus tareas puede ser asistida, complementada o realizada por un modelo de IA. Como toda ocupación es un conjunto de tareas, no existe un único patrón de exposición: distintas ocupaciones combinan tareas con distintos niveles de exposición — algunas con todas las tareas muy expuestas, otras con muchas tareas levemente expuestas, otras con la mitad fuertemente expuesta y la otra mitad nada.</p>
+<p class="body">La exposición es una condición necesaria para que la IA transforme un trabajo, pero no es suficiente. Los efectos concretos sobre el empleo y los salarios dependen de muchos otros factores: qué tareas específicas están expuestas, si pueden separarse del resto del trabajo, y cómo responden empresas, trabajadores e instituciones ante esas transformaciones.</p>
+</div>
+</div>
 </div></div></div></section>
 <hr class="div">
 
@@ -253,7 +267,7 @@ section.gs{padding:56px 0;}
 </div>
 <p class="src">Fuente: Sigelman, M. et al. (2026). The New Skill Landscape: AI's Impact on the Demand for Workforce Skills. Burning Glass Institute.</p>
 
-<p class="body" style="margin-top:20px;">La pregunta relevante, en la mayoría de los casos, no es "¿este trabajo va a desaparecer?" sino "¿cómo va a cambiar y a qué velocidad?" Los cambios en la demanda de habilidades son estadísticamente significativos apenas tres años después del lanzamiento de ChatGPT.</p>
+<p class="body" style="margin-top:20px;">La pregunta relevante, en la mayoría de los casos, no es "¿este trabajo va a desaparecer?" sino <strong>"¿cómo va a cambiar y a qué velocidad?"</strong></p>
 </div></div></div></section>
 <hr class="div">
 
