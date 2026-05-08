@@ -52,7 +52,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .hero-num-lbl strong{color:var(--cd);font-weight:800;}
 .hero-pills{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .pill{background:transparent;border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;text-decoration:none;display:block;transition:border-color .2s,transform .15s;}
-.pill:hover{border-color:var(--cm);transform:translateY(-2px);}
+.pill:hover{border-color:var(--cm);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06);}
 .pill-title{font-family:var(--fh);font-size:14px;font-weight:800;color:var(--cd);}
 .hero-num-pills{display:flex;align-items:flex-start;gap:24px;}
 .hero-num-col{flex-shrink:0;display:flex;flex-direction:column;}
@@ -99,7 +99,8 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .vc-diff{text-align:center;font-family:var(--fh);font-size:13px;font-weight:800;color:var(--cm);margin-top:8px;}
 .src{font-family:var(--f);font-size:11px;color:#7a7060;margin-top:18px;font-style:italic;}
 
-.ieo{display:flex;align-items:center;gap:28px;margin-bottom:36px;padding:22px 26px;background:transparent;border-radius:14px;border:1px solid var(--border);}
+.ieo{display:flex;align-items:flex-start;gap:32px;margin-bottom:36px;padding:26px 30px;background:transparent;border-radius:14px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
+.ieo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.05);}
 .ieo-n{font-family:var(--fh);font-size:68px;font-weight:900;color:var(--cd);line-height:1;letter-spacing:-3px;flex-shrink:0;}
 .ieo-d{font-family:var(--f);font-size:15px;color:var(--ink);line-height:1.65;}
 .ieo-d strong{color:var(--cd);font-weight:700;}
@@ -153,6 +154,35 @@ hr.div{border:none;border-top:1px solid var(--border);}
   .hero-num{font-size:72px;}
   .dg3,.cg,.ncg{grid-template-columns:1fr;}
 }
+
+.expo-panel{max-width:460px;}
+.expo-panel-title{font-family:var(--fh);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--cm);margin-bottom:14px;text-align:right;}
+.expo-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.expo-row-label{width:72px;font-family:var(--f);font-size:11px;color:var(--ink);text-align:right;flex-shrink:0;}
+.expo-row-track{flex:1;height:24px;background:rgba(0,0,0,.04);border-radius:5px;overflow:hidden;display:flex;justify-content:flex-end;transition:transform .2s;}
+.expo-row:hover .expo-row-track{transform:scaleY(1.15);}
+.expo-row-fill{height:100%;border-radius:5px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;transition:filter .2s;}
+.expo-row:hover .expo-row-fill{filter:brightness(1.1);}
+.expo-row-val{font-family:var(--fh);font-size:11px;font-weight:800;color:#fff;white-space:nowrap;}
+.expo-axis{display:flex;justify-content:space-between;font-family:var(--f);font-size:9px;color:#999;margin-top:2px;padding-left:82px;}
+.expo-kpi{margin-top:14px;font-family:var(--f);font-size:13px;font-weight:600;color:var(--cd);line-height:1.5;text-align:right;}
+.expo-kpi strong{font-weight:800;}
+.expo-intro-block{margin-top:36px;padding:36px 40px;border-radius:16px;border:1.5px solid var(--border);background:var(--cream2);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.expo-intro-block:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
+.expo-intro-block::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--c1),var(--c4));}
+.expo-intro-block p{font-family:var(--f);font-size:15px;color:var(--ink);line-height:1.85;margin-bottom:14px;}
+.expo-intro-block p:last-child{margin-bottom:0;}
+.expo-intro-block strong{color:var(--cd);font-weight:700;}
+.expo-intro-block .expo-ib-title{font-family:var(--fh);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cm);margin-bottom:14px;}
+.hero-pills-vert{display:flex;flex-direction:column;gap:10px;max-width:380px;margin:0 auto;}
+.hero-pills-vert .pill{width:100%;text-align:center;}
+.expo-mini{margin-top:16px;}
+.expo-mini .expo-row{margin-bottom:4px;}
+.expo-mini .expo-row-label{width:58px;font-size:10px;}
+.expo-mini .expo-row-track{height:16px;}
+.expo-mini .expo-row-val{font-size:9px;}
+.expo-mini .expo-panel-title{font-size:9px;margin-bottom:8px;text-align:right;}
+.expo-mini .expo-axis{padding-left:68px;font-size:8px;}
 </style>
 </head>
 <body>
@@ -183,7 +213,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
       <a href="glosario.html">Glosario</a>
       <a href="trabajos.html">Los trabajos de CABA</a>
       <a href="ieoiag.html">El IEOIAG</a>
-      <a href="sobre.html">Sobre el<br>proyecto</a>
+      <a href="sobre.html">Sobre el proyecto</a>
     </div>
   </div>
 </nav>
@@ -193,21 +223,42 @@ hr.div{border:none;border-top:1px solid var(--border);}
     <div class="hero-eyebrow">Índice de exposición ocupacional a la IA generativa de la Ciudad Autónoma de Buenos Aires</div>
     <div class="hero-grid">
       <div>
-        <h1 class="hero-title">¿Cuán expuestos están los trabajos porteños a la IA generativa?</h1>
-        <div class="hero-num-pills">
-          <div class="hero-num-col">
+        <h1 class="hero-title">¿Cuán expuestos están los trabajos de la Ciudad de Buenos Aires a la IA generativa?</h1>
+        <div style="display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap;">
+          <div style="flex-shrink:0;">
             <div class="hero-num">0,350</div>
-            <div class="hero-num-scale">0 — 1</div>
+            <div style="width:200px;margin-top:8px;">
+              <div style="height:8px;border-radius:4px;background:linear-gradient(90deg,#cce4ea 0%,#9ECFD8 22%,#54BBC7 42%,#18A6C2 60%,#1B9FC7 75%,#153B70 100%);position:relative;">
+                <div style="position:absolute;left:35%;top:-3px;width:3px;height:14px;background:#fff;border-radius:2px;box-shadow:0 0 3px rgba(0,0,0,.3);"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-family:var(--f);font-size:10px;color:#999;margin-top:4px;"><span>0</span><span>0,5</span><span>1</span></div>
+            </div>
             <div class="hero-num-lbl">Índice de exposición de la <strong>Ciudad Autónoma de Buenos Aires</strong></div>
+            <div class="hero-pills" style="margin-top:18px;">
+              <a href="glosario.html" class="pill"><div class="pill-title">Glosario de IA y trabajo</div></a>
+              <a href="trabajos.html" class="pill"><div class="pill-title">Estructura ocupacional de CABA</div></a>
+              <a href="ieoiag.html" class="pill"><div class="pill-title">El IEOIAG de CABA</div></a>
+              <a href="sobre.html" class="pill"><div class="pill-title">Sobre el proyecto</div></a>
+            </div>
           </div>
-          <div class="hero-pills">
-            <a href="glosario.html" class="pill"><div class="pill-title">Glosario de IA y trabajo</div></a>
-            <a href="trabajos.html" class="pill"><div class="pill-title">Estructura ocupacional de CABA</div></a>
-            <a href="ieoiag.html" class="pill"><div class="pill-title">El IEOIAG de CABA</div></a>
-            <a href="#recursos" class="pill"><div class="pill-title">Recursos</div></a>
+          <div class="expo-panel" style="flex:1;min-width:280px;padding-top:10px;">
+            <div class="expo-panel-title">Empleo por nivel de exposición</div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 4</div><div class="expo-row-track"><div class="expo-row-fill" style="width:18.1%;background:#153B70;"><span class="expo-row-val">18,1%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 3</div><div class="expo-row-track"><div class="expo-row-fill" style="width:10.8%;background:#18596C;"><span class="expo-row-val">10,8%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 2</div><div class="expo-row-track"><div class="expo-row-fill" style="width:25.2%;background:#1B9FC7;"><span class="expo-row-val">25,2%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 1</div><div class="expo-row-track"><div class="expo-row-fill" style="width:12.8%;background:#32B4EE;"><span class="expo-row-val">12,8%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Baja</div><div class="expo-row-track"><div class="expo-row-fill" style="width:12.0%;background:#70B8CE;"><span class="expo-row-val">12,0%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Nula</div><div class="expo-row-track"><div class="expo-row-fill" style="width:21.0%;background:#b8bcc0;"><span class="expo-row-val">21,0%</span></div></div></div>
+            <div class="expo-axis"><span>100%</span><span>50%</span><span>0%</span></div>
+            <div class="expo-kpi">El <strong>67%</strong> del empleo de CABA tiene algún grado de exposición a la IA generativa (gradientes 1, 2, 3 y 4).</div>
           </div>
         </div>
-      </div>
+        <div class="expo-intro-block">
+          <div class="expo-ib-title">Sobre este proyecto</div>
+          <p>Armamos un índice para poder entender cuál es el impacto que puede tener la IA generativa sobre los trabajos de la Ciudad de Buenos Aires.</p>
+          <p>El <strong>Índice de Exposición Ocupacional a la IA generativa (IEOIAG)</strong> mide qué grupos de ocupaciones de la Ciudad están más o menos expuestos a la IA generativa, a partir del puntaje internacional de la OIT (2025) aplicado a la estructura ocupacional local.</p>
+          <p>En esta página web vas a poder encontrar mayor detalle sobre el índice, la estructura ocupacional de CABA y un glosario sobre los principales conceptos para entender la relación entre la IA y los trabajos.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -428,7 +479,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
     <div class="sg">
       <div class="sl" data-a>
         <div class="sk">Sobre este sitio</div>
-        <div class="sbl">El primer<br><span class="a">índice</span><br>porteño</div>
+        <div class="sbl">El primer<br><span class="a">índice</span><br>de la Ciudad</div>
         <div class="sb"></div>
       </div>
       <div data-a>
@@ -474,7 +525,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
         <div class="sb"></div>
       </div>
       <div data-a>
-        <p class="body"><strong>CABA tiene una estructura ocupacional diferente a la de Argentina.</strong> Más del 85% del empleo está en servicios, dos de cada tres trabajadores tienen educación superior y la formalidad es mucho más alta que en el resto del país. Esa estructura explica por qué el índice porteño es tan alto.</p>
+        <p class="body"><strong>CABA tiene una estructura ocupacional diferente a la de Argentina.</strong> Más del 85% del empleo está en servicios, dos de cada tres trabajadores tienen educación superior y la formalidad es mucho más alta que en el resto del país. Esa estructura explica por qué el índice de la Ciudad es tan alto.</p>
       </div>
     </div>
     <div class="dg3" style="margin-top:28px;" data-a>
@@ -522,9 +573,22 @@ hr.div{border:none;border-top:1px solid var(--border);}
         <div class="sb"></div>
       </div>
       <div data-a>
-        <div class="ieo">
-          <div class="ieo-n">0,350</div>
-          <div class="ieo-d">CABA tiene un nivel de exposición alto. Está por encima de <strong>EE.UU. (0,322)</strong>, <strong>Reino Unido (0,331)</strong>, <strong>Francia (0,318)</strong>, <strong>Argentina (0,292)</strong> y <strong>América Latina (0,257)</strong>.</div>
+        <div class="ieo" style="flex-wrap:wrap;align-items:flex-start;">
+          <div style="flex-shrink:0;max-width:280px;">
+            <div class="ieo-n">0,350</div>
+            <div class="ieo-d" style="margin-top:12px;">CABA tiene un nivel de exposición alto. Está por encima de <strong>EE.UU. (0,322)</strong>, <strong>Reino Unido (0,331)</strong>, <strong>Francia (0,318)</strong>, <strong>Argentina (0,292)</strong> y <strong>América Latina (0,257)</strong>.</div>
+          </div>
+          <div class="expo-panel" style="flex:1;min-width:300px;">
+            <div class="expo-panel-title">Empleo por nivel de exposición</div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 4</div><div class="expo-row-track"><div class="expo-row-fill" style="width:36.2%;background:#153B70;"><span class="expo-row-val">18,1%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 3</div><div class="expo-row-track"><div class="expo-row-fill" style="width:21.6%;background:#18596C;"><span class="expo-row-val">10,8%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 2</div><div class="expo-row-track"><div class="expo-row-fill" style="width:50.4%;background:#1B9FC7;"><span class="expo-row-val">25,2%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Gradiente 1</div><div class="expo-row-track"><div class="expo-row-fill" style="width:25.6%;background:#32B4EE;"><span class="expo-row-val">12,8%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Baja</div><div class="expo-row-track"><div class="expo-row-fill" style="width:24%;background:#70B8CE;"><span class="expo-row-val">12,0%</span></div></div></div>
+            <div class="expo-row"><div class="expo-row-label">Nula</div><div class="expo-row-track"><div class="expo-row-fill" style="width:42%;background:#b8bcc0;"><span class="expo-row-val">21,0%</span></div></div></div>
+            <div class="expo-axis"><span>50%</span><span>25%</span><span>0%</span></div>
+            <div class="expo-kpi">El <strong>67%</strong> del empleo de CABA tiene algún grado de exposición a la IA generativa (gradientes 1, 2, 3 y 4).</div>
+          </div>
         </div>
       </div>
     </div>
@@ -592,7 +656,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
             <div class="nc-ic" style="background:rgba(50,180,238,.12);">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#18596C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,18 8,10 13,14 20,4"/><polyline points="16,4 20,4 20,8"/><line x1="4" y1="20" x2="20" y2="20"/></svg>
             </div>
-            <div><div class="nc-ti">Estructura ocupacional de CABA</div><div class="nc-de">Estructura ocupacional porteña comparada con Argentina, 2021–2025.</div></div>
+            <div><div class="nc-ti">Estructura ocupacional de CABA</div><div class="nc-de">Estructura ocupacional de la Ciudad comparada con Argentina, 2021–2025.</div></div>
           </a>
           <a href="ieoiag.html" class="nc">
             <div class="nc-ic" style="background:rgba(24,166,194,.12);">
@@ -600,11 +664,11 @@ hr.div{border:none;border-top:1px solid var(--border);}
             </div>
             <div><div class="nc-ti">El IEOIAG de CABA</div><div class="nc-de">Explorador interactivo por ocupación, género, edad, educación y registro laboral.</div></div>
           </a>
-          <a href="#recursos" class="nc">
+          <a href="sobre.html" class="nc">
             <div class="nc-ic" style="background:rgba(78,131,251,.12);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#18596C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 12l5 4 5-4"/><path d="M4 18h16"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#18596C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             </div>
-            <div><div class="nc-ti">Recursos</div><div class="nc-de">Descargá los datos abiertos, informes, nota metodológica y glosario.</div></div>
+            <div><div class="nc-ti">Sobre el proyecto</div><div class="nc-de">Metodología, equipo y nota metodológica del estudio.</div></div>
           </a>
         </div>
       </div>

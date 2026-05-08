@@ -312,6 +312,28 @@ svg{display:block;max-width:100%;height:auto}
   .panel-stats{grid-template-columns:1fr}
   .panel-content{padding:32px 20px}
 }
+
+.expo-box{background:#fff;border-radius:16px;padding:32px 36px;margin-top:24px;display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s;}
+.expo-box:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.12);}
+.expo-box-left{flex-shrink:0;}
+.expo-box-left .eb-num{font-family:var(--font);font-size:72px;font-weight:700;color:var(--accent-dark);line-height:1;}
+.expo-box-left .eb-lbl{font-family:var(--font);font-size:12px;font-weight:500;color:var(--accent-dark);opacity:.7;margin-top:6px;max-width:200px;}
+.expo-box-left .eb-grad{margin-top:12px;width:180px;}
+.expo-box-left .eb-grad-bar{height:8px;border-radius:4px;background:linear-gradient(90deg,#cce4ea 0%,#9ECFD8 22%,#54BBC7 42%,#18A6C2 60%,#1B9FC7 75%,#153B70 100%);position:relative;}
+.expo-box-left .eb-grad-mark{position:absolute;top:-3px;width:3px;height:14px;background:var(--accent-dark);border-radius:2px;box-shadow:0 0 3px rgba(0,0,0,.3);}
+.expo-box-left .eb-grad-ax{display:flex;justify-content:space-between;font-family:var(--font);font-size:9px;color:var(--accent-dark);opacity:.5;margin-top:4px;}
+.expo-panel{flex:1;min-width:260px;}
+.expo-panel-title{font-family:var(--font);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:14px;text-align:right;}
+.expo-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.expo-row-label{width:72px;font-family:var(--font);font-size:11px;color:var(--accent-dark);text-align:right;flex-shrink:0;opacity:.7;}
+.expo-row-track{flex:1;height:22px;background:rgba(21,59,112,.06);border-radius:5px;overflow:hidden;display:flex;justify-content:flex-end;transition:transform .2s;}
+.expo-row:hover .expo-row-track{transform:scaleY(1.15);}
+.expo-row-fill{height:100%;border-radius:5px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;transition:filter .2s;}
+.expo-row:hover .expo-row-fill{filter:brightness(1.1);}
+.expo-row-val{font-family:var(--font);font-size:10px;font-weight:800;color:#fff;white-space:nowrap;}
+.expo-axis{display:flex;justify-content:space-between;font-family:var(--font);font-size:9px;color:var(--accent-dark);opacity:.4;margin-top:2px;padding-left:82px;}
+.expo-kpi{margin-top:14px;font-family:var(--font);font-size:13px;font-weight:600;color:var(--accent-dark);line-height:1.5;text-align:right;}
+.expo-kpi strong{font-weight:800;}
 </style>
 </head>
 <body>
@@ -338,7 +360,7 @@ svg{display:block;max-width:100%;height:auto}
       <a href="glosario.html">Glosario</a>
       <a href="trabajos.html">Los trabajos de CABA</a>
       <a href="ieoiag.html" class="active">El IEOIAG</a>
-      <a href="index.html#intro">Sobre el<br>proyecto</a>
+      <a href="sobre.html">Sobre el proyecto</a>
     </div>
   </div>
 </nav>
@@ -347,18 +369,31 @@ svg{display:block;max-width:100%;height:auto}
   <div class="container header-inner">
     <h1>Índice de Exposición Ocupacional a la IA Generativa</h1>
     <div class="subtitle">Ciudad Autónoma de Buenos Aires</div>
-    <div class="score-hero">
-      <div class="big-number">0,350</div>
-      <div class="label">Puntaje promedio de exposición de las ocupaciones a la IA generativa de CABA</div>
-    </div>
-    <div class="score-gradient">
-      <div class="score-gradient-bar">
-        <div class="score-gradient-marker" style="left:35%"></div>
-      </div>
-      <div class="score-gradient-axis"><span>0</span><span>0,5</span><span>1</span></div>
-    </div>
+
     <div class="intl-row">
       <span>Singapur 0,366</span><span class="highlight">CABA 0,350</span><span>Suiza 0,336</span><span>Reino Unido 0,331</span><span>EE.UU. 0,322</span><span>Francia 0,318</span><span>Argentina 0,292</span><span>América Latina 0,257</span>
+    </div>
+
+    <div class="expo-box">
+      <div class="expo-box-left">
+        <div class="eb-num">0,350</div>
+        <div class="eb-lbl">Puntaje promedio de exposición de CABA</div>
+        <div class="eb-grad">
+          <div class="eb-grad-bar"><div class="eb-grad-mark" style="left:35%;"></div></div>
+          <div class="eb-grad-ax"><span>0</span><span>0,5</span><span>1</span></div>
+        </div>
+      </div>
+      <div class="expo-panel">
+        <div class="expo-panel-title">Empleo por nivel de exposición</div>
+        <div class="expo-row"><div class="expo-row-label">Gradiente 4</div><div class="expo-row-track"><div class="expo-row-fill" style="width:36.2%;background:#153B70;"><span class="expo-row-val">18,1%</span></div></div></div>
+        <div class="expo-row"><div class="expo-row-label">Gradiente 3</div><div class="expo-row-track"><div class="expo-row-fill" style="width:21.6%;background:#18596C;"><span class="expo-row-val">10,8%</span></div></div></div>
+        <div class="expo-row"><div class="expo-row-label">Gradiente 2</div><div class="expo-row-track"><div class="expo-row-fill" style="width:50.4%;background:#1B9FC7;"><span class="expo-row-val">25,2%</span></div></div></div>
+        <div class="expo-row"><div class="expo-row-label">Gradiente 1</div><div class="expo-row-track"><div class="expo-row-fill" style="width:25.6%;background:#32B4EE;"><span class="expo-row-val">12,8%</span></div></div></div>
+        <div class="expo-row"><div class="expo-row-label">Baja</div><div class="expo-row-track"><div class="expo-row-fill" style="width:24%;background:#70B8CE;"><span class="expo-row-val">12,0%</span></div></div></div>
+        <div class="expo-row"><div class="expo-row-label">Nula</div><div class="expo-row-track"><div class="expo-row-fill" style="width:42%;background:#b8bcc0;"><span class="expo-row-val">21,0%</span></div></div></div>
+        <div class="expo-axis"><span>50%</span><span>25%</span><span>0%</span></div>
+        <div class="expo-kpi">El <strong>67%</strong> del empleo de CABA tiene algún grado de exposición a la IA generativa (gradientes 1, 2, 3 y 4).</div>
+      </div>
     </div>
     <p class="intro-lead">
       El IEOIAG mide qué grupos de ocupaciones de la Ciudad están más o menos expuestos a la IA generativa, a partir del puntaje internacional de la OIT (ILO-NASK 2025) aplicado a la estructura ocupacional local. Lo que sigue es el detalle de ese índice: <strong>cómo se distribuye, dónde se concentra y qué brechas atraviesa</strong>.
@@ -598,7 +633,7 @@ svg{display:block;max-width:100%;height:auto}
   </div>
 
   <div class="source-note" style="margin-top:24px">
-    <strong>¿Cómo se construye el puntaje de cada ocupación?</strong> El puntaje de cada CIUO-08 a 2 dígitos se calcula como el promedio ponderado de los puntajes de exposición a 4 dígitos del <a href="https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure" target="_blank">Índice ILO-NASK 2025</a>, ajustado por la estructura ocupacional de CABA según los microdatos del tercer trimestre 2025 de la <strong>Encuesta Trimestral de Ocupación e Ingresos (ETOI)</strong>. Cada ocupación a 4 dígitos se calcula, a su vez, como el promedio del puntaje de las tareas que la componen. Para más detalle, ver <a href="index.html#intro">sección sobre el proyecto</a>.
+    <strong>¿Cómo se construye el puntaje de cada ocupación?</strong> El puntaje de cada CIUO-08 a 2 dígitos se calcula como el promedio ponderado de los puntajes de exposición a 4 dígitos del <a href="https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure" target="_blank">Índice ILO-NASK 2025</a>, ajustado por la estructura ocupacional de CABA según los microdatos del tercer trimestre 2025 de la <strong>Encuesta Trimestral de Ocupación e Ingresos (ETOI)</strong>. Cada ocupación a 4 dígitos se calcula, a su vez, como el promedio del puntaje de las tareas que la componen. Para más detalle, ver <a href="sobre.html">sección sobre el proyecto</a>.
   </div>
 
   <div class="grid-2 paisaje-bottom" style="margin-top:32px">

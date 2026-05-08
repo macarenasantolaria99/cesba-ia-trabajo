@@ -96,10 +96,10 @@ section.gs{padding:56px 0;}
 .f-legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;font-size:10px;color:var(--ink);opacity:.7;}.f-leg{display:flex;align-items:center;gap:3px;}.f-leg-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
 
 /* Section 4: exposition image (smaller, centered) */
-.expo-img{display:block;width:100%;max-width:560px;margin:24px auto 6px;}
+.expo-img{display:block;width:100%;max-width:560px;margin:24px 0 6px 0;}
 
 /* Section 3: accountant 2-column layout (image left, text right) */
-.contador-row{display:grid;grid-template-columns:240px 1fr;gap:36px;align-items:start;margin:18px 0 12px;}
+.contador-row{display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:start;margin:18px 0 12px;}
 .contador-row > img{width:100%;display:block;align-self:start;}
 .contador-row .contador-text > .body:last-child{margin-bottom:0;}
 
@@ -142,13 +142,14 @@ section.gs{padding:56px 0;}
   .exp,.stat-row,.fundar-grid,.quad{grid-template-columns:1fr;}
   .nav-links{display:none;}
   .contador-row{grid-template-columns:1fr;gap:20px;}
-  .contador-row > img{max-width:240px;margin:0 auto;}
+  .contador-row > img{max-width:280px;margin:0 auto;order:1;}
+  .contador-row > .contador-text{order:2;}
 }
 </style>
 </head>
 <body>
 
-<nav class="site-nav"><div class="container"><a href="index.html" class="nav-brand"><svg width="36" height="40" viewBox="0 0 36 40" fill="none"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#4E83FB"/></linearGradient></defs><path d="M18,2 L32,10 L32,26 L24,31 L26,36 Q27,38 25,37 L20,34 L18,35 L4,27 L4,10 Z" stroke="url(#hg)" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="18" width="3.5" height="8" rx=".7" fill="#00FAB9" opacity=".85"/><rect x="15" y="14" width="3.5" height="12" rx=".7" fill="#54BBC7" opacity=".85"/><rect x="20" y="10" width="3.5" height="16" rx=".7" fill="#32B4EE" opacity=".85"/><path d="M18,10 L21.75,6 L25.5,10" fill="#32B4EE" opacity=".85"/><line x1="8" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,.4)" stroke-width="1"/><path d="M20,37 Q23,34 26,37 Q29,40 32,37" stroke="url(#hg)" stroke-width="1.2" stroke-linecap="round"/></svg><div><div class="nav-title">Consejo Económico y Social de la Ciudad de Buenos Aires</div><div class="nav-sub">cesba.gob.ar</div></div></a><div class="nav-links"><a href="glosario.html" class="active">Glosario</a><a href="index.html#trabajos">Los trabajos de CABA</a><a href="ieoiag.html">El IEOIAG</a><a href="index.html#recursos">Recursos</a><a href="index.html#intro">Sobre el proyecto</a></div></div></nav>
+<nav class="site-nav"><div class="container"><a href="index.html" class="nav-brand"><svg width="36" height="40" viewBox="0 0 36 40" fill="none"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#4E83FB"/></linearGradient></defs><path d="M18,2 L32,10 L32,26 L24,31 L26,36 Q27,38 25,37 L20,34 L18,35 L4,27 L4,10 Z" stroke="url(#hg)" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="18" width="3.5" height="8" rx=".7" fill="#00FAB9" opacity=".85"/><rect x="15" y="14" width="3.5" height="12" rx=".7" fill="#54BBC7" opacity=".85"/><rect x="20" y="10" width="3.5" height="16" rx=".7" fill="#32B4EE" opacity=".85"/><path d="M18,10 L21.75,6 L25.5,10" fill="#32B4EE" opacity=".85"/><line x1="8" y1="26" x2="26" y2="26" stroke="rgba(255,255,255,.4)" stroke-width="1"/><path d="M20,37 Q23,34 26,37 Q29,40 32,37" stroke="url(#hg)" stroke-width="1.2" stroke-linecap="round"/></svg><div><div class="nav-title">Consejo Económico y Social de la Ciudad de Buenos Aires</div><div class="nav-sub">cesba.gob.ar</div></div></a><div class="nav-links"><a href="glosario.html" class="active">Glosario</a><a href="trabajos.html">Los trabajos de CABA</a><a href="ieoiag.html">El IEOIAG</a><a href="sobre.html">Sobre el proyecto</a></div></div></nav>
 
 <section class="page-hero"><div class="container"><div class="hero-eyebrow">Guía conceptual</div><h1>Glosario de IA y Trabajo</h1><p class="hero-sub">10 puntos para entender qué es la IA generativa, cómo afecta las ocupaciones y qué dice la evidencia empírica sobre su impacto en el trabajo.</p></div></section>
 <hr class="div">
@@ -183,7 +184,7 @@ section.gs{padding:56px 0;}
       <p class="body">El punto de inflexión fue 2017, con la publicación de la arquitectura Transformer. Esa innovación permitió los grandes modelos de lenguaje (LLM): sistemas capaces de generar texto, código e imágenes con una fluidez sin precedentes. En 2022, ChatGPT los llevó a la masividad. Pero eso no significa que la IA generativa sea el único tipo de IA.</p>
       <p class="highlight">¿Por qué importa la distinción?</p>
       <p class="body">Este estudio se centra específicamente en el impacto de la IA generativa y su impacto sobre los trabajos de CABA. Pero la IA generativa no es la única IA que afecta a los trabajos: un algoritmo de recomendación de películas, el de un cajero automático que opera con reglas simples o el del GPS puede no ser IA generativa, pero tiene un gran impacto igual.</p>
-      <img src="tecnologias_no_gen.png" alt="Ilustraciones de tecnologías que impactan al trabajo más allá de la IA generativa: cajero automático de autoservicio, GPS, sistema de recomendación de películas, asistente conversacional y herramienta de diseño asistido." style="display:block;width:100%;max-width:760px;margin:24px auto 24px;">
+      <img src="tecnologias_no_gen.png" alt="Ilustraciones de tecnologías que impactan al trabajo más allá de la IA generativa: cajero automático de autoservicio, GPS, sistema de recomendación de películas, asistente conversacional y herramienta de diseño asistido." style="display:block;width:100%;max-width:480px;margin:24px auto 24px;">
       <p class="body">Y tampoco es la única tecnología que afecta a los trabajos (que vienen transformándose por tecnologías de la información y comunicación hace décadas, desde el teléfono, las planillas de Excel o los cajeros automáticos).</p>
       <p class="body">Una misma ocupación puede verse afectada de manera muy distinta por distintos tipos de tecnología. Este estudio mira de cerca el impacto de la IA generativa; es decir, una mirada parcial, no total, sobre el efecto de la IA sobre el trabajo.</p>
     </div></section>
@@ -207,12 +208,12 @@ section.gs{padding:56px 0;}
       <p class="body">Las ocupaciones tampoco son estáticas. Las tareas que las componen cambian permanentemente, con IA o sin ella.</p>
       <div class="sh">El contador público en Argentina</div>
       <div class="contador-row">
-        <img src="contador_publico.png" alt="Ilustración del contador público en dos momentos: arriba, escritorio tradicional con papeles, libros contables, sello y máquina de escribir; abajo, escritorio con computadora moderna mostrando dashboards y gráficos de gestión.">
         <div class="contador-text">
           <p class="body">Hace treinta años, una parte enorme del trabajo del contador era anotar manualmente cada ingreso, egreso y transacción en libros contables, calcular impuestos con tablas impresas, archivar comprobantes en papel y presentar declaraciones de forma presencial.</p>
           <p class="body">Ese núcleo de tareas fue desapareciendo por etapas: primero con Excel, después con los sistemas de gestión contable, después con la facturación electrónica y las declaraciones online de AFIP.</p>
           <p class="body">Lo que creció en su lugar fue la interpretación normativa, el asesoramiento impositivo, la planificación fiscal, la relación con el cliente. Tareas que requieren criterio, contexto y responsabilidad legal. Hoy hay más contadores matriculados que nunca, pero casi no existe demanda para "cargar datos". El piso de calificación subió y la ocupación se redefinió.</p>
         </div>
+        <img src="contador_publico.png" alt="Ilustración del contador público en dos momentos: arriba, escritorio tradicional con papeles, libros contables, sello y máquina de escribir; abajo, escritorio con computadora moderna mostrando dashboards y gráficos de gestión." style="width:100%;display:block;">
       </div>
       <p class="body">La IA generativa es la última de estas olas de transformación, no la primera.</p>
     </div></section>
@@ -221,7 +222,7 @@ section.gs{padding:56px 0;}
     <!-- 4 — imagen + fuente + texto -->
     <section class="gs" id="s4"><div data-a>
       <div class="section-title">4. ¿Qué es la <span class="a">exposición</span> a la IA?</div>
-      <img src="exposicion_tipos.svg" class="expo-img" alt="Tres tipos de ocupaciones según su perfil de exposición a la IA: una con todas sus tareas expuestas en su totalidad, una con muchas tareas expuestas en menor medida, y una con la mitad de las tareas fuertemente expuestas.">
+      <img src="exposicion_tipos.svg" class="expo-img" style="margin-left:0;margin-right:auto;" alt="Tres tipos de ocupaciones según su perfil de exposición a la IA: una con todas sus tareas expuestas en su totalidad, una con muchas tareas expuestas en menor medida, y una con la mitad de las tareas fuertemente expuestas.">
       <p class="src" style="text-align:center;margin:6px 0 36px;">Fuente: elaboración propia</p>
       <p class="body">Decimos que una ocupación está <strong>expuesta</strong> a la IA generativa cuando una parte significativa de sus tareas puede ser asistida, complementada o realizada por un modelo de IA. Como toda ocupación es un conjunto de tareas, no existe un único patrón de exposición: distintas ocupaciones combinan tareas con distintos niveles de exposición — algunas con todas las tareas muy expuestas, otras con muchas tareas levemente expuestas, otras con la mitad fuertemente expuesta y la otra mitad nada.</p>
       <p class="body">La exposición es una condición necesaria para que la IA transforme un trabajo, pero no es suficiente. Los efectos concretos sobre el empleo y los salarios dependen de muchos otros factores: qué tareas específicas están expuestas, si pueden separarse del resto del trabajo, y cómo responden empresas, trabajadores e instituciones ante esas transformaciones.</p>
@@ -332,7 +333,7 @@ section.gs{padding:56px 0;}
       <p class="body">En ningún lado está escrito que la IA generativa deba redundar solo en mayor desigualdad, desplazamiento y falta de oportunidades. Este glosario busca mostrar exactamente eso: que los efectos son múltiples. De automatización, sí, pero también de ampliación de capacidades y de complementariedad. Qué efecto predomina depende, en parte, de la tecnología. <strong>Pero depende, sobre todo, de las decisiones que tomemos como sociedad.</strong></p>
       <p class="body">Si la transición tiene lugar en el marco del diálogo social con empleadores y trabajadores participando sobre el sentido del cambio y con gobiernos generando las condiciones institucionales para esa conversación, entonces es posible orientar la transformación tecnológica hacia mayor productividad, mejores oportunidades y más capacidades para todos.</p>
       <p class="body"><strong>Pero eso solo puede suceder si todos los actores participan: empleadores, sindicatos y gobiernos, dialogando de manera tripartita sobre el futuro del trabajo.</strong></p>
-      <div class="closing"><h2>Explorá el estudio completo</h2><p>El glosario es el punto de partida. Los datos sobre la estructura ocupacional de CABA y el índice de exposición te esperan.</p><div class="closing-links"><a href="index.html#trabajos" class="closing-link p">→ Estructura ocupacional de CABA</a><a href="ieoiag.html" class="closing-link">→ Conocé el IEOIAG</a><a href="index.html#recursos" class="closing-link">→ Descargar recursos</a></div></div>
+      <div class="closing"><h2>Explorá el estudio completo</h2><p>El glosario es el punto de partida. Los datos sobre la estructura ocupacional de CABA y el índice de exposición te esperan.</p><div class="closing-links"><a href="trabajos.html" class="closing-link p">→ Estructura ocupacional de CABA</a><a href="ieoiag.html" class="closing-link">→ Conocé el IEOIAG</a><a href="sobre.html" class="closing-link">→ Sobre el proyecto</a></div></div>
     </div></section>
 
   </div><!-- /page-body -->
