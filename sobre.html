@@ -86,6 +86,10 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .team-org{font-family:var(--f);font-size:12px;color:var(--ink);opacity:.55;margin-bottom:10px;font-style:italic;}
 .team-names{font-family:var(--f);font-size:14px;color:var(--cd);line-height:1.85;font-weight:500;}
 
+/* ACKNOWLEDGMENT */
+.acknowledgment{margin-top:36px;padding-top:24px;border-top:1px solid var(--border);font-family:var(--f);font-size:14px;color:var(--ink);line-height:1.75;text-align:center;max-width:720px;margin-left:auto;margin-right:auto;font-style:italic;}
+.acknowledgment strong{color:var(--cd);font-weight:700;font-style:normal;}
+
 /* CLOSING */
 .closing{background:var(--cd);padding:40px;border-radius:14px;margin-top:40px;}
 .closing h2{font-family:var(--fh);font-size:26px;font-weight:900;color:#fff;margin-bottom:10px;}
@@ -96,10 +100,17 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .closing-link.p{background:rgba(0,250,185,.15);border-color:rgba(0,250,185,.4);}
 
 /* FOOTER */
-.footer{background:var(--cd);padding:36px 0;}
-.footer .container-wide{display:flex;justify-content:space-between;align-items:center;}
-.ft{font-size:12px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8;}
-.ft strong{color:rgba(255,255,255,.9);font-weight:700;}
+.footer{background:var(--cd);padding:56px 0 24px;}
+.footer .container-wide{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:start;}
+.ft-col-title{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;margin-bottom:20px;line-height:1.3;}
+.ft-col p, .ft-col a{font-family:var(--f);font-size:13px;font-weight:400;color:rgba(255,255,255,.7);line-height:1.9;text-decoration:none;display:block;}
+.ft-col a:hover{color:var(--c1);}
+.ft-col a.mail{color:#fff;font-weight:700;}
+.ft-col a.mail:hover{color:var(--c1);}
+.ft-col .ft-sublink{font-size:12.5px;}
+.ft-col .ft-body{font-family:var(--f);font-size:13px;color:rgba(255,255,255,.7);line-height:1.75;}
+.ft-col .ft-body strong{color:#fff;font-weight:700;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding-top:20px;font-family:var(--f);font-size:11px;color:rgba(255,255,255,.4);text-align:center;}
 
 /* Animations */
 [data-a]{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
@@ -116,7 +127,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
   .stage{flex-direction:column;gap:8px;}
   .metod-box{flex-direction:column;}
   .team-grid{grid-template-columns:1fr;}
-  .footer .container-wide{flex-direction:column;gap:14px;text-align:center;}
+  .footer .container-wide{grid-template-columns:1fr;gap:32px;text-align:left;}
 }
 </style>
 </head>
@@ -204,11 +215,10 @@ hr.div{border:none;border-top:1px solid var(--border);}
           <div class="stage-num">1</div>
           <div class="stage-content">
             <div class="stage-head">
-              <span class="stage-name">Mapa de exposición ocupacional</span>
+              <span class="stage-name">IEOIAG: mapa de exposición ocupacional</span>
               <span class="badge en-curso">En curso</span>
             </div>
             <p class="body" style="margin-bottom:0;">El primer paso fue construir un índice que mida el nivel de exposición que tiene cada ocupación de la Ciudad a la IA generativa. Para eso se desarrolló una tabla de correspondencias que traduce el clasificador de ocupaciones argentino al estándar internacional y se aplicó el índice de la OIT a las ocupaciones a dos dígitos. El resultado es el <strong>Índice de Exposición Ocupacional a la IA Generativa (IEOIAG)</strong> para CABA, con datos desagregados por género, edad, nivel educativo, sector y registro laboral.</p>
-            <p class="stage-note">→ Esta web presenta los resultados de esta primera etapa.</p>
           </div>
         </div>
 
@@ -244,13 +254,13 @@ hr.div{border:none;border-top:1px solid var(--border);}
 <section class="gs">
   <div class="container">
     <div data-a>
-      <div class="section-eyebrow">Metodología</div>
-      <div class="section-title">Cómo construimos el <span class="a">índice</span></div>
-      <p class="body">El IEOIAG articula tres insumos: los microdatos de la encuesta de empleo local (ETOI), la clasificación internacional de ocupaciones (CIUO-08) y el índice de exposición elaborado por la Organización Internacional del Trabajo (OIT). La nota metodológica detalla cada decisión: fuentes, crosswalks, limitaciones y validación externa.</p>
+      <div class="section-eyebrow">El Índice</div>
+      <div class="section-title">Documentos <span class="a">relacionados</span></div>
+      <p class="body">La primera etapa del proyecto involucró un análisis cualitativo y cuantitativo sobre la literatura de IA y trabajo y su aplicación a la Ciudad Autónoma de Buenos Aires. Para profundizar en cada aspecto están disponibles los siguientes dos documentos. El primer documento consiste en un informe que integra todos los elementos de esta página web: desde una revisión de la literatura, un análisis de la estructura ocupacional de CABA y un análisis del IEOIAG. El segundo documento es una nota metodológica en donde se detallan los pasos que seguimos para construir el índice, las fuentes que utilizamos y los procedimientos utilizados.</p>
       <div class="metod-box">
         <div class="metod-icon">📄</div>
         <div class="metod-text">
-          <p>Para acceder a una síntesis de este proyecto, descargá el informe completo:</p>
+          <p>Para acceder al documento integrador de este proyecto, descargá el informe completo:</p>
           <a class="btn-dl" href="informe_final.pdf" download>↓&nbsp;&nbsp;Informe completo (PDF)</a>
         </div>
       </div>
@@ -280,36 +290,58 @@ hr.div{border:none;border-top:1px solid var(--border);}
           <div class="team-org">Consejo Económico y Social de Buenos Aires (CESBA)</div>
           <div class="team-names">
             Manuel Socias<br>
-            Geraldine Oniszczuk<br>
-            Gonzalo Guilardes
+            Gonzalo Guilardes<br>
+            Geraldine Oniszczuk
           </div>
         </div>
 
         <div class="team-card">
           <div class="team-role">Coordinación del proyecto</div>
           <div class="team-names">
-            Juan Manuel Ottaviano<br>
-            Macarena Santolaria<br>
             Iara Carbotti<br>
-            Matías Wasserman
+            Juan Manuel Ottaviano<br>
+            Macarena Santolaria
           </div>
         </div>
 
         <div class="team-card">
           <div class="team-role">Investigación</div>
           <div class="team-names">
-            Juan Manuel Ottaviano<br>
-            Macarena Santolaria
+            Macarena Santolaria<br>
+            Juan Manuel Ottaviano
           </div>
         </div>
 
         <div class="team-card">
-          <div class="team-role">Análisis y visualización de datos</div>
+          <div class="team-role">Comunicación</div>
+          <div class="team-names">
+            Alejandro Obeid<br>
+            Ofelia Fernández<br>
+            Matías Wasserman<br>
+            Iara Carbotti<br>
+            Macarena Santolaria<br>
+            Juan Manuel Ottaviano
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-role">Análisis y procesamiento de datos</div>
           <div class="team-names">
             Macarena Santolaria
           </div>
         </div>
 
+        <div class="team-card">
+          <div class="team-role">Diseño y desarrollo web</div>
+          <div class="team-names">
+            Macarena Santolaria
+          </div>
+        </div>
+
+      </div>
+
+      <div class="acknowledgment">
+        Este proyecto contó con la asesoría técnica de la <strong>Organización Internacional del Trabajo (OIT)</strong> para la elaboración del índice de exposición ocupacional a la IA generativa.
       </div>
 
       <div class="closing">
@@ -330,19 +362,37 @@ hr.div{border:none;border-top:1px solid var(--border);}
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container-wide">
-    <div class="ft">
-      <strong>Consejo Económico y Social de la Ciudad de Buenos Aires</strong><br>
-      Carlos Pellegrini 587 · cesba.gob.ar · Datos: ETOI-IEC CABA 2025-T3 · Índice: ILO WP140 (Gmyrek et al. 2025) · Licencia CC BY-NC 4.0
+    <div class="ft-col">
+      <div class="ft-col-title">Consejo Económico y Social de la Ciudad de Buenos Aires</div>
+      <p>Carlos Pellegrini 587</p>
+      <p>4328-0731/8588</p>
+      <a href="mailto:contacto@consejo.gob.ar" class="mail">contacto@consejo.gob.ar</a>
     </div>
-    <svg width="40" height="45" viewBox="0 0 36 40" fill="none">
-      <defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#4E83FB"/></linearGradient></defs>
-      <path d="M18,2 L32,10 L32,26 L24,31 L26,36 Q27,38 25,37 L20,34 L18,35 L4,27 L4,10 Z" stroke="url(#fg)" stroke-width="1.5" stroke-linejoin="round"/>
-      <rect x="10" y="18" width="3.5" height="8" rx=".7" fill="#00FAB9" opacity=".85"/>
-      <rect x="15" y="14" width="3.5" height="12" rx=".7" fill="#54BBC7" opacity=".85"/>
-      <rect x="20" y="10" width="3.5" height="16" rx=".7" fill="#32B4EE" opacity=".85"/>
-      <path d="M18,10 L21.75,6 L25.5,10" fill="#32B4EE" opacity=".85"/>
-      <path d="M20,37 Q23,34 26,37 Q29,40 32,37" stroke="url(#fg)" stroke-width="1.2" stroke-linecap="round"/>
-    </svg>
+    <div class="ft-col">
+      <div class="ft-col-title">Links de Interés</div>
+      <a href="https://www.cesba.gob.ar/" target="_blank" rel="noopener">Inicio</a>
+      <a href="https://www.cesba.gob.ar/nosotros" target="_blank" rel="noopener">CESBA</a>
+      <a href="https://www.cesba.gob.ar/nosotros" target="_blank" rel="noopener" class="ft-sublink">Misión, Visión y Ejes estratégicos</a>
+      <a href="https://www.cesba.gob.ar/asambleas" target="_blank" rel="noopener" class="ft-sublink">Asambleas</a>
+      <a href="https://www.cesba.gob.ar/novedades" target="_blank" rel="noopener">Novedades</a>
+      <a href="https://www.cesba.gob.ar/autoridades" target="_blank" rel="noopener">Autoridades</a>
+      <a href="https://www.cesba.gob.ar/organizaciones" target="_blank" rel="noopener">Organizaciones</a>
+      <a href="https://www.cesba.gob.ar/normativas/ley-3317" target="_blank" rel="noopener">Normativas</a>
+      <a href="https://www.cesba.gob.ar/normativas/ley-3317" target="_blank" rel="noopener" class="ft-sublink">Ley N° 3317</a>
+      <a href="https://www.cesba.gob.ar/normativas/decretos" target="_blank" rel="noopener" class="ft-sublink">Decretos</a>
+      <a href="https://www.cesba.gob.ar/normativas/resoluciones" target="_blank" rel="noopener" class="ft-sublink">Resoluciones</a>
+      <a href="https://www.cesba.gob.ar/normativas/reglamento-interno" target="_blank" rel="noopener" class="ft-sublink">Reglamento Interno</a>
+      <a href="https://www.cesba.gob.ar/normativas/compras-y-contrataciones" target="_blank" rel="noopener" class="ft-sublink">Compras y Contrataciones</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">CESBA</div>
+      <p class="ft-body">El <strong>CESBA</strong>, a través de las organizaciones que lo componen, busca abordar y sensibilizar acerca de las distintas temáticas vinculadas a la calidad de vida de quienes habitan la ciudad de Buenos Aires.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container-wide" style="display:block;text-align:center;">
+      © 2024 Consejo Económico y Social de la Ciudad de Buenos Aires. Todos los derechos reservados.
+    </div>
   </div>
 </footer>
 
