@@ -139,8 +139,18 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .nc-ti{font-family:var(--fh);font-size:16px;font-weight:800;color:var(--cd);margin-bottom:4px;}
 .nc-de{font-family:var(--f);font-size:12px;color:var(--ink);line-height:1.55;}
 
-.footer{background:var(--cd);padding:36px 0;}
-.footer .container{display:flex;justify-content:space-between;align-items:center;}
+.footer{background:var(--cd);padding:56px 0 24px;}
+.footer .container{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:start;}
+.ft-col-title{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;margin-bottom:20px;line-height:1.3;}
+.ft-col p, .ft-col a{font-family:var(--f);font-size:13px;font-weight:400;color:rgba(255,255,255,.7);line-height:1.9;text-decoration:none;display:block;}
+.ft-col a:hover{color:var(--c1);}
+.ft-col a.mail{color:#fff;font-weight:700;}
+.ft-col a.mail:hover{color:var(--c1);}
+.ft-col .ft-sublink{font-size:12.5px;}
+.ft-col .ft-body{font-family:var(--f);font-size:13px;color:rgba(255,255,255,.7);line-height:1.75;}
+.ft-col .ft-body strong{color:#fff;font-weight:700;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding-top:20px;font-family:var(--f);font-size:11px;color:rgba(255,255,255,.4);text-align:center;}
+@media(max-width:900px){.footer .container{grid-template-columns:1fr;gap:32px;}}
 .ft{font-family:var(--f);font-size:12px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8;}
 .ft strong{color:rgba(255,255,255,.9);font-weight:700;}
 
@@ -202,9 +212,10 @@ hr.div{border:none;border-top:1px solid var(--border);}
 @media(max-width:900px){.act-nav{display:none;}}
 
 /* Acto: contenedor general */
-.act{padding:120px 0;position:relative;}
+.act{padding:0 0 52px;position:relative;}
+.act > .container{padding-top:36px;}
 @media(min-width:1280px){
-  .act > .container{margin:0;max-width:none;padding-left:max(40px, calc(50% - 533px));padding-right:100px;}
+  .act > .container{margin:0;max-width:none;padding-left:max(40px, calc(50% - 533px));padding-right:100px;padding-top:36px;}
 }
 .act:first-of-type{padding-top:64px;}
 .act-kicker{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cm);margin-bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease;}
@@ -224,7 +235,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .narr p.lit .hl-cyan{color:var(--cdk);font-weight:700;}
 
 /* Frase resaltada / pull-quote */
-.pull-quote{margin:64px 0;padding:0;max-width:var(--cw);}
+.pull-quote{margin:24px 0 16px;padding:0;max-width:var(--cw);}
 .pull-quote blockquote{font-family:var(--fh);font-size:clamp(24px,3.4vw,38px);font-weight:800;color:var(--cd);line-height:1.25;letter-spacing:-0.01em;}
 .pull-quote .pq-word{display:inline-block;opacity:0;transform:translateY(14px) rotate(-1deg);filter:blur(3px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1),filter .5s ease;}
 .pull-quote.vis .pq-word{opacity:1;transform:none;filter:blur(0);}
@@ -240,7 +251,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .count-bar-axis{display:flex;justify-content:space-between;font-family:var(--f);font-size:10px;color:#999;margin-top:4px;}
 
 /* CTA de cierre de acto */
-.act-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--f);font-size:14px;font-weight:700;color:var(--cd);background:rgba(0,250,185,.16);border:1.5px solid rgba(0,250,185,.4);padding:14px 24px;border-radius:32px;text-decoration:none;margin-top:36px;transition:background .2s,transform .15s;}
+.act-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--f);font-size:14px;font-weight:700;color:var(--cd);background:rgba(0,250,185,.16);border:1.5px solid rgba(0,250,185,.4);padding:14px 24px;border-radius:32px;text-decoration:none;margin-top:12px;transition:background .2s,transform .15s;}
 .act-cta:hover{background:rgba(0,250,185,.28);transform:translateY(-1px);}
 .act-cta-note{font-family:var(--f);font-size:13px;color:#8a8070;margin-top:10px;max-width:520px;line-height:1.6;}
 
@@ -272,8 +283,8 @@ hr.div{border:none;border-top:1px solid var(--border);}
 .bubble-svg .ref-line{stroke:var(--cm);stroke-width:1.5;stroke-dasharray:6,4;opacity:0.6;}
 .bubble-svg .ref-label{fill:var(--cd);font-size:11px;font-weight:700;font-family:var(--fh);}
 .bubble-svg .band-label{fill:#93989E;font-size:10px;font-family:var(--f);text-transform:uppercase;letter-spacing:0.5px;}
-.occ-circle{cursor:default;transition:opacity 0.2s;}
-.occ-circle:hover{opacity:0.95;}
+.occ-circle{cursor:pointer;transition:opacity 0.2s;}
+.occ-circle:hover{opacity:1;}
 .occ-ring{pointer-events:none;fill:none;stroke:var(--cd);stroke-width:2;stroke-dasharray:4,3;opacity:0;transition:opacity 0.2s;}
 .bubble-tooltip{display:none;position:fixed;z-index:200;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:0 8px 28px rgba(0,0,0,.12);font-family:var(--f);font-size:12px;max-width:280px;pointer-events:none;}
 .bubble-tooltip .tt-name{font-weight:800;margin-bottom:6px;font-size:13px;color:var(--cd);line-height:1.3;}
@@ -368,11 +379,11 @@ hr.div{border:none;border-top:1px solid var(--border);}
 <div class="read-progress"><div class="read-progress-fill" id="readProgress"></div></div>
 
 <nav class="act-nav" id="actNav">
-  <a href="#acto1" class="act-nav-item" data-act="1"><div class="act-nav-dot"></div><div class="act-nav-label">Apertura</div></a>
-  <a href="#acto2" class="act-nav-item" data-act="2"><div class="act-nav-dot"></div><div class="act-nav-label">Por qué importa</div></a>
-  <a href="#acto3" class="act-nav-item" data-act="3"><div class="act-nav-dot"></div><div class="act-nav-label">Por qué la ciudad</div></a>
-  <a href="#acto4" class="act-nav-item" data-act="4"><div class="act-nav-dot"></div><div class="act-nav-label">Los datos de la Ciudad</div></a>
-  <a href="#acto5" class="act-nav-item" data-act="5"><div class="act-nav-dot"></div><div class="act-nav-label">El índice</div></a>
+  <a href="#acto1" class="act-nav-item" data-act="1"><div class="act-nav-dot"></div><div class="act-nav-label">Introducción</div></a>
+  <a href="#acto2" class="act-nav-item" data-act="2"><div class="act-nav-dot"></div><div class="act-nav-label">El Primer Índice</div></a>
+  <a href="#acto3" class="act-nav-item" data-act="3"><div class="act-nav-dot"></div><div class="act-nav-label">El Glosario</div></a>
+  <a href="#acto4" class="act-nav-item" data-act="4"><div class="act-nav-dot"></div><div class="act-nav-label">Los Trabajos de CABA</div></a>
+  <a href="#acto5" class="act-nav-item" data-act="5"><div class="act-nav-dot"></div><div class="act-nav-label">El IEOIAG</div></a>
   <a href="#acto6" class="act-nav-item" data-act="6"><div class="act-nav-dot"></div><div class="act-nav-label">Lo que sigue</div></a>
 </nav>
 
@@ -385,7 +396,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
     <div class="narr" data-narr>
       <p>Todos los días aparece una nueva herramienta de IA generativa que promete escribir, programar, diseñar o resolver tareas que hasta hace poco solo hacían personas.</p>
       <p>La pregunta ya no es si la IA generativa va a transformar el trabajo, sino <strong>cuánto, dónde y para quién</strong>.</p>
-      <p>Construimos un índice para responder esa pregunta con datos. Así medimos qué tan expuesto está cada trabajo de la Ciudad de Buenos Aires a la IA generativa, ocupación por ocupación. Es un nivel alto, más alto que el de Estados Unidos, Reino Unido o Francia.</p>
+      <p>Construimos un índice para responder esa pregunta con datos. Es el primer índice de exposición aplicado a una Ciudad. Medimos qué tan expuesto está cada trabajo de la Ciudad de Buenos Aires a la IA generativa, ocupación por ocupación. Es un nivel alto, más alto que el de Estados Unidos, Reino Unido o Francia.</p>
     </div>
 
     <div class="count-wrap" data-a style="align-items:flex-start;">
@@ -414,42 +425,16 @@ hr.div{border:none;border-top:1px solid var(--border);}
 
 <div class="act-divider"></div>
 
-<!-- ===== ACTO 2 — POR QUÉ IMPORTA (GLOSARIO) ===== -->
+<!-- ===== ACTO 2 — EL PRIMER ÍNDICE ===== -->
 <section class="act" id="acto2">
   <div class="container">
-    <div class="act-kicker" data-a>Antes de los números</div>
-    <h2 class="act-title" data-a>Salir de la ciencia ficción para entender la <span class="a">transformación</span></h2>
-
-    <div class="narr" data-narr>
-      <p>La IA generativa afecta de manera diferente a cada trabajo y cada tarea. No reemplaza ocupaciones enteras de un día para el otro, sino que <strong>transforma tareas específicas</strong> dentro de cada ocupación. Un mismo trabajo puede tener partes muy expuestas y partes donde la IA no tiene mucho para aportar.</p>
-      <p>Por eso la pregunta relevante para entender este momento no es "¿este trabajo va a desaparecer?". La pregunta es <strong>cómo va a cambiar, a qué velocidad, y quién participa de la gobernanza de ese cambio</strong>.</p>
-      <p>Para entender esto hace falta vocabulario común: qué es la IA generativa, qué significa "exposición" en este contexto, qué implica entender los trabajos como conjuntos de tareas, qué es automatización y qué es complementariedad. Por eso armamos un glosario con los principales conceptos necesarios para entender cómo el cambio tecnológico transforma el mundo del trabajo. Sin esas distinciones, cualquier conversación sobre IA y trabajo termina siendo alarmismo o promesa vacía.</p>
-    </div>
-
-    <div class="pull-quote" data-a>
-      <blockquote>La IA generativa no destruye trabajos. Redistribuye tareas dentro de ellos.</blockquote>
-    </div>
-
-    <a href="glosario.html" class="act-cta" data-a>→ Leer el glosario completo</a>
-  </div>
-</section>
-
-<div class="act-divider"></div>
-
-<!-- ===== ACTO 3 — POR QUÉ UNA CIUDAD ===== -->
-<section class="act" id="acto3">
-  <div class="container">
-    <div class="act-kicker" data-a>Lo que hace distinto a este índice</div>
+    <div class="act-kicker" data-a>El Primer Índice</div>
     <h2 class="act-title" data-a>El primer caso de <span class="a">América Latina</span></h2>
 
     <div class="narr" data-narr>
       <p>La mayoría de los índices de exposición a la IA se construyen a nivel de país. Este es el <strong>primer índice de exposición ocupacional a la IA generativa aplicado a una ciudad de América Latina y el Caribe</strong>.</p>
-      <p>El cambio tecnológico no impacta igual en todos lados. Hay diferencias enormes entre países y también dentro de un mismo país. Las ciudades concentran buena parte del empleo de servicios y administrativo, que es justo donde la IA generativa tiene mayor incidencia.</p>
-      <p>El impacto en Argentina no es homogéneo, y CABA concentra muchos trabajos que están atravesando esta transformación, porque la IA es una tecnología de fácil acceso y conviven en la Ciudad muchas ocupaciones expuestas. No es algo que vaya a pasar. <strong>La transformación está teniendo lugar hoy mismo.</strong></p>
-    </div>
-
-    <div class="pull-quote" data-a>
-      <blockquote>La transformación no va a pasar. Está pasando ahora.</blockquote>
+      <p>El cambio tecnológico tiene impactos disímiles según los territorios, los sectores y los trabajos. Hay diferencias enormes entre países y también dentro de un mismo país. Las ciudades concentran buena parte del empleo de servicios y administrativo. Precisamente donde la IA generativa tiene mayor incidencia.</p>
+      <p>El impacto en Argentina no es homogéneo. CABA concentra muchos trabajos que están atravesando esta transformación porque la IA es una tecnología de fácil acceso y en ella conviven muchas ocupaciones expuestas. No es un fenómeno del futuro. La transformación está ocurriendo ahora.</p>
     </div>
 
     <div data-a style="margin-top:56px;max-width:var(--cw);">
@@ -656,6 +641,32 @@ hr.div{border:none;border-top:1px solid var(--border);}
         <p class="map-source">Fuente: elaboración propia a partir de datos de ETOI (CABA) y OIT (<a href="https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure" target="_blank">2025</a>, <a href="https://www.ilo.org/publications/disruption-without-dividend-how-digital-divide-and-task-differences-split" target="_blank">2026</a>)</p>
       </div>
     </div>
+
+    <div class="pull-quote" style="margin-top:56px;">
+      <blockquote>La transformación de los trabajos por la IA está ocurriendo ahora</blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="act-divider"></div>
+
+<!-- ===== ACTO 3 — EL GLOSARIO ===== -->
+<section class="act" id="acto3">
+  <div class="container">
+    <div class="act-kicker" data-a>El Glosario</div>
+    <h2 class="act-title" data-a>Salir de la ciencia ficción para entender la <span class="a">transformación</span></h2>
+
+    <div class="narr" data-narr>
+      <p>La IA generativa afecta de manera diferente a cada trabajo y cada tarea. No reemplaza ocupaciones enteras de un día para el otro, sino que <strong>transforma tareas específicas</strong> dentro de cada ocupación. Un mismo trabajo puede tener partes muy expuestas y partes donde la IA no tiene mucho para aportar.</p>
+      <p>Por eso la pregunta relevante para entender este momento no es "¿este trabajo va a desaparecer?". La pregunta es <strong>cómo va a cambiar, a qué velocidad, y quién participa de la gobernanza de ese cambio</strong>.</p>
+      <p>Para entender esto hace falta un vocabulario común. ¿Qué es la IA generativa? ¿Qué significa exposición? ¿Qué es la automatización? ¿Qué es la complementariedad? Finalmente, ¿qué significa que un trabajo esté expuesto a la IA generativa? ¿en qué consiste la transformación? Armamos un glosario con los conceptos necesarios para entender cómo el cambio tecnológico transforma el mundo del trabajo. Sin esas distinciones, cualquier conversación sobre IA y trabajo puede convertirse en promesas vacías o alarmismos.</p>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>La IA generativa redistribuye tareas dentro de los trabajos</blockquote>
+    </div>
+
+    <a href="glosario.html" class="act-cta" data-a>→ Leer el glosario completo</a>
   </div>
 </section>
 
@@ -664,11 +675,11 @@ hr.div{border:none;border-top:1px solid var(--border);}
 <!-- ===== ACTO 4 — LOS DATOS DE LA CIUDAD ===== -->
 <section class="act" id="acto4">
   <div class="container">
-    <div class="act-kicker" data-a>La estructura que explica el índice</div>
+    <div class="act-kicker" data-a>Los Trabajos de CABA</div>
     <h2 class="act-title" data-a>Por qué Buenos Aires está tan <span class="a">expuesta</span></h2>
 
     <div class="narr" data-narr>
-      <p>CABA es una ciudad de muchas oficinas y servicios. Su empleo está concentrado en servicios —comercio, salud, educación, finanzas, administración pública, profesionales y técnicos—, muy por encima de las actividades que transforman bienes físicos, como industria, construcción o agro. Esta composición es un rasgo estructural de la Ciudad, y es la primera pieza para entender por qué la Ciudad está tan expuesta a la IA generativa.</p>
+      <p>CABA es una ciudad de muchas oficinas y servicios. Su empleo está concentrado en servicios —comercio, salud, educación, finanzas, administración pública, profesionales y técnicos—, muy por encima de las actividades que transforman bienes físicos, como industria, construcción o agro. Esta composición es un rasgo estructural de la Ciudad y es el primer aspecto para entender por qué la Ciudad está tan expuesta a la IA generativa.</p>
     </div>
 
     <div class="mini-chart" data-a>
@@ -685,7 +696,7 @@ hr.div{border:none;border-top:1px solid var(--border);}
     </div>
 
     <div class="narr" data-narr>
-      <p>La segunda pieza es educativa. La Ciudad tiene una proporción de empleo calificado muy superior a la del resto del país, y eso importa porque la IA generativa es particularmente buena en tareas que durante años requirieron formación universitaria, como escribir, sintetizar, analizar o programar. Cuanto más calificado el empleo, mayor es la <strong>superficie de contacto</strong> con esta tecnología.</p>
+      <p>El segundo aspecto es educativo. La Ciudad tiene una proporción de empleo calificado muy superior a la del resto del país, y eso importa porque la IA generativa es particularmente buena en tareas que durante años requirieron formación universitaria, como escribir, sintetizar, analizar o programar. Cuanto más calificado el empleo, mayor es la <strong>superficie de contacto</strong> con esta tecnología.</p>
     </div>
 
     <div class="mini-chart" data-a>
@@ -702,11 +713,15 @@ hr.div{border:none;border-top:1px solid var(--border);}
     </div>
 
     <div class="narr" data-narr>
-      <p>Estas dos piezas, <strong>terciarización y calificación</strong>, son la explicación de por qué el índice de la Ciudad da tan alto. La exposición golpea con más fuerza a las ocupaciones profesionales, administrativas y de oficina, que es exactamente el tipo de empleo que predomina en Buenos Aires.</p>
+      <p>Estos dos aspectos, <strong>servificación y calificación</strong>, explican por qué el índice exposición a la IA generativa de la Ciudad es tan alto. La exposición golpea con más fuerza a las ocupaciones profesionales, administrativas y de oficina, que es exactamente el tipo de empleo que predomina en Buenos Aires.</p>
     </div>
 
-    <a href="trabajos.html" class="act-cta" data-a>→ Ver la estructura ocupacional completa</a>
+    <a href="trabajos.html" class="act-cta" data-a>→ Ver la estructura ocupacional de CABA</a>
     <div class="act-cta-note" data-a>En "Los trabajos de CABA" podés profundizar qué tipos de trabajos hay en la Ciudad.</div>
+
+    <div class="pull-quote">
+      <blockquote>La alta exposición de la Ciudad acarrea desafíos por buenos motivos</blockquote>
+    </div>
   </div>
 </section>
 
@@ -715,17 +730,18 @@ hr.div{border:none;border-top:1px solid var(--border);}
 <!-- ===== ACTO 5 — LOS DATOS DEL ÍNDICE ===== -->
 <section class="act" id="acto5">
   <div class="container">
-    <div class="act-kicker" data-a>Los resultados</div>
-    <h2 class="act-title" data-a>0,353: qué significa ese <span class="a">número</span></h2>
+    <div class="act-kicker" data-a>El IEOIAG</div>
+    <h2 class="act-title" data-a>0,353: qué significa el <span class="a">puntaje de exposición</span></h2>
 
     <div class="narr" data-narr>
-      <p>El IEOIAG de CABA da 0,353 en una escala de 0 a 1. Es un nivel alto, comparable al de las economías más avanzadas del mundo: por encima de Estados Unidos (0,322), Reino Unido (0,331) y Francia (0,318), y bien por encima del promedio de Argentina (0,292) y de América Latina (0,257).</p>
+      <p>El IEOIAG de CABA arroja un puntaje de 0,353 en una escala de 0 a 1, donde 0 es la menor exposición y 1 la mayor. 0,353 es el promedio de exposición sobre 39 ocupaciones. Además, cada una de las 39 ocupaciones posee un puntaje de exposición propio. Es un nivel alto, comparable al de las economías más avanzadas del mundo: por encima de Estados Unidos (0,322), Reino Unido (0,331) y Francia (0,318), y bien por encima del promedio de Argentina (0,292) y de América Latina (0,257).</p>
     </div>
 
     <div class="bubble-wrap" data-a>
       <div class="mini-chart-title">39 ocupaciones de la Ciudad · CIUO-08 a 2 dígitos</div>
       <div class="dot-chart-container"><svg class="bubble-svg" id="bubbleChart" viewBox="0 0 1060 480" xmlns="http://www.w3.org/2000/svg"></svg></div>
       <div id="bubbleTooltip" class="bubble-tooltip"></div>
+      <p class="map-source" style="margin-top:10px;">Fuente: elaboración propia a partir de datos de ETOI (CABA) y OIT (2025, 2026)</p>
       <div class="bubble-legend">
         <div class="bubble-leg-item"><div class="bubble-leg-dot" style="background:#93989E"></div>No expuesto</div>
         <div class="bubble-leg-item"><div class="bubble-leg-dot" style="background:#70B8CE"></div>Baja exp.</div>
@@ -734,11 +750,11 @@ hr.div{border:none;border-top:1px solid var(--border);}
         <div class="bubble-leg-item"><div class="bubble-leg-dot" style="background:#18596C"></div>Gradiente 3</div>
         <div class="bubble-leg-item"><div class="bubble-leg-dot" style="background:#153B70"></div>Gradiente 4</div>
       </div>
-      <div class="mini-chart-source">Tamaño = % de empleo en CABA · Fuente: ETOI-IEC CABA 2025-T3 · Puntajes ILO-NASK 2025</div>
+      <div class="mini-chart-source">Tamaño = % de empleo en CABA · Fuente: ETOI-IEC CABA 2025-T3 · Puntajes ILO-NASK 2025 · <em>Pasá el cursor sobre cada burbuja para ver la ocupación y su puntaje</em></div>
     </div>
 
     <div class="narr" data-narr>
-      <p>Pero el promedio esconde diferencias enormes. Las ocupaciones más expuestas son cognitivas, centradas en procesar información: oficinistas, profesionales de negocios y administración, profesionales de tecnología. Las menos expuestas combinan trabajo manual, presencia física y trato interpersonal. La distancia entre esos dos extremos es, en el fondo, <strong>la distancia entre qué tipo de tareas hace cada persona en su trabajo todos los días</strong>.</p>
+      <p>Pero el promedio esconde diferencias enormes. Las ocupaciones más expuestas incluyen mayormente tareas cognitivas centradas en procesar información, como oficinistas, profesionales de negocios y administración y profesionales de tecnología. Las menos expuestas combinan trabajo manual, presencia física y trato interpersonal. La distancia entre esos dos extremos es, entonces, <strong>la distancia entre los tipos de tareas que hacen las personas en su trabajo todos los días</strong>.</p>
     </div>
 
     <div class="sector-chart" data-a>
@@ -748,15 +764,15 @@ hr.div{border:none;border-top:1px solid var(--border);}
       <div class="sec-row"><div class="sec-row-label">Comercio</div><div class="sec-row-track"><div class="sec-row-fill" data-w="73" style="background:linear-gradient(90deg,var(--c2),var(--cm))"><span>0,365</span></div></div></div>
       <div class="sec-row"><div class="sec-row-label">Construcción</div><div class="sec-row-track"><div class="sec-row-fill" data-w="42" style="background:#a8c4d4"><span>0,211</span></div></div></div>
       <div class="sec-row"><div class="sec-row-label">Servicio doméstico</div><div class="sec-row-track"><div class="sec-row-fill" data-w="30" style="background:#b8c8d2"><span>0,149</span></div></div></div>
-      <div class="mini-chart-cta">Podés profundizar estos datos en la página del <a href="ieoiag.html">IEOIAG</a>.</div>
+      <p class="map-source" style="margin-top:10px;">Fuente: elaboración propia a partir de datos de ETOI (CABA) y OIT (2025, 2026) · <a href="ieoiag.html" style="color:#7a7060;text-decoration:underline;">Podés profundizar estos datos en la página del IEOIAG</a></p>
     </div>
 
     <div class="narr" data-narr>
-      <p>Esa desigualdad también tiene una geografía sectorial. Los sectores intensivos en servicios profesionales y administración pública casi triplican el nivel de exposición del servicio doméstico o la construcción. Y dentro de cada sector la heterogeneidad se repite: incluso en una misma rama conviven ocupaciones con exposición muy alta y muy baja, según qué tareas predominen.</p>
+      <p>Esa desigualdad también tiene una geografía sectorial. Los sectores intensivos en servicios profesionales y administración pública triplican el nivel de exposición del servicio doméstico o la construcción. Dentro de cada sector la heterogeneidad se repite. En una misma rama conviven ocupaciones con exposición muy alta y muy baja, según las tareas predominan.</p>
     </div>
 
     <div class="heat-wrap" data-a>
-      <div class="mini-chart-title">Exposición por categoría y calificación, según género</div>
+      <div class="mini-chart-title">Exposición por calificación, según género</div>
       <div class="heat-grid">
         <div></div>
         <div class="heat-head">Profesional</div>
@@ -773,11 +789,11 @@ hr.div{border:none;border-top:1px solid var(--border);}
         <div class="heat-cell" style="background:#1B9FC7"><div class="heat-cell-val">0,365</div></div>
         <div class="heat-cell" style="background:#32B4EE"><div class="heat-cell-val">0,305</div></div>
       </div>
-      <div class="mini-chart-cta">Podés profundizar estos datos en la página del <a href="ieoiag.html">IEOIAG</a>.</div>
+      <p class="map-source" style="margin-top:10px;">Fuente: elaboración propia a partir de datos de ETOI (CABA) y OIT (2025, 2026) · <a href="ieoiag.html" style="color:#7a7060;text-decoration:underline;">Podés profundizar estos datos en la página del IEOIAG</a></p>
     </div>
 
     <div class="narr" data-narr>
-      <p>La exposición tampoco se distribuye igual entre quienes trabajan. Cuando se cruza género, categoría ocupacional, registro laboral y calificación, aparece un grupo con un nivel de exposición particularmente alto, y es <strong>mayoritariamente femenino</strong>. En particular, las mujeres jóvenes tienen los trabajos más expuestos. Este grupo se concentra en ocupaciones administrativas y de oficina, donde la IA generativa aparece en mayor medida.</p>
+      <p>La exposición también es heterogénea entre quienes trabajan. Las mujeres con trabajos de calificación operativa son un grupo de exposición particularmente alto, mientras que los varones profesionales tienen mayores niveles de exposición.</p>
     </div>
 
     <a href="ieoiag.html" class="act-cta" data-a>→ Explorar todos los datos del IEOIAG</a>
@@ -789,12 +805,12 @@ hr.div{border:none;border-top:1px solid var(--border);}
 <!-- ===== ACTO 6 — CONCLUSIÓN ===== -->
 <section class="act" id="acto6">
   <div class="container">
-    <div class="act-kicker" data-a>Lo que sigue</div>
-    <h2 class="act-title" data-a>Esto es el punto de partida, <span class="a">no el final</span></h2>
+    <div class="act-kicker" data-a>Próximos Pasos</div>
+    <h2 class="act-title" data-a>La medición de la exposición es el <span class="a">punto de partida</span></h2>
 
     <div class="narr" data-narr>
-      <p>Medir la exposición de los trabajos de CABA es el primer paso, no el último. Un índice señala en qué trabajos y sectores hay que poner la lupa, pero no dice qué hacer con esa información. Por eso este proyecto está pensado en <strong>tres etapas</strong>. Esta web es sólo la primera.</p>
-      <p>La segunda etapa pasa de la exposición potencial a la adopción real: a través de entrevistas en profundidad con cámaras empresariales, sindicatos y especialistas sectoriales, vamos a relevar cómo se está implementando hoy la IA generativa en los sectores más expuestos de la Ciudad, qué decisiones ya se tomaron y cuáles siguen en discusión.</p>
+      <p>Medir la exposición de los trabajos de CABA es el primer paso. Un índice señala en qué trabajos y sectores hay que poner la lupa, pero no dice qué hacer con esa información. Por eso este proyecto está pensado en <strong>tres etapas</strong>. Esta web es sólo la primera.</p>
+      <p>La segunda etapa pasa de la exposición potencial a la adopción real: a través de entrevistas en profundidad con cámaras empresariales, sindicatos y especialistas sectoriales, se relevarán la implementación de la IA generativa en los sectores más expuestos de la Ciudad, las decisiones ya adoptadas en la transición y las que aún permanecen bajo análisis.</p>
       <p>La tercera etapa convoca a empresas, sindicatos y gobierno a instancias de diálogo, para construir acuerdos y recomendaciones que orienten esa adopción con una <strong>gobernanza construida entre todos</strong>.</p>
     </div>
 
@@ -823,8 +839,8 @@ hr.div{border:none;border-top:1px solid var(--border);}
       </div>
     </div>
 
-    <div class="pull-quote" data-a>
-      <blockquote>Un índice dice dónde está la transformación. No dice qué hacer con esa información. Eso se construye después, en una gobernanza multiactor de la transformación tecnológica.</blockquote>
+    <div class="pull-quote">
+      <blockquote>Un índice aporta información relevante sobre el estado de la transformación. Pero las decisiones necesarias para gobernar el cambio tecnológico las aportan sus protagonistas. El CESBA busca promover un ámbito de diálogo social para orientar la transición con innovación e inclusión</blockquote>
     </div>
 
     <a href="sobre.html" class="act-cta" data-a>→ Conocé el proyecto completo</a>
@@ -873,8 +889,37 @@ hr.div{border:none;border-top:1px solid var(--border);}
 
 <footer class="footer">
   <div class="container">
-    <div class="ft"><strong>Consejo Económico y Social de la Ciudad de Buenos Aires</strong><br>Carlos Pellegrini 587 · cesba.gob.ar</div>
-    <svg width="40" height="45" viewBox="0 0 36 40" fill="none"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FAB9"/><stop offset="100%" stop-color="#4E83FB"/></linearGradient></defs><path d="M18,2 L32,10 L32,26 L24,31 L26,36 Q27,38 25,37 L20,34 L18,35 L4,27 L4,10 Z" stroke="url(#fg)" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="18" width="3.5" height="8" rx=".7" fill="#00FAB9" opacity=".85"/><rect x="15" y="14" width="3.5" height="12" rx=".7" fill="#54BBC7" opacity=".85"/><rect x="20" y="10" width="3.5" height="16" rx=".7" fill="#32B4EE" opacity=".85"/><path d="M18,10 L21.75,6 L25.5,10" fill="#32B4EE" opacity=".85"/><path d="M20,37 Q23,34 26,37 Q29,40 32,37" stroke="url(#fg)" stroke-width="1.2" stroke-linecap="round"/></svg>
+    <div class="ft-col">
+      <div class="ft-col-title">Consejo Económico y Social de la Ciudad de Buenos Aires</div>
+      <p>Carlos Pellegrini 587</p>
+      <p>4328-0731/8588</p>
+      <a href="mailto:contacto@consejo.gob.ar" class="mail">contacto@consejo.gob.ar</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">Links de Interés</div>
+      <a href="https://www.cesba.gob.ar/" target="_blank" rel="noopener">Inicio</a>
+      <a href="https://www.cesba.gob.ar/nosotros" target="_blank" rel="noopener">CESBA</a>
+      <a href="https://www.cesba.gob.ar/nosotros" target="_blank" rel="noopener" class="ft-sublink">Misión, Visión y Ejes estratégicos</a>
+      <a href="https://www.cesba.gob.ar/asambleas" target="_blank" rel="noopener" class="ft-sublink">Asambleas</a>
+      <a href="https://www.cesba.gob.ar/novedades" target="_blank" rel="noopener">Novedades</a>
+      <a href="https://www.cesba.gob.ar/autoridades" target="_blank" rel="noopener">Autoridades</a>
+      <a href="https://www.cesba.gob.ar/organizaciones" target="_blank" rel="noopener">Organizaciones</a>
+      <a href="https://www.cesba.gob.ar/normativas/ley-3317" target="_blank" rel="noopener">Normativas</a>
+      <a href="https://www.cesba.gob.ar/normativas/ley-3317" target="_blank" rel="noopener" class="ft-sublink">Ley N° 3317</a>
+      <a href="https://www.cesba.gob.ar/normativas/decretos" target="_blank" rel="noopener" class="ft-sublink">Decretos</a>
+      <a href="https://www.cesba.gob.ar/normativas/resoluciones" target="_blank" rel="noopener" class="ft-sublink">Resoluciones</a>
+      <a href="https://www.cesba.gob.ar/normativas/reglamento-interno" target="_blank" rel="noopener" class="ft-sublink">Reglamento Interno</a>
+      <a href="https://www.cesba.gob.ar/normativas/compras-y-contrataciones" target="_blank" rel="noopener" class="ft-sublink">Compras y Contrataciones</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-title">CESBA</div>
+      <p class="ft-body">El <strong>CESBA</strong>, a través de las organizaciones que lo componen, busca abordar y sensibilizar acerca de las distintas temáticas vinculadas a la calidad de vida de quienes habitan la ciudad de Buenos Aires.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:block;text-align:center;">
+      © 2024 Consejo Económico y Social de la Ciudad de Buenos Aires. Todos los derechos reservados.
+    </div>
   </div>
 </footer>
 
@@ -1008,12 +1053,11 @@ updateActiveNav();
   const rY=yS(CI);
   h+=`<line x1="${mg.l}" y1="${rY}" x2="${mg.l+cw}" y2="${rY}" class="ref-line"/><text x="${mg.l+4}" y="${rY-6}" class="ref-label">CABA 0,353</text>`;
 
-  sorted.forEach((d,i)=>{
-    const cx=xP(i),cy=yS(d.s),r=rS(d),col=cc(d.s);
-    const idx=OCC.indexOf(d);
-    h+=`<circle class="occ-ring" cx="${cx}" cy="${cy}" r="${r+4}" data-ring="${idx}"/>`;
-    h+=`<circle class="occ-circle" cx="${cx}" cy="${cy}" r="${r}" fill="${col}" opacity="0.8" stroke="${col}" stroke-width="1.5" data-idx="${idx}"/>`;
-    if(r>14) h+=`<text x="${cx}" y="${cy+r+13}" text-anchor="middle" fill="${col}" font-size="9" font-family="var(--f)" font-weight="600">${d.c}</text>`;
+  sorted.forEach((d, i) => {
+    const cx = xP(i), cy = yS(d.s), r = rS(d), col = cc(d.s);
+    const idx = OCC.indexOf(d);
+    h += `<circle class="occ-ring" cx="${cx}" cy="${cy}" r="${r+4}" data-ring="${idx}"/>`;
+    h += `<circle class="occ-circle" cx="${cx}" cy="${cy}" r="${r}" fill="${col}" opacity="0.8" stroke="${col}" stroke-width="1.5" data-idx="${idx}"/>`;
   });
   h+=`<line x1="${mg.l}" y1="${mg.t+ch}" x2="${mg.l+cw}" y2="${mg.t+ch}" class="axis-line"/><text x="${mg.l+cw/2}" y="${H-8}" class="axis-label" text-anchor="middle">Ocupaciones ordenadas por puntaje · Tamaño = % empleo CABA</text>`;
   svg.innerHTML=h;
@@ -1025,7 +1069,7 @@ updateActiveNav();
       const ring=svg.querySelector(`[data-ring="${el.dataset.idx}"]`);
       if(ring) ring.style.opacity="1";
       tt.style.display="block";
-      tt.innerHTML=`<div class="tt-name">${d.c} · ${d.n}</div><div class="tt-row"><span class="tt-label">Puntaje</span><span class="tt-val" style="color:${cc(d.s)}">${fi(d.s)}</span></div><div class="tt-row"><span class="tt-label">Ocupados</span><span class="tt-val">${fm(d.oc)}</span></div>`;
+      tt.innerHTML=`<div class="tt-name">${d.n}</div><div class="tt-row"><span class="tt-label">Puntaje</span><span class="tt-val" style="color:${cc(d.s)}">${fi(d.s)}</span></div><div class="tt-row"><span class="tt-label">Ocupados</span><span class="tt-val">${fm(d.oc)}</span></div>`;
     });
     el.addEventListener("mousemove",e=>{
       tt.style.left=Math.min(e.clientX+12,innerWidth-300)+"px";
